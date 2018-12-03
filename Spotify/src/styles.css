@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.login-card {
+  position: fixed;
+  width: 400px;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.login-form {
+  position: fixed;
+  width: 400px;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.sidebar-style {
+  width: 100%;
+  float: left;
+  background: #fff;
+  margin: 0 auto;
+  height: 500px;
+}
+
+.timeline-style {
+  width: 50%;
+  float: left;
+}
+
+.dashboard {
+  width: 100%;
+}
+
+.router-outlet-style {
+  width: 90%; /********Width of main Content***/
+  margin-left: 20%;
+}
+

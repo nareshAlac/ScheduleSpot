@@ -1,0 +1,176 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.spot</groupId>
+  <artifactId>SpotInstances</artifactId>
+  <packaging>war</packaging>
+  <name>SpotInstances</name>
+  <version>1.0.0</version>
+  
+  <properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+	<angular.project.location>Spotify</angular.project.location>
+    <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
+
+    <directory>${project.basedir}</directory>
+	</properties>
+	
+	<dependencies>
+	
+	    <dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		 <dependency>
+			    <groupId>log4j</groupId>
+			    <artifactId>log4j</artifactId>
+			    <version>1.2.17</version>
+			</dependency>
+	    <dependency>
+			<!-- jaxrs implementation for restful services for IBM WAS -->
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+             <groupId>javax.ws.rs</groupId>
+             <artifactId>jsr311-api</artifactId>
+             <version>1.1.1</version>
+	    </dependency>
+	     <dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.8.5</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+		
+		
+		 <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <executions>
+            <execution>
+                <id>exec-npm-install</id>
+                <phase>generate-sources</phase>
+                <configuration>
+                    <workingDirectory>${angular.project.location}</workingDirectory>
+                    <executable>npm</executable>
+                    <arguments>
+                        <argument>install</argument>
+                    </arguments>
+                </configuration>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>exec-npm-ng-build</id>
+                <phase>generate-sources</phase>
+                <configuration>
+                    <workingDirectory>${angular.project.location}/node_modules/@angular/cli/bin</workingDirectory>
+                    <executable>ng</executable>
+                    <arguments>
+                        <argument>build</argument>
+                        <argument>--aot=false</argument>
+                        <argument>--base-href=/spot/</argument>
+                    </arguments>
+                </configuration>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin> 
+
+		<!-- never merge given bloks to SIT onwords starts here -->
+		 <!-- <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.0</version>
+            <configuration>
+                <workingDirectory>${angular.project.location}</workingDirectory>
+                <installDirectory>${angular.project.nodeinstallation}</installDirectory>
+            </configuration>
+            <executions>  -->
+                <!-- It will install nodejs and npm -->
+               <!--    <execution>
+                    <id>install node and npm</id>
+                    <goals>
+                        <goal>install-node-and-npm</goal>
+                    </goals>
+                    <configuration>
+                        <nodeVersion>v8.9.3</nodeVersion>
+                        <npmVersion>5.5.1</npmVersion>
+                    </configuration>
+                </execution>   -->
+
+                <!-- It will execute command "npm install" inside "/e2e-angular2" directory -->
+             <!--    <execution>
+                    <id>npm install</id>
+                    <goals>
+                        <goal>npm</goal>
+                    </goals>
+                    <configuration>
+                        <arguments>install</arguments>
+                    </configuration>
+                </execution>   -->
+                <!-- It will execute command "npm build" inside "/e2e-angular2" directory 
+                    to clean and create "/dist" directory -->
+             <!--    <execution>
+                    <id>npm build</id>
+                    <goals>
+                        <goal>npm</goal>
+                    </goals>
+                    <configuration>
+                        <arguments>run build</arguments>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>   -->
+        
+          <plugin>
+                      <groupId>org.apache.maven.plugins</groupId>
+                       <artifactId>maven-antrun-plugin</artifactId>
+                       <executions>
+                               <execution>
+                                        <id>compile</id>
+                                        <phase>generate-resources</phase>
+                                        <configuration>
+                                        <tasks>
+                                             <copy todir="${basedir}/src/main/webapp/dist" overwrite="true">
+                                             <fileset dir="${basedir}/Spotify/dist" includes="**/*" />
+                                             </copy>
+                                              </tasks>
+                                        </configuration>
+                                        <goals>
+                                                <goal>run</goal>
+                                        </goals>
+                               </execution>
+                        </executions>
+               </plugin> 
+            <!-- never merge given bloks to SIT onwords ends here-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+				
+				<overwrite>true</overwrite>
+				  <generateApplicationXml>true</generateApplicationXml>
+				 <!--  <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
