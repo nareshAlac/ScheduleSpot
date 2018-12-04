@@ -9,8 +9,8 @@ import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
 
 public class AWSClientFactory {
 	
-	private static final String accessKeyId=" AKIAJ6DKIBCXXOONSYKQ";
-	private static final String secreateAccessKey="x9wFCno1qqgFVqpwsuBg9LIfeI51R62sTcfNp8AP";
+	private static final String accessKeyId="";
+	private static final String secreateAccessKey="";
 	private static final String region="";
 	
 	public static AmazonEC2 getEC2Client(){

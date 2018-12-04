@@ -1,14 +1,15 @@
 package com.alacriti.delegate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.alacriti.model.SpIn;
 import com.alacriti.utils.AWSClientFactory;
 import com.amazonaws.services.ec2.AmazonEC2;
-import com.amazonaws.services.ec2.model.InstanceType;
 import com.amazonaws.services.ec2.model.LaunchSpecification;
 import com.amazonaws.services.ec2.model.RequestSpotInstancesRequest;
 import com.amazonaws.services.ec2.model.RequestSpotInstancesResult;
+import com.amazonaws.services.ec2.model.SpotInstanceRequest;
 
 public class EC2Delegate {
 
@@ -42,6 +43,19 @@ public class EC2Delegate {
 
 		// Call the RequestSpotInstance API.
 		RequestSpotInstancesResult requestResult = ec2.requestSpotInstances(requestRequest);
+		
+		List<SpotInstanceRequest> requestResponses = requestResult.getSpotInstanceRequests();
+
+		// Setup an arraylist to collect all of the request ids we want to
+		// watch hit the running state.
+		ArrayList<String> spotInstanceRequestIds = new ArrayList<String>();
+
+		// Add all of the request ids to the hashset, so we can determine when they hit the
+		// active state.
+		for (SpotInstanceRequest requestResponse : requestResponses) {
+		    System.out.println("Created Spot Request: "+requestResponse.getSpotInstanceRequestId());
+		    spotInstanceRequestIds.add(requestResponse.getSpotInstanceRequestId());
+		}
 		
 		return spIn;
 	}
