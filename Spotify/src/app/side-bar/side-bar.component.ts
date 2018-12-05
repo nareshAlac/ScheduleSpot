@@ -28,6 +28,9 @@ export class SideBarComponent implements OnInit {
       case 3:
         this.router.navigate(['/dashboard/spotInstancePredictor']);
         break;
+      case 4:
+        this.router.navigate(['/dashboard/scheduleSpotRequests']);
+        break;
       default:
         return;
     }

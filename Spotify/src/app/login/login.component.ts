@@ -52,9 +52,4 @@ export class LoginComponent implements OnInit {
         this.log.debug(err);
       });
   }
-
-  signUpUser() {
-    this.log.debug('SignUp User action clicked');
-    this.router.navigate(['/register-user']);
-  }
 }

@@ -190,19 +190,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_dashboard_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/dashboard.module */ "./src/app/dashboard/dashboard.module.ts");
 /* harmony import */ var _title_bar_title_bar_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./title-bar/title-bar.module */ "./src/app/title-bar/title-bar.module.ts");
 /* harmony import */ var _side_bar_side_bar_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./side-bar/side-bar.module */ "./src/app/side-bar/side-bar.module.ts");
-/* harmony import */ var _timeline_timeline_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./timeline/timeline.module */ "./src/app/timeline/timeline.module.ts");
-/* harmony import */ var _create_request_create_request_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./create-request/create-request.module */ "./src/app/create-request/create-request.module.ts");
-/* harmony import */ var _manage_spot_instances_manage_spot_instances_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./manage-spot-instances/manage-spot-instances.module */ "./src/app/manage-spot-instances/manage-spot-instances.module.ts");
-/* harmony import */ var _spot_request_predictor_spot_request_predictor_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./spot-request-predictor/spot-request-predictor.module */ "./src/app/spot-request-predictor/spot-request-predictor.module.ts");
-/* harmony import */ var _dashboard_summary_dashboard_summary_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./dashboard-summary/dashboard-summary.module */ "./src/app/dashboard-summary/dashboard-summary.module.ts");
+/* harmony import */ var _manage_spot_instances_manage_spot_instances_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./manage-spot-instances/manage-spot-instances.module */ "./src/app/manage-spot-instances/manage-spot-instances.module.ts");
+/* harmony import */ var _spot_request_predictor_spot_request_predictor_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./spot-request-predictor/spot-request-predictor.module */ "./src/app/spot-request-predictor/spot-request-predictor.module.ts");
+/* harmony import */ var _dashboard_summary_dashboard_summary_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboard-summary/dashboard-summary.module */ "./src/app/dashboard-summary/dashboard-summary.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -236,11 +232,9 @@ var AppModule = /** @class */ (function () {
                 _dashboard_dashboard_module__WEBPACK_IMPORTED_MODULE_9__["DashboardModule"],
                 _title_bar_title_bar_module__WEBPACK_IMPORTED_MODULE_10__["TitleBarModule"],
                 _side_bar_side_bar_module__WEBPACK_IMPORTED_MODULE_11__["SideBarModule"],
-                _timeline_timeline_module__WEBPACK_IMPORTED_MODULE_12__["TimelineModule"],
-                _create_request_create_request_module__WEBPACK_IMPORTED_MODULE_13__["CreateRequestModule"],
-                _spot_request_predictor_spot_request_predictor_module__WEBPACK_IMPORTED_MODULE_15__["SpotRequestPredictorModule"],
-                _manage_spot_instances_manage_spot_instances_module__WEBPACK_IMPORTED_MODULE_14__["ManageSpotInstancesModule"],
-                _dashboard_summary_dashboard_summary_module__WEBPACK_IMPORTED_MODULE_16__["DashboardSummaryModule"]
+                _spot_request_predictor_spot_request_predictor_module__WEBPACK_IMPORTED_MODULE_13__["SpotRequestPredictorModule"],
+                _manage_spot_instances_manage_spot_instances_module__WEBPACK_IMPORTED_MODULE_12__["ManageSpotInstancesModule"],
+                _dashboard_summary_dashboard_summary_module__WEBPACK_IMPORTED_MODULE_14__["DashboardSummaryModule"],
             ],
             providers: [
                 _common_LoggerService_logger_service__WEBPACK_IMPORTED_MODULE_7__["LoggerService"]
@@ -382,118 +376,6 @@ var RootService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], RootService);
     return RootService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/create-request/create-request.component.css":
-/*!*************************************************************!*\
-  !*** ./src/app/create-request/create-request.component.css ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/create-request/create-request.component.html":
-/*!**************************************************************!*\
-  !*** ./src/app/create-request/create-request.component.html ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  create-request works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/create-request/create-request.component.ts":
-/*!************************************************************!*\
-  !*** ./src/app/create-request/create-request.component.ts ***!
-  \************************************************************/
-/*! exports provided: CreateRequestComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateRequestComponent", function() { return CreateRequestComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _common_LoggerService_logger_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/LoggerService/logger.service */ "./src/app/common/LoggerService/logger.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var CreateRequestComponent = /** @class */ (function () {
-    function CreateRequestComponent(log) {
-        this.log = log;
-    }
-    CreateRequestComponent.prototype.ngOnInit = function () {
-        this.log.debug('CreateRequestComponent loaded!!!');
-    };
-    CreateRequestComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-create-request',
-            template: __webpack_require__(/*! ./create-request.component.html */ "./src/app/create-request/create-request.component.html"),
-            styles: [__webpack_require__(/*! ./create-request.component.css */ "./src/app/create-request/create-request.component.css")]
-        }),
-        __metadata("design:paramtypes", [_common_LoggerService_logger_service__WEBPACK_IMPORTED_MODULE_1__["LoggerService"]])
-    ], CreateRequestComponent);
-    return CreateRequestComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/create-request/create-request.module.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/create-request/create-request.module.ts ***!
-  \*********************************************************/
-/*! exports provided: CreateRequestModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateRequestModule", function() { return CreateRequestModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _create_request_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create-request.component */ "./src/app/create-request/create-request.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var CreateRequestModule = /** @class */ (function () {
-    function CreateRequestModule() {
-    }
-    CreateRequestModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]
-            ],
-            declarations: [
-                _create_request_component__WEBPACK_IMPORTED_MODULE_2__["CreateRequestComponent"]
-            ],
-            exports: [
-                _create_request_component__WEBPACK_IMPORTED_MODULE_2__["CreateRequestComponent"]
-            ]
-        })
-    ], CreateRequestModule);
-    return CreateRequestModule;
 }());
 
 
@@ -752,15 +634,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _custom_material_custom_material_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../custom-material/custom-material.module */ "./src/app/custom-material/custom-material.module.ts");
 /* harmony import */ var _side_bar_side_bar_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../side-bar/side-bar.module */ "./src/app/side-bar/side-bar.module.ts");
-/* harmony import */ var _timeline_timeline_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../timeline/timeline.module */ "./src/app/timeline/timeline.module.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -776,8 +656,7 @@ var DashboardModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
                 _custom_material_custom_material_module__WEBPACK_IMPORTED_MODULE_3__["CustomMaterialModule"],
                 _side_bar_side_bar_module__WEBPACK_IMPORTED_MODULE_4__["SideBarModule"],
-                _timeline_timeline_module__WEBPACK_IMPORTED_MODULE_5__["TimelineModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"]
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"]
             ],
             declarations: [
                 _dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"]
@@ -812,7 +691,7 @@ module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  w
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-progress-bar mode=\"determinate\" value=\"40\"></mat-progress-bar>\n\n<mat-card class=\"login-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\" [formGroup]=\"loginForm\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Username\" formControlName=\"username\" name=\"username\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" formControlName=\"password\" type=\"password\" name=\"password\"\n                     required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n    <!--<mat-spinner [style.display]=\"showSpinner ? 'block' : 'none'\"></mat-spinner>-->\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"loginUser()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n\n  <mat-card-actions>\n    <a  (click)=\"signUpUser()\" color=\"primary\">New User? <br> Sign Up Now</a>\n  </mat-card-actions>\n\n</mat-card>\n"
+module.exports = "<mat-progress-bar mode=\"determinate\" value=\"40\"></mat-progress-bar>\n\n<mat-card class=\"login-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\" [formGroup]=\"loginForm\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Username\" formControlName=\"username\" name=\"username\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" formControlName=\"password\" type=\"password\" name=\"password\"\n                     required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n    <!--<mat-spinner [style.display]=\"showSpinner ? 'block' : 'none'\"></mat-spinner>-->\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"loginUser()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n\n</mat-card>\n"
 
 /***/ }),
 
@@ -886,10 +765,6 @@ var LoginComponent = /** @class */ (function () {
             _this.log.debug('Error Response from Login Request');
             _this.log.debug(err);
         });
-    };
-    LoginComponent.prototype.signUpUser = function () {
-        this.log.debug('SignUp User action clicked');
-        this.router.navigate(['/register-user']);
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1152,7 +1027,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <mat-drawer #drawer opened=\"\">\n    <mat-list>\n      <mat-list-item (click)=\"toggleTimeline(1)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>DashBoard</h3>\n      </mat-list-item>\n      <mat-list-item (click)=\"toggleTimeline(2)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>Manage Spot Instances</h3>\n      </mat-list-item>\n      <mat-list-item (click)=\"toggleTimeline(3)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>Spot Request Predictor</h3>\n      </mat-list-item>\n    </mat-list>\n  </mat-drawer>\n  <button mat-raised-button (click)=\"drawer.toggle()\">Toggle drawer</button>\n\n"
+module.exports = "\n  <mat-drawer #drawer opened=\"\">\n    <mat-list>\n      <mat-list-item (click)=\"toggleTimeline(1)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>DashBoard</h3>\n      </mat-list-item>\n      <mat-list-item (click)=\"toggleTimeline(2)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>Manage Spot Instances</h3>\n      </mat-list-item>\n      <mat-list-item (click)=\"toggleTimeline(3)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>Spot Request Predictor</h3>\n      </mat-list-item>\n      <mat-list-item (click)=\"toggleTimeline(4)\">\n        <mat-icon matListIcon>opacity</mat-icon>\n        <h3 matLine>Schedule Spot Requests</h3>\n      </mat-list-item>\n    </mat-list>\n  </mat-drawer>\n  <button mat-raised-button (click)=\"drawer.toggle()\">Toggle drawer</button>\n\n"
 
 /***/ }),
 
@@ -1199,6 +1074,9 @@ var SideBarComponent = /** @class */ (function () {
                 break;
             case 3:
                 this.router.navigate(['/dashboard/spotInstancePredictor']);
+                break;
+            case 4:
+                this.router.navigate(['/dashboard/scheduleSpotRequests']);
                 break;
             default:
                 return;
@@ -1365,121 +1243,6 @@ var SpotRequestPredictorModule = /** @class */ (function () {
         })
     ], SpotRequestPredictorModule);
     return SpotRequestPredictorModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/timeline/timeline.component.css":
-/*!*************************************************!*\
-  !*** ./src/app/timeline/timeline.component.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/timeline/timeline.component.html":
-/*!**************************************************!*\
-  !*** ./src/app/timeline/timeline.component.html ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  timeline works!!!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/timeline/timeline.component.ts":
-/*!************************************************!*\
-  !*** ./src/app/timeline/timeline.component.ts ***!
-  \************************************************/
-/*! exports provided: TimelineComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimelineComponent", function() { return TimelineComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _common_LoggerService_logger_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/LoggerService/logger.service */ "./src/app/common/LoggerService/logger.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var TimelineComponent = /** @class */ (function () {
-    function TimelineComponent(log) {
-        this.log = log;
-    }
-    TimelineComponent.prototype.ngOnInit = function () {
-        this.log.debug('Timeline loaded!!!');
-    };
-    TimelineComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-timeline',
-            template: __webpack_require__(/*! ./timeline.component.html */ "./src/app/timeline/timeline.component.html"),
-            styles: [__webpack_require__(/*! ./timeline.component.css */ "./src/app/timeline/timeline.component.css")]
-        }),
-        __metadata("design:paramtypes", [_common_LoggerService_logger_service__WEBPACK_IMPORTED_MODULE_1__["LoggerService"]])
-    ], TimelineComponent);
-    return TimelineComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/timeline/timeline.module.ts":
-/*!*********************************************!*\
-  !*** ./src/app/timeline/timeline.module.ts ***!
-  \*********************************************/
-/*! exports provided: TimelineModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimelineModule", function() { return TimelineModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _timeline_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./timeline.component */ "./src/app/timeline/timeline.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-var TimelineModule = /** @class */ (function () {
-    function TimelineModule() {
-    }
-    TimelineModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
-            ],
-            declarations: [
-                _timeline_component__WEBPACK_IMPORTED_MODULE_2__["TimelineComponent"]
-            ],
-            exports: [
-                _timeline_component__WEBPACK_IMPORTED_MODULE_2__["TimelineComponent"]
-            ]
-        })
-    ], TimelineModule);
-    return TimelineModule;
 }());
 
 
@@ -1661,7 +1424,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/nareshm/AWS/Hackriti/workspace/ScheduleSpot/Spotify/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/premb/Hackriti/SPINUT/ScheduleSpot/Spotify/src/main.ts */"./src/main.ts");
 
 
 /***/ })

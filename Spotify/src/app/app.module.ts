@@ -10,8 +10,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {TitleBarModule} from './title-bar/title-bar.module';
 import {SideBarModule} from './side-bar/side-bar.module';
-import {TimelineModule} from './timeline/timeline.module';
-import {CreateRequestModule} from './create-request/create-request.module';
 import {ManageSpotInstancesModule} from './manage-spot-instances/manage-spot-instances.module';
 import {SpotRequestPredictorModule} from './spot-request-predictor/spot-request-predictor.module';
 import {DashboardSummaryModule} from "./dashboard-summary/dashboard-summary.module";
@@ -29,11 +27,10 @@ import {DashboardSummaryModule} from "./dashboard-summary/dashboard-summary.modu
     DashboardModule,
     TitleBarModule,
     SideBarModule,
-    TimelineModule,
-    CreateRequestModule,
     SpotRequestPredictorModule,
     ManageSpotInstancesModule,
-    DashboardSummaryModule
+    DashboardSummaryModule,
+
   ],
   providers: [
     LoggerService
