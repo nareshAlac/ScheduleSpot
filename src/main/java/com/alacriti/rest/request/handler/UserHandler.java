@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import org.apache.log4j.Logger;
 
 import com.alacriti.model.Login;
+import com.alacriti.rest.delegate.LoginService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -37,9 +38,14 @@ public class UserHandler {
 		log.debug("login(): Starts");
 		try {
 			 requestMsg = getMsgFromReader(reader, Login.class);
+			 LoginService loginService=new LoginService();
+			 requestMsg=loginService.isValidUserCheck(requestMsg);
+			 System.out.println(requestMsg.toString());
 			 return sendResponse(requestMsg,response);
+			
 		} catch (Exception e) {
 		}
+		 log.debug("login(): ends");
 		return null;
 	}
 	 protected <T> T getMsgFromReader(InputStreamReader reader, Class<T> requestMsg)

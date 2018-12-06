@@ -756,10 +756,13 @@ var LoginComponent = /** @class */ (function () {
             _this.log.debug('Success Response from Login Request');
             _this.log.debug(resp);
             var data = resp;
-            _this.log.debug(data.responseMessage);
-            _this.rootService.loginSuccessfull = true;
-            _this.log.debug('Redirecting to Dashboard');
-            _this.router.navigate(['/dashboard']);
+            _this.log.debug(data.isValidUser);
+            _this.log.debug(data);
+            if (data.isValidUser) {
+                _this.rootService.loginSuccessfull = true;
+                _this.log.debug('Redirecting to Dashboard');
+                _this.router.navigate(['/dashboard']);
+            }
         })
             .catch(function (err) {
             _this.log.debug('Error Response from Login Request');
@@ -1424,7 +1427,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/premb/Hackriti/SPINUT/ScheduleSpot/Spotify/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/premb/Hackriti/SPINUT_MASTER/ScheduleSpot/Spotify/src/main.ts */"./src/main.ts");
 
 
 /***/ })

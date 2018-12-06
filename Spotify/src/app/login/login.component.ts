@@ -41,11 +41,15 @@ export class LoginComponent implements OnInit {
       .then((resp) => {
         this.log.debug('Success Response from Login Request');
         this.log.debug(resp);
-        const data = <BaseModel>resp;
-        this.log.debug(data.responseMessage);
-        this.rootService.loginSuccessfull = true;
-        this.log.debug('Redirecting to Dashboard');
-        this.router.navigate(['/dashboard']);
+        const data = <LoginModel>resp;
+        this.log.debug(data.isValidUser);
+        this.log.debug(data);
+        if(data.isValidUser)
+        {
+          this.rootService.loginSuccessfull = true;
+          this.log.debug('Redirecting to Dashboard');
+          this.router.navigate(['/dashboard']);
+        }
       })
       .catch((err) => {
         this.log.debug('Error Response from Login Request');
