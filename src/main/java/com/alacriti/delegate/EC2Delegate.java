@@ -1,5 +1,6 @@
 package com.alacriti.delegate;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,8 @@ import com.amazonaws.services.ec2.model.RequestSpotInstancesRequest;
 import com.amazonaws.services.ec2.model.RequestSpotInstancesResult;
 import com.amazonaws.services.ec2.model.SpotInstanceRequest;
 
-public class EC2Delegate {
+public class EC2Delegate extends BaseDelegate
+{
 
 	public SpIn requestSpIn(SpIn spIn) {
 		
@@ -61,4 +63,18 @@ public class EC2Delegate {
 		return spIn;
 	}
 
+	public List<SpIn> getSpInReqs()
+	{
+		List<SpIn> spIns = new ArrayList<>();
+		try
+		{
+			Connection connection = startDBTransaction();
+
+		}
+		catch (Exception exp)
+		{
+			System.out.println("Error in Checking SpIns" + exp);
+		}
+		return spIns;
+	}
 }
