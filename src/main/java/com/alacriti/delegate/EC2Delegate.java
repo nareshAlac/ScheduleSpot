@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.alacriti.model.SpIn;
+import com.alacriti.rest.bo.EC2BO;
 import com.alacriti.utils.AWSClientFactory;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.model.LaunchSpecification;
@@ -69,7 +70,8 @@ public class EC2Delegate extends BaseDelegate
 		try
 		{
 			Connection connection = startDBTransaction();
-
+			EC2BO ec2BO = new EC2BO();
+			spIns = ec2BO.getSpInReqs(connection);
 		}
 		catch (Exception exp)
 		{
