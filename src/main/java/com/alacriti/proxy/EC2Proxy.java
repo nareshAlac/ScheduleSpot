@@ -40,9 +40,9 @@ public class EC2Proxy {
 		AmazonEC2 ec2 =AWSClientFactory.getEC2Client();
 		DescribeImagesRequest req=new DescribeImagesRequest();
 		List<String> platforms=new ArrayList<String>();
-		platforms.add("windows");
-		platforms.add("linux");
-		platforms.add("unix");
+		//platforms.add("windows");
+		//platforms.add("linux");
+		platforms.add("linux/unix");
 
 		req.withFilters( new Filter("platform",platforms));
 		DescribeImagesResult res=ec2.describeImages(req);
