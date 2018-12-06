@@ -11,8 +11,10 @@ import com.alacriti.utils.AWSClientFactory;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.model.DescribeImagesRequest;
 import com.amazonaws.services.ec2.model.DescribeImagesResult;
+import com.amazonaws.services.ec2.model.DescribeKeyPairsResult;
 import com.amazonaws.services.ec2.model.DescribeSecurityGroupsResult;
 import com.amazonaws.services.ec2.model.Filter;
+import com.amazonaws.services.ec2.model.KeyPairInfo;
 import com.amazonaws.services.ec2.model.SecurityGroup;
 
 
@@ -50,6 +52,24 @@ public class EC2Proxy {
 		//for(int i=0; i<res.getImages().size();i++){
 			System.out.println(res.getImages().get(0).toString());
 			//}
+		System.out.println("*********************");
+		return null;
+	}
+
+	public static List<String> getAvailableKeyPairs()
+	{
+		System.out.println("Getting Available Key Pairs");
+		List<String> keyList = new ArrayList<>();
+		AmazonEC2 ec2 = AWSClientFactory.getEC2Client();
+
+		DescribeKeyPairsResult keys=ec2.describeKeyPairs();
+		List<KeyPairInfo> info=keys.getKeyPairs();
+		System.out.println(info.size());
+		for(int i = 0; i < info.size(); i++)
+		{
+			System.out.println(info.get(i).toString());
+			keyList.add(info.get(i).getKeyName());
+		}
 		System.out.println("*********************");
 		return null;
 	}

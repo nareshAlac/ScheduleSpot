@@ -20,6 +20,7 @@ public class SpIn {
 	// Duration in minutes
 	private Integer blockDuration;
 	private String secGrpId;
+	private String keyName;
 
 	public String getAmiId() {
 		return amiId;
@@ -91,6 +92,16 @@ public class SpIn {
 
 	public void setSecGrpId(String secGrpId) {
 		this.secGrpId = secGrpId;
+	}
+
+	public String getKeyName()
+	{
+		return keyName;
+	}
+
+	public void setKeyName(String keyName)
+	{
+		this.keyName = keyName;
 	}
 
 }

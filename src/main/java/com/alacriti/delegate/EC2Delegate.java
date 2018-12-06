@@ -32,6 +32,7 @@ public class EC2Delegate {
 		LaunchSpecification launchSpecification = new LaunchSpecification();
 		launchSpecification.setImageId(spIn.getAmiId());
 		launchSpecification.setInstanceType(spIn.getInstanceType());
+		launchSpecification.setKeyName(spIn.getKeyName());
 
 		// Add the security group to the request.
 		ArrayList<String> securityGroups = new ArrayList<String>();
