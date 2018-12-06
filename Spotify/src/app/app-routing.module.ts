@@ -6,6 +6,7 @@ import {AuthGaurdService} from './common/AuthGaurdService/auth-gaurd.service';
 import {ManageSpotInstancesComponent} from "./manage-spot-instances/manage-spot-instances.component";
 import {SpotRequestPredictorComponent} from "./spot-request-predictor/spot-request-predictor.component";
 import {DashboardSummaryComponent} from "./dashboard-summary/dashboard-summary.component";
+import {ScheduleSpotInstancesComponent} from './schedule-spot-instances/schedule-spot-instances.component';
 
 const routes = [
   {
@@ -37,6 +38,10 @@ const routes = [
       {
         path: 'dashBoardSummary',
         component: DashboardSummaryComponent
+      },
+      {
+        path: 'scheduleSpotInstances',
+        component: ScheduleSpotInstancesComponent
       }
 
     ],

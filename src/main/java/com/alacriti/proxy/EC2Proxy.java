@@ -59,7 +59,7 @@ public class EC2Proxy {
 	public static List<String> getAvailableKeyPairs()
 	{
 		System.out.println("Getting Available Key Pairs");
-		List<String> keyList = new ArrayList<>();
+		List<String> keyList = new ArrayList<String>();
 		AmazonEC2 ec2 = AWSClientFactory.getEC2Client();
 
 		DescribeKeyPairsResult keys=ec2.describeKeyPairs();

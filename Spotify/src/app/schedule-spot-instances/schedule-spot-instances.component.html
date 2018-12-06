@@ -1,0 +1,63 @@
+<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+<mat-card class="schedular-card">
+  <mat-card-header>
+    <mat-card-title>ScheduleSpotInstance</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+<form class="example-form" [formGroup]="schedularForm">
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Region" [formControl]="region" required>
+
+    </mat-select>
+    <input matInput placeholder="" formControlName="bidPrice" name="bidPrice">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Instance Type" [formControl]="instanceType" required>
+
+    </mat-select>
+    <!--textarea matInput placeholder="Instance Type" formControlName="instanceType" name="instanceType"></textarea-->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Number of Instances" formControlName="numOfInstances" name="numOfInstances"></textarea>
+  </mat-form-field>
+
+
+  <mat-form-field class="example-full-width">
+      <!--mat-select placeholder="AMI ID" [formControl]="animalControl" required-->
+    <mat-select placeholder="AMI ID" [formControl]="amiId" required>
+        <!--mat-option>--</mat-option>
+        <mat-option *ngFor="let animal of animals" [value]="animal">
+          {{animal.name}}
+        </mat-option-->
+    </mat-select>
+      <!--mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+      <mat-hint>{{animalControl.value?.sound}}</mat-hint-->
+  </mat-form-field>
+  <!--textarea-- matInput placeholder="AMI ID" formControlName="amiId" name="amiId"></textarea-->
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Security Group" [formControl]="securityGroup" required>
+
+    </mat-select>
+    <!--textarea matInput placeholder="Security Group" formControlName="securityGroup" name="securityGroup"></textarea-->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="SSH KeyPair" formControlName="sshKeyPair" name="sshKeyPair"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Bid Price" formControlName="bidPrice" name="bidPrice">
+  </mat-form-field>
+
+
+</form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="schedule()" color="primary">Schedule</button>
+  </mat-card-actions>
+
+</mat-card>

@@ -13,6 +13,8 @@ import {SideBarModule} from './side-bar/side-bar.module';
 import {ManageSpotInstancesModule} from './manage-spot-instances/manage-spot-instances.module';
 import {SpotRequestPredictorModule} from './spot-request-predictor/spot-request-predictor.module';
 import {DashboardSummaryModule} from "./dashboard-summary/dashboard-summary.module";
+import {ScheduleSpotInstancesModule} from './schedule-spot-instances/schedule-spot-instances.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import {DashboardSummaryModule} from "./dashboard-summary/dashboard-summary.modu
     SpotRequestPredictorModule,
     ManageSpotInstancesModule,
     DashboardSummaryModule,
+    ScheduleSpotInstancesModule
 
   ],
   providers: [

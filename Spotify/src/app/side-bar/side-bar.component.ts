@@ -29,7 +29,7 @@ export class SideBarComponent implements OnInit {
         this.router.navigate(['/dashboard/spotInstancePredictor']);
         break;
       case 4:
-        this.router.navigate(['/dashboard/scheduleSpotRequests']);
+        this.router.navigate(['/dashboard/scheduleSpotInstances']);
         break;
       default:
         return;
