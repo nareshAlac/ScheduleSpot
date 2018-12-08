@@ -37,7 +37,7 @@ public class EC2Proxy {
 		return grps;
 	}
 
-	public static List<AMI> getAMIs() {
+	public static ArrayList<AMI> getAMIs() {
 		System.out.println("Working");
 		AmazonEC2 ec2 =AWSClientFactory.getEC2Client();
 		DescribeImagesRequest req=new DescribeImagesRequest();

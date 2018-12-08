@@ -12,4 +12,11 @@ export class SchedularService {
     console.log(JSON.stringify(schedular));
     return this.http.post(url, schedular).toPromise();
   }
+
+  createSpotSchedule() {
+    const url = environment.baseUrl + '/rest/spot/createschedule';
+    // console.log(JSON.stringify(schedular));
+    return this.http.get(url).toPromise();
+    // return this.http.post(url, '').toPromise();
+  }
 }

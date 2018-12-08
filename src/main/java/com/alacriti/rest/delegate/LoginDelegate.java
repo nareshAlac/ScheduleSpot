@@ -11,9 +11,9 @@ import com.alacriti.model.Login;
 import com.alacriti.rest.bo.LoginBO;
 
 
-public class LoginService extends BaseDelegate
+public class LoginDelegate extends BaseDelegate
 {
-	private Logger log = Logger.getLogger(LoginService.class);
+	private Logger log = Logger.getLogger(LoginDelegate.class);
 
     // //login Service
     public Login isValidUserCheck(Login loginMsg)
@@ -21,9 +21,10 @@ public class LoginService extends BaseDelegate
 
         log.debug("isValidUser starts() : ");
         System.out.println("LoginService isValidUserCheck() start");
+        Connection connection = null;
         try
         {
-        	Connection connection=startDBTransaction();
+        	 connection=startDBTransaction();
             LoginBO bo = new LoginBO();
             loginMsg = bo.isValidUser(loginMsg,connection);
             System.out.println("LoginService isValidUserCheck() end");        
@@ -34,28 +35,16 @@ public class LoginService extends BaseDelegate
             System.out.println("Error in Checking userLogin"+ exp);
             log.error("Error in Checking userLogin", exp);
         }
+        finally{
+        	if(connection !=null)
+        		endDBTransaction(connection);
+        }
         //valueContext.putObject(usdi);
         log.debug("isValidUser end()");
         return loginMsg;
     }
 
 
-//    public ValueContext validateLoginFields(ValueContext valueContext)
-//    {
-//        log.logDebug("validateLoginFields() start");
-//
-//        LoginMsg msg = valueContext.getObject(LoginMsg.class);
-//
-//        if (Validations.isEmpty(msg.getLoginId()))
-//            valueContext.setError(new ServerError(ErrorCodes.ValidationsFailed + "", "LoginId is mandatory."));
-//
-//        if (Validations.isEmpty(msg.getPasswd()))
-//            valueContext.setError(new ServerError(ErrorCodes.ValidationsFailed + "", "Password is mandatory."));
-//
-//        log.logDebug("validateLoginFields() end");
-//
-//        return valueContext;
-//    }
 
     public String getClientIpAddr(HttpServletRequest request)
     {

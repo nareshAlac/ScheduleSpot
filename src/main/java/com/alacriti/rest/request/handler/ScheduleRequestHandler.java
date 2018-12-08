@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,6 +18,7 @@ import org.apache.log4j.Logger;
 
 import com.alacriti.delegate.ScheduleRequestDelegate;
 import com.alacriti.model.ScheduleRequest;
+import com.alacriti.model.ScheduleRequestSpec;
 import com.alacriti.model.ScheduleResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,26 +28,45 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 @Path("/spot")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class ScheduleRequestHandler {
 	private Logger log = Logger.getLogger(ScheduleRequestHandler.class);
 	
 	@POST
 	@Path("/schedule")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Object schedule(@Context HttpServletRequest request, @Context HttpServletResponse response,
 			InputStreamReader reader) throws Exception {
 		ScheduleRequest requestMsg=null;
 		ScheduleResponse responseMsg = new ScheduleResponse();
-//		log.debug("Schedule(): Starts");
 		System.out.println("Schedule(): Starts");
 		try {
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
+			
+			 return sendResponse(responseMsg,response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@GET
+	@Path("/createschedule")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object createschedule(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
+		//ScheduleRequest requestMsg=null;
+		ScheduleResponse responseMsg = new ScheduleResponse();
+		System.out.println("createschedule(): Starts");
+		try {
+			 //requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 
 			 ScheduleRequestDelegate scheduleRequest = new ScheduleRequestDelegate();
+			 ScheduleRequestSpec scheduleRequestSpec = scheduleRequest.createschedule();
+			 responseMsg.setScheduleRequestSpec(scheduleRequestSpec);
 			 
 			 return sendResponse(responseMsg,response);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

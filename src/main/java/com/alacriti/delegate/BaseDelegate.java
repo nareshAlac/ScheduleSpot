@@ -106,7 +106,7 @@ public class BaseDelegate
         try
         {
             
-            String DB_CONN_STRING = "jdbc:mysql://192.168.35.103:3315/spinut_dev";
+            String DB_CONN_STRING = "jdbc:mysql://192.168.35.160:3306/spinut_dev";
             String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
             String USER_NAME = "spinut_dev";
             String PASSWORD = "spinut_dev";

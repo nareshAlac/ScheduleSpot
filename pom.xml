@@ -35,7 +35,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 			    <groupId>com.amazonaws</groupId>
 			    <artifactId>aws-java-sdk-ec2</artifactId>
 			    <version>1.11.461</version>
+			    <!-- <exclusions>
+				    <exclusion>  declare the exclusion here
+			          <groupId>org.apache.httpcomponents</groupId>
+					  <artifactId>httpclient</artifactId>
+			        </exclusion>
+		        </exclusions> -->
 			</dependency>
+			<!-- <dependency>
+			    <groupId>org.apache.httpcomponents</groupId>
+			    <artifactId>httpclient</artifactId>
+			    <version>4.3.6</version>
+			</dependency> -->
 		    <dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-web-api</artifactId>

@@ -6,6 +6,7 @@ import {SchedularModel} from '../models/SchedularModel';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SchedularService} from './SchedularService';
 import {Router} from '@angular/router';
+import {LoginModel} from '../models/LoginModel';
 
 
 @Component({
@@ -40,7 +41,17 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   }
 
   ngOnInit() {
+  this.schedularService.createSpotSchedule()
+  .then((resp) => {
+    this.log.debug('Success Response from create schedule Request');
+    this.log.debug(resp);
+  })
+  .catch((err) => {
+    this.log.debug('Error Response from create schedule Request');
+    this.log.debug(err);
+  });
   }
+
 
   schedule() {
     this.log.debug('schedule button clicked');
