@@ -29,7 +29,7 @@ public class SpInScheduler implements ServletContextListener
 	@Override
 	public void contextInitialized(ServletContextEvent ctx)
 	{
-/*		// define the job and tie it to our SpInReqJob class
+		// define the job and tie it to our SpInReqJob class
 		JobDetail job = JobBuilder.newJob(SpInReqJob.class).withIdentity("job1", "group1").build();
 
 		// Trigger the job to run now, and then repeat every 1 hour
@@ -46,6 +46,5 @@ public class SpInScheduler implements ServletContextListener
 		{
 
 		}
-*/
 	}
 }
