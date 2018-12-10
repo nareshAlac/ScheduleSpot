@@ -26,6 +26,18 @@ public class EC2Proxy {
 		return spInDelegate.requestSpIn(spIn);
 	}
 	
+	public static SpIn processSpInRequest(SpIn spIn)
+	{
+		EC2Delegate spInDelegate = new EC2Delegate();
+		return spInDelegate.processSpInRequest(spIn);
+	}
+
+	public static SpIn insertSpIn(SpIn spIn)
+	{
+		EC2Delegate spInDelegate = new EC2Delegate();
+		return spInDelegate.insertSpIn(spIn);
+	}
+
 	public static List<SecGrp> getSecGrps() {
 		AmazonEC2 ec2 = AWSClientFactory.getEC2Client();
 		DescribeSecurityGroupsResult res = ec2.describeSecurityGroups();

@@ -1,17 +1,19 @@
 package com.alacriti.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class SpIn {
 
-	public SpIn(String requestId) {
-		this.requestId = requestId;
+	public SpIn(int requestId)
+	{
+		this.spInUtReqId = requestId;
 	}
 
 	public SpIn() {
 	}
 
-	private String requestId;
+	private int spInUtReqId;
+	private String awsRequestId;
 	private String amiId;
 	private String price;
 	private String instanceType;
@@ -28,9 +30,19 @@ public class SpIn {
 	// Duration in minutes
 	private Integer blockDuration;
 
-	public String getRequestId()
+	public int getSpInUtReqId()
 	{
-		return requestId;
+		return spInUtReqId;
+	}
+
+	public void setSpInUtReqId(int spInUtReqId)
+	{
+		this.spInUtReqId = spInUtReqId;
+	}
+
+	public String getAWSRequestId()
+	{
+		return awsRequestId;
 	}
 
 	public String getAmiId()
@@ -98,9 +110,9 @@ public class SpIn {
 		return blockDuration;
 	}
 
-	public void setRequestId(String requestId)
+	public void setAWSRequestId(String requestId)
 	{
-		this.requestId = requestId;
+		this.awsRequestId = requestId;
 	}
 
 	public void setAmiId(String amiId)

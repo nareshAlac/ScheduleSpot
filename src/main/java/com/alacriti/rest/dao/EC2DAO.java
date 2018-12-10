@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,7 @@ public class EC2DAO extends BaseDAO
 	private SpIn getSpIn(ResultSet rs) throws SQLException
 	{
 		SpIn spIn = new SpIn();
-		spIn.setRequestId(rs.getString("SPINUT_REQUEST_ID"));
+		spIn.setSpInUtReqId(rs.getInt("SPINUT_REQUEST_ID"));
 
 		spIn.setAmiId(rs.getString("AMI_ID"));
 
@@ -60,6 +62,42 @@ public class EC2DAO extends BaseDAO
 
 		spIn.setStatus(rs.getInt("REQUEST_STATUS"));
 
+		return spIn;
+	}
+
+	public SpIn insertSpIn(SpIn spIn, Connection connection) throws SQLException
+	{
+		StringBuilder buff = new StringBuilder();
+		buff.append("INSERT INTO SPINUT_REQUEST_TBL( AMI_ID, PRICE, INSTANCE_TYPE, SECURITY_GROUP, KEY_PAIR, ");
+		buff.append("NO_OF_INSTANCES,SCHEDULE_START, SCHEDULE_END, SCHEDULE_DAYS, REQUEST_STATUS, REQUESTED_USER, ");
+		buff.append("REQUESTED_TIME)  VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP);");
+		PreparedStatement ps = connection.prepareStatement(buff.toString(),Statement.RETURN_GENERATED_KEYS);
+		int i = 0;
+		ps.setString(i++, spIn.getAmiId());
+		ps.setDouble(i++, new Double(spIn.getPrice()));
+		ps.setString(i++, spIn.getInstanceType());
+		ps.setString(i++, spIn.getSecGrpId());
+		ps.setString(i++, spIn.getKeyName());
+		ps.setInt(i++, spIn.getInstanceCapacity());
+		ps.setTimestamp(i++, new Timestamp(spIn.getStartTime().getTime()));
+		ps.setTimestamp(i++, new Timestamp(spIn.getEndTime().getTime()));
+		ps.setString(i++, spIn.getScheduleDays());
+		ps.setInt(i++, spIn.getStatus());
+		//ps.setString(i++, session.getUserId);
+		ps.setInt(i++, 1);
+		int val = ps.executeUpdate();
+
+		if (val != 1)
+		{
+			spIn.setSpInUtReqId(0);
+			return spIn;
+		}
+
+		ResultSet rs = ps.getGeneratedKeys();
+		if (rs.next())
+		{
+			spIn.setSpInUtReqId(rs.getInt(1));
+		}
 		return spIn;
 	}
 

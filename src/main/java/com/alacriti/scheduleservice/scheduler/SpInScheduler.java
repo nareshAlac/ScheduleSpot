@@ -17,7 +17,7 @@ import com.alacriti.scheduleservice.job.SpInReqJob;
 
 public class SpInScheduler implements ServletContextListener
 {
-	private Scheduler scheduler;
+	private static Scheduler scheduler;
 
 	@Override
 	public void contextDestroyed(ServletContextEvent ctx)
@@ -46,5 +46,10 @@ public class SpInScheduler implements ServletContextListener
 		{
 
 		}
+	}
+
+	public static Scheduler getScheduler()
+	{
+		return scheduler;
 	}
 }

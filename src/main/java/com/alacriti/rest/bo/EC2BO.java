@@ -25,4 +25,19 @@ public class EC2BO
 		return null;
 	}
 
+	public SpIn insertSpIn(SpIn spIn, Connection connection)
+	{
+		EC2DAO dao = new EC2DAO();
+
+		try
+		{
+			return dao.insertSpIn(spIn, connection);
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
