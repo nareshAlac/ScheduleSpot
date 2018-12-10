@@ -7,6 +7,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import com.alacriti.rest.request.handler.ScheduleRequestHandler;
+import com.alacriti.rest.request.handler.TestReqHandler;
 import com.alacriti.rest.request.handler.UserHandler;
 
 @ApplicationPath("/rest")
@@ -19,6 +20,7 @@ public class RestApp extends Application {
 		classes.add(GSONProvider.class);
 		classes.add(UserHandler.class);
 		classes.add(ScheduleRequestHandler.class);	
+		classes.add(TestReqHandler.class);
 	}
 
 	@Override

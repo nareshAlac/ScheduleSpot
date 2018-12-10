@@ -36,7 +36,7 @@ public class EC2Proxy {
 	public static SpIn insertSpIn(SpIn spIn)
 	{
 		EC2Delegate spInDelegate = new EC2Delegate();
-		return spInDelegate.insertSpIn(spIn);
+		return spInDelegate.insertSpInUtReq(spIn);
 	}
 
 	public static List<SecGrp> getSecGrps() {

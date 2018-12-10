@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alacriti.model.Instance;
 import com.alacriti.model.SpIn;
 
 public class EC2DAO extends BaseDAO
@@ -65,7 +66,7 @@ public class EC2DAO extends BaseDAO
 		return spIn;
 	}
 
-	public SpIn insertSpIn(SpIn spIn, Connection connection) throws SQLException
+	public SpIn insertSpInUtReq(SpIn spIn, Connection connection) throws SQLException
 	{
 		StringBuilder buff = new StringBuilder();
 		buff.append("INSERT INTO SPINUT_REQUEST_TBL( AMI_ID, PRICE, INSTANCE_TYPE, SECURITY_GROUP, KEY_PAIR, ");
@@ -99,6 +100,21 @@ public class EC2DAO extends BaseDAO
 			spIn.setSpInUtReqId(rs.getInt(1));
 		}
 		return spIn;
+	}
+
+	public void insertSpIn(Instance spIn, Connection connection) throws SQLException
+	{
+		StringBuilder buff = new StringBuilder();
+		buff.append("insert into SPINUT_INSTANCE_TBL(SPINUT_INSTANCE_ID,AWS_REQUEST_ID,");
+		buff.append("SPINUT_REQUEST_ID,INSTANCE_STATUS) values(?,?,?,?);");
+		PreparedStatement ps = connection.prepareStatement(buff.toString(), Statement.RETURN_GENERATED_KEYS);
+		int i = 0;
+		ps.setString(i++, spIn.getSpInId());
+		ps.setString(i++, spIn.getSpInAWSReqId());
+		ps.setLong(i++, spIn.getSpInUtReqId());
+		ps.setInt(i++, spIn.getStatus());
+		int val = ps.executeUpdate();
+
 	}
 
 }
