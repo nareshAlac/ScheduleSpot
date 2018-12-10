@@ -27,17 +27,28 @@
   </mat-form-field>
 
 
-  <mat-form-field class="example-full-width">
-      <!--mat-select placeholder="AMI ID" [formControl]="animalControl" required-->
+<!--  <mat-form-field class="example-full-width">
+      &lt;!&ndash;mat-select placeholder="AMI ID" [formControl]="animalControl" required&ndash;&gt;
     <mat-select placeholder="AMI ID" formControlName="amiId" required>
-        <!--mat-option>--</mat-option -->
+        &lt;!&ndash;mat-option>&#45;&#45;</mat-option &ndash;&gt;
         <mat-option *ngFor="let amiId of amiIds" [value]="amiId">
           {{amiId}}
         </mat-option>
     </mat-select>
+  </mat-form-field>-->
+
+    <mat-form-field class="example-full-width">
+      <mat-select formControlName="amiId" placeholder="AMI ID" #singleSelect>
+        <ngx-mat-select-search formControlName="amiFilterId"></ngx-mat-select-search>
+        <mat-option *ngFor="let bank of filteredAmis | async" [value]="bank.id">
+          {{bank.desc}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
       <!--mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
       <mat-hint>{{animalControl.value?.sound}}</mat-hint-->
-  </mat-form-field>
+
   <!--textarea-- matInput placeholder="AMI ID" formControlName="amiId" name="amiId"></textarea-->
 
   <mat-form-field class="example-full-width">

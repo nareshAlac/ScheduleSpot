@@ -8,9 +8,11 @@ import {
   MatProgressSpinner, MatSelectModule,
   MatSidenavModule,
   MatSpinner,
-   MatTableModule, MatPaginatorModule
+  MatTableModule, MatPaginatorModule, MatFormFieldModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+
 
 @NgModule({
   imports: [
@@ -26,7 +28,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatListModule,
     MatIconModule,
     MatProgressBarModule,
-    MatTableModule, MatPaginatorModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule
   ],
   declarations: [],
   exports: [
@@ -41,7 +46,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatIconModule,
     MatProgressBarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule
   ]
 })
 export class CustomMaterialModule {

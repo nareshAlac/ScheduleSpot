@@ -12,10 +12,13 @@ import {TitleBarModule} from './title-bar/title-bar.module';
 import {SideBarModule} from './side-bar/side-bar.module';
 import {ManageSpotInstancesModule} from './manage-spot-instances/manage-spot-instances.module';
 import {SpotRequestPredictorModule} from './spot-request-predictor/spot-request-predictor.module';
-import {DashboardSummaryModule} from "./dashboard-summary/dashboard-summary.module";
+import {DashboardSummaryModule} from './dashboard-summary/dashboard-summary.module';
 import {ScheduleSpotInstancesModule} from './schedule-spot-instances/schedule-spot-instances.module';
 import {SignoutModule} from './signout/signout.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+
+
+
 
 
 @NgModule({

@@ -9,6 +9,11 @@ import {Router} from '@angular/router';
 import {DaysOfWeek} from '../models/DaysOfWeek';
 import {LoginModel} from '../models/LoginModel';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {AMI} from '../models/AMI';
+import {ScheduleRequestSpec} from '../models/ScheduleRequestSpec';
+import { ReplaySubject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -24,6 +29,13 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   amiId = new FormControl('');
   securityGroup = new FormControl('');
   sshKeyPair = new FormControl('');
+  amiFilterId = new FormControl('');
+  scheduleRequest = new ScheduleRequestSpec();
+  /** control for the MatSelect filter keyword */
+  public filteredAmis: ReplaySubject<AMI[]> = new ReplaySubject<AMI[]>(1);
+  /** Subject that emits when the component has been destroyed. */
+  private _onDestroy = new Subject<void>();
+
 
   scheduleStartDate = new FormControl('');
   scheduleEndDate = new FormControl('');
@@ -33,7 +45,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   regions: string[];
   sshKeyPairs: string[];
   instanceTypes: string[];
-  amiIds: string[];
+  amiIds: Array<AMI>;
   securityGroups: string[];
 
   keys = Object.keys;
@@ -50,6 +62,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
       region: this.region,
       instanceType: this.instanceType,
       amiId: this.amiId,
+      amiFilterId: this.amiFilterId,
       numOfInstances: this.numOfInstances,
       securityGroup: this.securityGroup,
       sshKeyPair: this.sshKeyPair,
@@ -57,6 +70,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
       scheduleEndDate: this.scheduleEndDate,
       scheduleDays: this.scheduleDays,
     });
+
   }
 
   ngOnInit() {
@@ -65,6 +79,21 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   .then((resp) => {
     this.log.debug('Success Response from create schedule Request');
     this.log.debug(resp);
+    const  data = <ScheduleRequestSpec> resp;
+    this.log.debug(data);
+    this.log.debug(data.amiIds);
+    this.amiIds = data.amiIds;
+    this.log.debug(this.amiIds);
+    // set initial selection
+    this.amiId.setValue(this.amiIds[10]);
+    this.filteredAmis.next(this.amiIds.slice());
+    // listen for search field value changes
+    // listen for search field value changes
+    this.amiFilterId.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterBanks();
+      });
     this.spinner.hide();
   })
   .catch((err) => {
@@ -103,6 +132,24 @@ export class ScheduleSpotInstancesComponent implements OnInit {
         this.log.debug('Error Response from Schedule Spot Request');
         this.log.debug(err);
       });
+  }
+
+  private filterBanks() {
+    if (!this.amiIds) {
+      return;
+    }
+    // get the search keyword
+    let search = this.amiFilterId.value;
+    if (!search) {
+      this.filteredAmis.next(this.amiIds.slice());
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
+    // filter the banks
+    this.filteredAmis.next(
+      this.amiIds.filter(bank => bank.desc.toLowerCase().indexOf(search) > -1)
+    );
   }
 
 

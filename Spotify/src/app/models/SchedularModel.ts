@@ -1,11 +1,12 @@
 import {BaseModel} from './BaseModel';
+import {AMI} from './AMI';
 
 export class SchedularModel extends BaseModel{
   regions: string[];
   bidPrice: string;
   numOfInstances: number;
   instanceTypes: string[];
-  amiIds: object[];
+  amiIds: AMI[];
   securityGroups: string[];
   sshKeyPairs: string;
 

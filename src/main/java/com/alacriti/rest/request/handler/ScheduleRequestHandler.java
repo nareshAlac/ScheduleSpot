@@ -57,16 +57,13 @@ public class ScheduleRequestHandler {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Object createschedule(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
 		//ScheduleRequest requestMsg=null;
-		ScheduleResponse responseMsg = new ScheduleResponse();
 		System.out.println("createschedule(): Starts");
 		try {
 			 //requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 
 			 ScheduleRequestDelegate scheduleRequest = new ScheduleRequestDelegate();
 			 ScheduleRequestSpec scheduleRequestSpec = scheduleRequest.createschedule();
-			 responseMsg.setScheduleRequestSpec(scheduleRequestSpec);
-			return responseMsg;
-			//return sendResponse(responseMsg,response);
+			return scheduleRequestSpec;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
