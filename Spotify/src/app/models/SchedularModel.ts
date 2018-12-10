@@ -1,6 +1,6 @@
 import {BaseModel} from './BaseModel';
 
-export class SchedularModel {
+export class SchedularModel extends BaseModel{
   regions: string[];
   bidPrice: string;
   numOfInstances: number;

@@ -8,10 +8,13 @@ import org.apache.log4j.Logger;
 
 import com.alacriti.model.AMI;
 import com.alacriti.model.Login;
+import com.alacriti.model.ScheduleRequest;
 import com.alacriti.model.ScheduleRequestSpec;
+import com.alacriti.model.SecGrp;
 import com.alacriti.proxy.EC2Proxy;
 import com.alacriti.rest.bo.LoginBO;
 import com.alacriti.rest.bo.ScheduleBO;
+import com.alacriti.rest.dao.SchedularDAO;
 import com.alacriti.rest.request.handler.ScheduleRequestHandler;
 
 public class ScheduleRequestDelegate extends BaseDelegate
@@ -30,8 +33,16 @@ public class ScheduleRequestDelegate extends BaseDelegate
         {
         	connection=startDBTransaction();
 			List<AMI> amiIds = EC2Proxy.getAMIs();
+        	List<String> keyPairs = EC2Proxy.getAvailableKeyPairs();
+        	List<SecGrp> secGroups = EC2Proxy.getSecGrps();
+        	List<String> instanceTypes = EC2Proxy.getInstanceTypes();
+        	
         	scheduleRequestSpec.setAmiIds(amiIds);
-        	ScheduleBO bo = new ScheduleBO();
+        	scheduleRequestSpec.setKeypairs(keyPairs);
+        	scheduleRequestSpec.setSecurityGroups(secGroups);
+        	scheduleRequestSpec.setInstanceTypes(instanceTypes);
+        	//ScheduleBO bo = new ScheduleBO();
+        	
             System.out.println("ScheduleRequestDelegate createschedule() end");        
            
         }

@@ -1,6 +1,7 @@
 package com.alacriti.rest.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,15 +24,15 @@ public class SchedularDAO {
 		try
         {
 			ps =  conn.prepareStatement(saveSql.toString());
-			ps.setLong(++i, request.getRequestId());
+			ps.setLong(++i, request.getSpinutRequestId());
 			ps.setString(++i, request.getAmiId());
-			ps.setDouble(++i, request.getBidPrice());
+			ps.setBigDecimal(++i, request.getBidPrice());
 			ps.setString(++i, request.getInstanceType());
-			ps.setString(++i, request.getSecurityGrp());
+			ps.setString(++i, request.getSecurityGroup());
 			ps.setString(++i, request.getSshKeyPair());
 			ps.setInt(++i, request.getNumOfInstances());
-			ps.setDate(++i, request.getStartTime());
-			ps.setDate(++i, request.getEndTime());
+			ps.setDate(++i, (Date) request.getStartTime());
+			ps.setDate(++i, (Date) request.getEndTime());
 			ps.setString(++i, request.getDays());
 			ps.setInt(++i, AppConstants.SCHEDULAR_STATUS_OPEN);
 			

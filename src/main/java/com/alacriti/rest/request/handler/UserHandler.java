@@ -41,7 +41,8 @@ public class UserHandler {
 			 LoginDelegate loginDelegate=new LoginDelegate();
 			 requestMsg=loginDelegate.isValidUserCheck(requestMsg);
 			 System.out.println(requestMsg.toString());
-			 return sendResponse(requestMsg,response);
+			 //return sendResponse(requestMsg,response);
+			 return requestMsg;
 			
 		} catch (Exception e) {
 		}

@@ -7,7 +7,8 @@ import {
   MatInputModule, MatListModule, MatProgressBarModule,
   MatProgressSpinner, MatSelectModule,
   MatSidenavModule,
-  MatSpinner
+  MatSpinner,
+   MatTableModule, MatPaginatorModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 

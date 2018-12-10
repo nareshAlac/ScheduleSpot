@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleRequestSpec {
-	ArrayList<String> instanceTypes = new ArrayList<String>();
-	List<AMI> amiIds = new ArrayList<AMI>();
-	ArrayList<String> securityGroups = new ArrayList<String>();
-
+	private List<String> instanceTypes = new ArrayList<String>();
+	private List<AMI> amiIds = new ArrayList<AMI>();
+	private List<SecGrp> securityGroups = new ArrayList<SecGrp>();
+	private List<String> keypairs = new ArrayList<String>();
 	
-	public ArrayList<String> getInstanceTypes() {
+	public List<String> getInstanceTypes() {
 		return instanceTypes;
 	}
-	public void setInstanceTypes(ArrayList<String> instanceTypes) {
+	public void setInstanceTypes(List<String> instanceTypes) {
 		this.instanceTypes = instanceTypes;
 	}
 
@@ -25,10 +25,16 @@ public class ScheduleRequestSpec {
 	{
 		this.amiIds = amiIds;
 	}
-	public ArrayList<String> getSecurityGroups() {
+	public List<SecGrp> getSecurityGroups() {
 		return securityGroups;
 	}
-	public void setSecurityGroups(ArrayList<String> securityGroups) {
+	public void setSecurityGroups(List<SecGrp> securityGroups) {
 		this.securityGroups = securityGroups;
+	}
+	public List<String> getKeypairs() {
+		return keypairs;
+	}
+	public void setKeypairs(List<String> keypairs) {
+		this.keypairs = keypairs;
 	}
 }

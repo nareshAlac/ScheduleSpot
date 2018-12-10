@@ -15,6 +15,7 @@ import com.amazonaws.services.ec2.model.DescribeKeyPairsResult;
 import com.amazonaws.services.ec2.model.DescribeSecurityGroupsResult;
 import com.amazonaws.services.ec2.model.Filter;
 import com.amazonaws.services.ec2.model.Image;
+import com.amazonaws.services.ec2.model.InstanceType;
 import com.amazonaws.services.ec2.model.KeyPairInfo;
 import com.amazonaws.services.ec2.model.SecurityGroup;
 
@@ -90,10 +91,21 @@ public class EC2Proxy {
 		System.out.println(info.size());
 		for(int i = 0; i < info.size(); i++)
 		{
-			System.out.println(info.get(i).toString());
+			//System.out.println(info.get(i).toString());
 			keyList.add(info.get(i).getKeyName());
 		}
 		System.out.println("*********************");
-		return null;
+		return keyList;
+	}
+	
+	public static List<String> getInstanceTypes()
+	{
+		InstanceType.C1Medium.name();
+		List<String> instanceTypes = new ArrayList<String>();
+		instanceTypes.add(InstanceType.C1Medium.name());
+		instanceTypes.add(InstanceType.D24xlarge.name());
+		instanceTypes.add(InstanceType.M1Small.name());
+		return instanceTypes;
+		
 	}
 }

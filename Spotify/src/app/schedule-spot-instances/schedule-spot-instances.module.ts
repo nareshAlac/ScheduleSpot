@@ -5,6 +5,7 @@ import {CustomMaterialModule} from '../custom-material/custom-material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import {LoginComponent} from '../login/login.component';
 import {SchedularService} from './SchedularService';
 
 @NgModule({
@@ -13,7 +14,7 @@ import {SchedularService} from './SchedularService';
     CustomMaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule,
+    HttpModule
   ],
   declarations: [ScheduleSpotInstancesComponent],
   exports: [

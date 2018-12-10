@@ -3,6 +3,7 @@ package com.alacriti.rest.request.handler;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import com.alacriti.delegate.ScheduleRequestDelegate;
 import com.alacriti.model.ScheduleRequest;
 import com.alacriti.model.ScheduleRequestSpec;
 import com.alacriti.model.ScheduleResponse;
+import com.alacriti.rest.delegate.SpotRequestDelegate;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -43,7 +45,7 @@ public class ScheduleRequestHandler {
 		try {
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			
-			// return sendResponse(responseMsg,response);
+			return responseMsg;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,7 +85,7 @@ public class ScheduleRequestHandler {
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 SpotRequestDelegate loginDelegate=new SpotRequestDelegate();
 			 responseMsg=loginDelegate.getSpotRequestList(requestMsg);
-			 return sendResponse(responseMsg,response);
+			 return responseMsg;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,9 +105,6 @@ public class ScheduleRequestHandler {
 	            log.error("Error in reading requestMsg******* " + requestMsg + " Expception: " + exp);
 	            exp.printStackTrace();
 	            String errorMsg = "Error Parsing Request Message";
-	           // ExceptionUtil.printBMCALertStackTrace(exp, MsgErrorConstants.ERR_WHILE_READING_JSON_MSG, errorMsg);
-	            //valueContext.setError(new ServerError(MsgErrorConstants.ERR_WHILE_READING_JSON_MSG + "",
-	              //      "Error Occurred while parsing request msg ", ErrorConstants.ERR_LEVEL_FATAL));
 	        }
 	        finally
 	        {
