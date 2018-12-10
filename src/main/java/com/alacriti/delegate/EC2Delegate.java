@@ -66,7 +66,7 @@ public class EC2Delegate extends BaseDelegate
 
 	public List<SpIn> getSpInReqs()
 	{
-		List<SpIn> spIns = new ArrayList<>();
+		List<SpIn> spIns = new ArrayList<SpIn>();
 		try
 		{
 			Connection connection = startDBTransaction();

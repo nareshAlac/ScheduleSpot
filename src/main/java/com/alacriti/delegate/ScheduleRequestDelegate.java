@@ -1,16 +1,13 @@
 package com.alacriti.delegate;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.alacriti.model.AMI;
-import com.alacriti.model.Login;
 import com.alacriti.model.ScheduleRequestSpec;
 import com.alacriti.proxy.EC2Proxy;
-import com.alacriti.rest.bo.LoginBO;
 import com.alacriti.rest.bo.ScheduleBO;
 import com.alacriti.rest.request.handler.ScheduleRequestHandler;
 
@@ -29,7 +26,7 @@ public class ScheduleRequestDelegate extends BaseDelegate
         try
         {
         	connection=startDBTransaction();
-        	ArrayList<AMI> amiIds = EC2Proxy.getAMIs();
+			List<AMI> amiIds = EC2Proxy.getAMIs();
         	scheduleRequestSpec.setAmiIds(amiIds);
         	ScheduleBO bo = new ScheduleBO();
             System.out.println("ScheduleRequestDelegate createschedule() end");        

@@ -2,17 +2,7 @@
 <web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
-   
-  <servlet>
-        <servlet-name>RestApp</servlet-name>
-        <servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class>
-        <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.alacriti.group.rest.RestApp</param-value>
-        </init-param>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
+<display-name>SpInUt</display-name>
   <context-param>
     <param-name>quartz:shutdown-on-unload</param-name>
     <param-value>true</param-value>
@@ -33,14 +23,6 @@
 <listener>
     <listener-class>com.alacriti.scheduleservice.scheduler.SpInScheduler</listener-class>
 </listener>
-  <servlet-mapping>
-  <servlet-name>RestApp</servlet-name>
-  <url-pattern>/rest/*</url-pattern>
-  </servlet-mapping>
-    
-<session-config> 
-    <session-timeout>30</session-timeout> 
-  </session-config> 
   
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

@@ -14,6 +14,7 @@ import com.amazonaws.services.ec2.model.DescribeImagesResult;
 import com.amazonaws.services.ec2.model.DescribeKeyPairsResult;
 import com.amazonaws.services.ec2.model.DescribeSecurityGroupsResult;
 import com.amazonaws.services.ec2.model.Filter;
+import com.amazonaws.services.ec2.model.Image;
 import com.amazonaws.services.ec2.model.KeyPairInfo;
 import com.amazonaws.services.ec2.model.SecurityGroup;
 
@@ -37,23 +38,33 @@ public class EC2Proxy {
 		return grps;
 	}
 
-	public static ArrayList<AMI> getAMIs() {
+	public static List<AMI> getAMIs()
+	{
 		System.out.println("Working");
 		AmazonEC2 ec2 =AWSClientFactory.getEC2Client();
 		DescribeImagesRequest req=new DescribeImagesRequest();
 		List<String> platforms=new ArrayList<String>();
 		//platforms.add("windows");
-		//platforms.add("linux");
-		platforms.add("linux/unix");
+		platforms.add("*linux*");
+		//platforms.add("linux/unix");
 
-		req.withFilters( new Filter("platform",platforms));
+		req.withFilters(new Filter("description", platforms));
 		DescribeImagesResult res=ec2.describeImages(req);
 		System.out.println(res.getImages().size());
 		//for(int i=0; i<res.getImages().size();i++){
-			System.out.println(res.getImages().get(0).toString());
+		//System.out.println(res.getImages().get(0).toString());
 			//}
 		System.out.println("*********************");
-		return null;
+		List<Image> ims = res.getImages();
+		List<AMI> amis = new ArrayList<AMI>();
+		for(Image im : ims)
+		{
+			AMI ami = new AMI();
+			ami.setDesc(im.getDescription());
+			ami.setId(im.getImageId());
+			amis.add(ami);
+		}
+		return amis;
 	}
 
 	public static List<String> getAvailableKeyPairs()

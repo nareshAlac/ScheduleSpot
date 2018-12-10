@@ -26,7 +26,7 @@ public class EC2DAO extends BaseDAO
 
 	private List<SpIn> getSpInList(ResultSet rs) throws SQLException
 	{
-		List<SpIn> spIns = new ArrayList<>();
+		List<SpIn> spIns = new ArrayList<SpIn>();
 		rs.first();
 		while (rs.next())
 			spIns.add(getSpIn(rs));

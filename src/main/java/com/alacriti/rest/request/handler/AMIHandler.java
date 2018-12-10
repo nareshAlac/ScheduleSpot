@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
-@Path("/aws/ami")
+@Path("aws/ami")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AMIHandler {

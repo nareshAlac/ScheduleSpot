@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 import com.alacriti.model.SpIn;
 import com.alacriti.proxy.EC2Proxy;
 
-@Path("/aws/spin")
+@Path("aws/spin")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SpInHandler {

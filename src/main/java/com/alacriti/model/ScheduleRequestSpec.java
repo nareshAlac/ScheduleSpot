@@ -1,10 +1,11 @@
 package com.alacriti.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ScheduleRequestSpec {
 	ArrayList<String> instanceTypes = new ArrayList<String>();
-	ArrayList<AMI> amiIds = new ArrayList<AMI>();
+	List<AMI> amiIds = new ArrayList<AMI>();
 	ArrayList<String> securityGroups = new ArrayList<String>();
 	public ArrayList<String> getInstanceTypes() {
 		return instanceTypes;
@@ -12,10 +13,14 @@ public class ScheduleRequestSpec {
 	public void setInstanceTypes(ArrayList<String> instanceTypes) {
 		this.instanceTypes = instanceTypes;
 	}
-	public ArrayList<AMI> getAmiIds() {
+
+	public List<AMI> getAmiIds()
+	{
 		return amiIds;
 	}
-	public void setAmiIds(ArrayList<AMI> amiIds) {
+
+	public void setAmiIds(List<AMI> amiIds)
+	{
 		this.amiIds = amiIds;
 	}
 	public ArrayList<String> getSecurityGroups() {

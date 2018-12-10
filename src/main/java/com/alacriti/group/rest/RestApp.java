@@ -9,7 +9,7 @@ import javax.ws.rs.core.Application;
 import com.alacriti.rest.request.handler.ScheduleRequestHandler;
 import com.alacriti.rest.request.handler.UserHandler;
 
-@ApplicationPath("/rest/*")
+@ApplicationPath("/rest")
 public class RestApp extends Application {
 
 	private Set<Object> singletons = new HashSet<Object>();

@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import com.alacriti.model.SecGrp;
 import com.alacriti.proxy.EC2Proxy;
 
-@Path("/aws/secgrps")
+@Path("aws/secgrps")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SecGroupsHandler {

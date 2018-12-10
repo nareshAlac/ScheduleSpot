@@ -3,7 +3,6 @@ package com.alacriti.rest.request.handler;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +20,6 @@ import com.alacriti.delegate.ScheduleRequestDelegate;
 import com.alacriti.model.ScheduleRequest;
 import com.alacriti.model.ScheduleRequestSpec;
 import com.alacriti.model.ScheduleResponse;
-import com.alacriti.rest.delegate.LoginDelegate;
-import com.alacriti.rest.delegate.SpotRequestDelegate;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -30,7 +27,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
-@Path("/spot")
+@Path("spot")
 public class ScheduleRequestHandler {
 	private Logger log = Logger.getLogger(ScheduleRequestHandler.class);
 	
@@ -66,12 +63,12 @@ public class ScheduleRequestHandler {
 			 ScheduleRequestDelegate scheduleRequest = new ScheduleRequestDelegate();
 			 ScheduleRequestSpec scheduleRequestSpec = scheduleRequest.createschedule();
 			 responseMsg.setScheduleRequestSpec(scheduleRequestSpec);
-			 
-			 //return sendResponse(responseMsg,response);
+			return responseMsg;
+			//return sendResponse(responseMsg,response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return "";
 	}
 	@POST
 	@Path("/getrequestlist")
