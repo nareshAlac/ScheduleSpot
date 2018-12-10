@@ -7,6 +7,7 @@ import {ManageSpotInstancesComponent} from "./manage-spot-instances/manage-spot-
 import {SpotRequestPredictorComponent} from "./spot-request-predictor/spot-request-predictor.component";
 import {DashboardSummaryComponent} from "./dashboard-summary/dashboard-summary.component";
 import {ScheduleSpotInstancesComponent} from './schedule-spot-instances/schedule-spot-instances.component';
+import {SignoutComponent} from './signout/signout.component';
 
 const routes = [
   {
@@ -24,7 +25,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirectTo: 'manageSpotInstances',
+        redirectTo: 'dashBoardSummary',
         pathMatch: 'full'
       },
       {
@@ -42,6 +43,10 @@ const routes = [
       {
         path: 'scheduleSpotInstances',
         component: ScheduleSpotInstancesComponent
+      },
+      {
+        path: 'signout',
+        component: SignoutComponent
       }
 
     ],
@@ -55,7 +60,7 @@ const routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {

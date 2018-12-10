@@ -2,13 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {
-  MatButtonModule,
-  MatDivider,
-  MatDividerModule, MatDrawerContainer, MatIconModule,
+  MatButtonModule
+  ,
+  MatDividerModule, MatIconModule,
   MatInputModule, MatListModule, MatProgressBarModule,
-  MatProgressSpinner, MatSelectModule,
+   MatSelectModule,
   MatSidenavModule,
-  MatSpinner
+   MatTableModule, MatPaginatorModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -25,7 +25,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSelectModule,
     MatListModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule, MatPaginatorModule
   ],
   declarations: [],
   exports: [
@@ -38,7 +39,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSelectModule,
     MatListModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class CustomMaterialModule {

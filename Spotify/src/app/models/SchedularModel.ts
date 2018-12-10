@@ -1,5 +1,6 @@
+import {BaseModel} from './BaseModel';
 
-export class SchedularModel {
+export class SchedularModel extends BaseModel{
   region: string[];
   bidPrice: string;
   numOfInstances: number;
@@ -7,5 +8,6 @@ export class SchedularModel {
   amiId: string[];
   securityGroup: string[];
   sshKeyPair: string;
+  list: SchedularModel[];
 
 }

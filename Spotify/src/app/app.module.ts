@@ -14,6 +14,9 @@ import {ManageSpotInstancesModule} from './manage-spot-instances/manage-spot-ins
 import {SpotRequestPredictorModule} from './spot-request-predictor/spot-request-predictor.module';
 import {DashboardSummaryModule} from "./dashboard-summary/dashboard-summary.module";
 import {ScheduleSpotInstancesModule} from './schedule-spot-instances/schedule-spot-instances.module';
+import {SignoutModule} from './signout/signout.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import {ScheduleSpotInstancesModule} from './schedule-spot-instances/schedule-sp
     SpotRequestPredictorModule,
     ManageSpotInstancesModule,
     DashboardSummaryModule,
-    ScheduleSpotInstancesModule
+    ScheduleSpotInstancesModule,
+    SignoutModule,
+    NgxSpinnerModule
 
   ],
   providers: [

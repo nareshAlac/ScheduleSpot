@@ -6,6 +6,7 @@ import {LoggerService} from '../common/LoggerService/logger.service';
 import {Router} from '@angular/router';
 import {RootService} from '../common/RootService/root.service';
 import {BaseModel} from '../models/BaseModel';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService,
               private log: LoggerService,
               private router: Router,
-              private rootService: RootService) {
+              private rootService: RootService,
+              private spinner: NgxSpinnerService ) {
     this.loginForm = new FormGroup({
       username: this.username,
       password: this.password
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
     const msg = new LoginModel();
     msg.userName = this.username.value;
     msg.password = this.password.value;
+    this.spinner.show();
     this.loginService.loginUser(msg)
       .then((resp) => {
         this.log.debug('Success Response from Login Request');
@@ -44,6 +47,10 @@ export class LoginComponent implements OnInit {
         const data = <LoginModel>resp;
         this.log.debug(data.isValidUser);
         this.log.debug(data);
+        setTimeout(() => {
+          /** spinner ends after 5 seconds */
+          this.spinner.hide();
+        }, 2000);
         if(data.isValidUser)
         {
           this.rootService.loginSuccessfull = true;

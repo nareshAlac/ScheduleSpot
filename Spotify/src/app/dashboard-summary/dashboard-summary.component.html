@@ -1,3 +1,31 @@
-<p>
-  dashboard-summary works!
-</p>
+<div id="searchResults">
+  <h2 class="mat-h2">Configured Spot Requests</h2>
+  <div class="searchtable mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+      <div *ngFor="let col of displayedColumns;let i = index">
+        <ng-container matColumnDef={{col}}>
+          <mat-header-cell *matHeaderCellDef>
+            <div [innerHtml]="col" class="mat-header-cell">
+            </div>
+          </mat-header-cell>
+          <div *ngIf="col==='Actions'">
+            <mat-cell *matCellDef="let element" (click)="redirectToLogDetails(element.eventLogId);">
+              <button  name="getDetails" mat-raised-button class="cta-button-primary">Details</button>
+            </mat-cell>
+          </div>
+          <div *ngIf="col!='Action'">
+            <mat-cell *matCellDef="let element">
+              <div>
+                {{element[col]}}
+              </div>
+            </mat-cell>
+          </div>
+        </ng-container>
+      </div>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator id="paginator" #paginator [length]="20" [pageSize]="5" [pageSizeOptions]="[2, 5, 10]">
+    </mat-paginator>
+  </div>
+</div>

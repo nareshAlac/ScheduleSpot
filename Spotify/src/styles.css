@@ -35,7 +35,16 @@
 }
 
 .router-outlet-style {
-  width: 90%; /********Width of main Content***/
+  width: 75%; /********Width of main Content***/
   margin-left: 20%;
 }
+#stage{
+  color:whitesmoke;
+  text-align: center;
+  background-color: #0d5fad;
 
+}
+#stage h1 {
+  margin: 0;
+  font-size: 30px;
+}

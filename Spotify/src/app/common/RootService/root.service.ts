@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 })
 export class RootService {
   loginSuccessfull: boolean;
+  userId: number;
 
   constructor() {
   }

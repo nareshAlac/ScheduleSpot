@@ -3,6 +3,7 @@ package com.alacriti.rest.request.handler;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,8 @@ import com.alacriti.delegate.ScheduleRequestDelegate;
 import com.alacriti.model.ScheduleRequest;
 import com.alacriti.model.ScheduleRequestSpec;
 import com.alacriti.model.ScheduleResponse;
+import com.alacriti.rest.delegate.LoginDelegate;
+import com.alacriti.rest.delegate.SpotRequestDelegate;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -43,7 +46,7 @@ public class ScheduleRequestHandler {
 		try {
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			
-			 return sendResponse(responseMsg,response);
+			// return sendResponse(responseMsg,response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -64,6 +67,25 @@ public class ScheduleRequestHandler {
 			 ScheduleRequestSpec scheduleRequestSpec = scheduleRequest.createschedule();
 			 responseMsg.setScheduleRequestSpec(scheduleRequestSpec);
 			 
+			 //return sendResponse(responseMsg,response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@POST
+	@Path("/getrequestlist")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Object getRequestList(@Context HttpServletRequest request, @Context HttpServletResponse response,
+			InputStreamReader reader) throws Exception {
+		ScheduleRequest requestMsg=null;
+		ArrayList<ScheduleRequest> responseMsg=new ArrayList();
+		System.out.println("Schedule(): Starts");
+		try {
+			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
+			 SpotRequestDelegate loginDelegate=new SpotRequestDelegate();
+			 responseMsg=loginDelegate.getSpotRequestList(requestMsg);
 			 return sendResponse(responseMsg,response);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -131,7 +153,7 @@ public class ScheduleRequestHandler {
 	            }
 	        }).create();
 	    }
-	 protected Object sendResponse(ScheduleResponse responseMsg, HttpServletResponse response) throws IOException
+	 protected Object sendResponse(ArrayList<ScheduleRequest> responseMsg, HttpServletResponse response) throws IOException
 	    {
 	        try
 	        {
