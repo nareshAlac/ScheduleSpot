@@ -6,7 +6,7 @@ import {SchedularModel} from '../models/SchedularModel';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SchedularService} from './SchedularService';
 import {Router} from '@angular/router';
-import {LoginModel} from '../models/LoginModel';
+import {DaysOfWeek} from '../models/DaysOfWeek';
 
 
 @Component({
@@ -16,13 +16,26 @@ import {LoginModel} from '../models/LoginModel';
 })
 export class ScheduleSpotInstancesComponent implements OnInit {
   schedularForm: FormGroup;
-  region = new FormControl('');
   bidPrice = new FormControl('');
-  numOfInstances = new FormControl('');
-  sshKeyPair = new FormControl('');
+  region = new FormControl('');
   instanceType = new FormControl('');
   amiId = new FormControl('');
   securityGroup = new FormControl('');
+  sshKeyPair = new FormControl('');
+
+  scheduleStartDate = new FormControl('');
+  scheduleEndDate = new FormControl('');
+  scheduleDays = new FormControl('');
+  numOfInstances = new FormControl('');
+
+  regions: string[];
+  sshKeyPairs: string[];
+  instanceTypes: string[];
+  amiIds: string[];
+  securityGroups: string[];
+
+  keys = Object.keys;
+  daysOfWeek = DaysOfWeek;
 
 
   constructor(private schedularService: SchedularService,
@@ -30,13 +43,16 @@ export class ScheduleSpotInstancesComponent implements OnInit {
               private router: Router,
               private rootService: RootService) {
     this.schedularForm = new FormGroup({
-      region: this.region,
       bidPrice: this.bidPrice,
-      numOfInstances: this.numOfInstances,
-      sshKeyPair: this.sshKeyPair,
+      region: this.region,
       instanceType: this.instanceType,
       amiId: this.amiId,
-      securityGroup: this.securityGroup
+      numOfInstances: this.numOfInstances,
+      securityGroup: this.securityGroup,
+      sshKeyPair: this.sshKeyPair,
+      scheduleStartDate: this.scheduleStartDate,
+      scheduleEndDate: this.scheduleEndDate,
+      scheduleDays: this.scheduleDays,
     });
   }
 
@@ -57,13 +73,16 @@ export class ScheduleSpotInstancesComponent implements OnInit {
     this.log.debug('schedule button clicked');
     this.log.debug('bidPrice : ' + this.bidPrice.value);
     this.log.debug('instanceType : ' + this.instanceType.value);
+    this.log.debug('daysOfWeek : ' + this.scheduleDays.value);
     const schedular = new SchedularModel();
+    schedular.region = this.region.value;
     schedular.bidPrice = this.bidPrice.value;
-    schedular.numOfInstances = this.numOfInstances.value;
     schedular.instanceType = this.instanceType.value;
     schedular.amiId = this.amiId.value;
+    schedular.numOfInstances = this.numOfInstances.value;
     schedular.securityGroup = this.securityGroup.value;
     schedular.sshKeyPair = this.sshKeyPair.value;
+    schedular.scheduleDays = this.scheduleDays.value;
     this.schedularService.scheduleSpotInstances(schedular)
       .then((resp) => {
         this.log.debug('Success Response from Schedule Spot Request');
@@ -80,4 +99,6 @@ export class ScheduleSpotInstancesComponent implements OnInit {
       });
   }
 
+
 }
+

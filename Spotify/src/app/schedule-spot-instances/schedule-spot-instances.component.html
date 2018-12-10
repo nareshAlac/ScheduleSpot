@@ -5,15 +5,19 @@
   <mat-card-content>
 <form class="example-form" [formGroup]="schedularForm">
   <mat-form-field class="example-full-width">
-    <mat-select placeholder="Region" [formControl]="region" required>
-
+    <mat-select placeholder="Region" formControlName="region" required>
+      <mat-option *ngFor="let region of regions" [value]="region">
+        {{region}}
+      </mat-option>
     </mat-select>
-    <input matInput placeholder="" formControlName="bidPrice" name="bidPrice">
+    <!--input matInput placeholder="" formControlName="bidPrice" name="bidPrice"-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <mat-select placeholder="Instance Type" [formControl]="instanceType" required>
-
+    <mat-select placeholder="Instance Type" formControlName="instanceType" required>
+      <mat-option *ngFor="let instanceType of instanceTypes" [value]="instanceType">
+        {{instanceType}}
+      </mat-option>
     </mat-select>
     <!--textarea matInput placeholder="Instance Type" formControlName="instanceType" name="instanceType"></textarea-->
   </mat-form-field>
@@ -25,11 +29,11 @@
 
   <mat-form-field class="example-full-width">
       <!--mat-select placeholder="AMI ID" [formControl]="animalControl" required-->
-    <mat-select placeholder="AMI ID" [formControl]="amiId" required>
-        <!--mat-option>--</mat-option>
-        <mat-option *ngFor="let animal of animals" [value]="animal">
-          {{animal.name}}
-        </mat-option-->
+    <mat-select placeholder="AMI ID" formControlName="amiId" required>
+        <!--mat-option>--</mat-option -->
+        <mat-option *ngFor="let amiId of amiIds" [value]="amiId">
+          {{amiId}}
+        </mat-option>
     </mat-select>
       <!--mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
       <mat-hint>{{animalControl.value?.sound}}</mat-hint-->
@@ -37,22 +41,47 @@
   <!--textarea-- matInput placeholder="AMI ID" formControlName="amiId" name="amiId"></textarea-->
 
   <mat-form-field class="example-full-width">
-    <mat-select placeholder="Security Group" [formControl]="securityGroup" required>
-
+    <mat-select placeholder="Security Group" formControlName="securityGroup" required>
+      <mat-option *ngFor="let securityGroup of securityGroups" [value]="securityGroup">
+        {{securityGroup}}
+      </mat-option>
     </mat-select>
     <!--textarea matInput placeholder="Security Group" formControlName="securityGroup" name="securityGroup"></textarea-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="SSH KeyPair" formControlName="sshKeyPair" name="sshKeyPair"></textarea>
+    <!--textarea matInput placeholder="SSH KeyPair" [formControlName]="sshKeyPairs" name="sshKeyPair"></textarea-->
+    <mat-select placeholder="SSH Key Pair" formControlName="sshKeyPair" required>
+      <mat-option *ngFor="let sshKeyPair of sshKeyPairs" [value]="sshKeyPair">
+        {{sshKeyPair}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Bid Price" formControlName="bidPrice" name="bidPrice">
   </mat-form-field>
 
+  <mat-form-field class="example-full-width">
+    <!--label>Schedule Start Date/Time</label-->
+    <input matInput mdc-datetime-picker="" date="true" time="true" type="text" placeholder="Schedule Start Date/Time" max-date="dateTimeEnd" ng-model="dateTimeStart" readonly="readonly" id="input_0" formControlName="scheduleStartDate">
+    <!--div class="md-errors-spacer"></div-->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput mdc-datetime-picker="" date="true" time="true" type="text" placeholder="Schedule End Date/Time" max-date="dateTimeEnd" ng-model="dateTimeStart" readonly="readonly" id="input_1" formControlName="scheduleEndDate">
+    <!--input time="false" date="true" mdc-datetime-picker="" type="text" id="date" placeholder="Schedule End Date" ng-model="date" min-date="minDate" max-date="maxDate" class=" md-input" readonly="readonly" formControlName="scheduleEndDate"-->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Days of Week" formControlName="scheduleDays" multiple>
+      <mat-option *ngFor="let day of keys(daysOfWeek)" [value]="day">{{daysOfWeek[day]}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
 
 </form>
+
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="schedule()" color="primary">Schedule</button>

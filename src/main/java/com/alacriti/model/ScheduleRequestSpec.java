@@ -7,6 +7,8 @@ public class ScheduleRequestSpec {
 	ArrayList<String> instanceTypes = new ArrayList<String>();
 	List<AMI> amiIds = new ArrayList<AMI>();
 	ArrayList<String> securityGroups = new ArrayList<String>();
+
+	
 	public ArrayList<String> getInstanceTypes() {
 		return instanceTypes;
 	}

@@ -2,13 +2,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {
-  MatButtonModule
-  ,
-  MatDividerModule, MatIconModule,
+  MatButtonModule,
+  MatDividerModule, MatDrawerContainer, MatIconModule,
   MatInputModule, MatListModule, MatProgressBarModule,
-   MatSelectModule,
+  MatProgressSpinner, MatSelectModule,
   MatSidenavModule,
-   MatTableModule, MatPaginatorModule
+  MatSpinner
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 

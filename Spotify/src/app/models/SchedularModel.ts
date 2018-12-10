@@ -1,13 +1,22 @@
 import {BaseModel} from './BaseModel';
 
-export class SchedularModel extends BaseModel{
-  region: string[];
+export class SchedularModel {
+  regions: string[];
   bidPrice: string;
   numOfInstances: number;
-  instanceType: string[];
-  amiId: string[];
-  securityGroup: string[];
+  instanceTypes: string[];
+  amiIds: object[];
+  securityGroups: string[];
+  sshKeyPairs: string;
+
+  region: string;
+  instanceType: string;
+  amiId: string;
+  securityGroup: string;
   sshKeyPair: string;
   list: SchedularModel[];
 
+  scheduleStartDate: any;
+  scheduleEndDate: any;
+  scheduleDays: any;
 }
