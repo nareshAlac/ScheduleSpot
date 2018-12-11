@@ -106,6 +106,7 @@ public class EC2Proxy {
 		instanceTypes.add(InstanceType.C1Medium.name());
 		instanceTypes.add(InstanceType.D24xlarge.name());
 		instanceTypes.add(InstanceType.M1Small.name());
+		instanceTypes.add(InstanceType.T3Medium.name());
 		return instanceTypes;
 		
 	}

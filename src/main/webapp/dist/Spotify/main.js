@@ -496,12 +496,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var ngx_mat_select_search__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-mat-select-search */ "./node_modules/ngx-mat-select-search/esm5/ngx-mat-select-search.js");
+/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm5/datepicker.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -525,7 +529,12 @@ var CustomMaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatListModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatIconModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatProgressBarModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableModule"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatPaginatorModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatFormFieldModule"],
+                ngx_mat_select_search__WEBPACK_IMPORTED_MODULE_5__["NgxMatSelectSearchModule"],
+                _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_6__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatNativeDateModule"]
             ],
             declarations: [],
             exports: [
@@ -540,7 +549,11 @@ var CustomMaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatIconModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatProgressBarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatTableModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatPaginatorModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatFormFieldModule"],
+                ngx_mat_select_search__WEBPACK_IMPORTED_MODULE_5__["NgxMatSelectSearchModule"],
+                _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_6__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatNativeDateModule"]
             ]
         })
     ], CustomMaterialModule);
@@ -959,6 +972,7 @@ var LoginComponent = /** @class */ (function () {
             }, 2000);
             if (data.isValidUser) {
                 _this.rootService.loginSuccessfull = true;
+                _this.rootService.userId = data.userId;
                 _this.log.debug('Redirecting to Dashboard');
                 _this.router.navigate(['/dashboard']);
             }
@@ -1304,6 +1318,26 @@ var SchedularModel = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/models/ScheduleRequestSpec.ts":
+/*!***********************************************!*\
+  !*** ./src/app/models/ScheduleRequestSpec.ts ***!
+  \***********************************************/
+/*! exports provided: ScheduleRequestSpec */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScheduleRequestSpec", function() { return ScheduleRequestSpec; });
+var ScheduleRequestSpec = /** @class */ (function () {
+    function ScheduleRequestSpec() {
+    }
+    return ScheduleRequestSpec;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/errorcodes.ts":
 /*!**************************************!*\
   !*** ./src/app/models/errorcodes.ts ***!
@@ -1393,7 +1427,7 @@ module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  w
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"schedular-card\">\n  <mat-card-header>\n    <mat-card-title>ScheduleSpotInstance</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n<form class=\"example-form\" [formGroup]=\"schedularForm\">\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Region\" formControlName=\"region\" required>\n      <mat-option *ngFor=\"let region of regions\" [value]=\"region\">\n        {{region}}\n      </mat-option>\n    </mat-select>\n    <!--input matInput placeholder=\"\" formControlName=\"bidPrice\" name=\"bidPrice\"-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Instance Type\" formControlName=\"instanceType\" required>\n      <mat-option *ngFor=\"let instanceType of instanceTypes\" [value]=\"instanceType\">\n        {{instanceType}}\n      </mat-option>\n    </mat-select>\n    <!--textarea matInput placeholder=\"Instance Type\" formControlName=\"instanceType\" name=\"instanceType\"></textarea-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <textarea matInput placeholder=\"Number of Instances\" formControlName=\"numOfInstances\" name=\"numOfInstances\"></textarea>\n  </mat-form-field>\n\n\n  <mat-form-field class=\"example-full-width\">\n      <!--mat-select placeholder=\"AMI ID\" [formControl]=\"animalControl\" required-->\n    <mat-select placeholder=\"AMI ID\" formControlName=\"amiId\" required>\n        <!--mat-option>--</mat-option -->\n        <mat-option *ngFor=\"let amiId of amiIds\" [value]=\"amiId\">\n          {{amiId}}\n        </mat-option>\n    </mat-select>\n      <!--mat-error *ngIf=\"animalControl.hasError('required')\">Please choose an animal</mat-error>\n      <mat-hint>{{animalControl.value?.sound}}</mat-hint-->\n  </mat-form-field>\n  <!--textarea-- matInput placeholder=\"AMI ID\" formControlName=\"amiId\" name=\"amiId\"></textarea-->\n\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Security Group\" formControlName=\"securityGroup\" required>\n      <mat-option *ngFor=\"let securityGroup of securityGroups\" [value]=\"securityGroup\">\n        {{securityGroup}}\n      </mat-option>\n    </mat-select>\n    <!--textarea matInput placeholder=\"Security Group\" formControlName=\"securityGroup\" name=\"securityGroup\"></textarea-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <!--textarea matInput placeholder=\"SSH KeyPair\" [formControlName]=\"sshKeyPairs\" name=\"sshKeyPair\"></textarea-->\n    <mat-select placeholder=\"SSH Key Pair\" formControlName=\"sshKeyPair\" required>\n      <mat-option *ngFor=\"let sshKeyPair of sshKeyPairs\" [value]=\"sshKeyPair\">\n        {{sshKeyPair}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <input matInput placeholder=\"Bid Price\" formControlName=\"bidPrice\" name=\"bidPrice\">\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <!--label>Schedule Start Date/Time</label-->\n    <input matInput mdc-datetime-picker=\"\" date=\"true\" time=\"true\" type=\"text\" placeholder=\"Schedule Start Date/Time\" max-date=\"dateTimeEnd\" ng-model=\"dateTimeStart\" readonly=\"readonly\" id=\"input_0\" formControlName=\"scheduleStartDate\">\n    <!--div class=\"md-errors-spacer\"></div-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <input matInput mdc-datetime-picker=\"\" date=\"true\" time=\"true\" type=\"text\" placeholder=\"Schedule End Date/Time\" max-date=\"dateTimeEnd\" ng-model=\"dateTimeStart\" readonly=\"readonly\" id=\"input_1\" formControlName=\"scheduleEndDate\">\n    <!--input time=\"false\" date=\"true\" mdc-datetime-picker=\"\" type=\"text\" id=\"date\" placeholder=\"Schedule End Date\" ng-model=\"date\" min-date=\"minDate\" max-date=\"maxDate\" class=\" md-input\" readonly=\"readonly\" formControlName=\"scheduleEndDate\"-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Days of Week\" formControlName=\"scheduleDays\" multiple>\n      <mat-option *ngFor=\"let day of keys(daysOfWeek)\" [value]=\"day\">{{daysOfWeek[day]}}</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n\n</form>\n\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"schedule()\" color=\"primary\">Schedule</button>\n  </mat-card-actions>\n\n</mat-card>\n"
+module.exports = "<mat-card class=\"schedular-card\">\n  <mat-card-header>\n    <mat-card-title>ScheduleSpotInstance</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n<form class=\"example-form\" [formGroup]=\"schedularForm\">\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Region\" formControlName=\"region\" required>\n      <mat-option *ngFor=\"let region of regions\" [value]=\"region\">\n        {{region}}\n      </mat-option>\n    </mat-select>\n    <!--input matInput placeholder=\"\" formControlName=\"bidPrice\" name=\"bidPrice\"-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Instance Type\" formControlName=\"instanceType\" required>\n      <mat-option *ngFor=\"let instanceType of instanceTypes\" [value]=\"instanceType\">\n        {{instanceType}}\n      </mat-option>\n    </mat-select>\n    <!--textarea matInput placeholder=\"Instance Type\" formControlName=\"instanceType\" name=\"instanceType\"></textarea-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <textarea matInput placeholder=\"Number of Instances\" formControlName=\"numOfInstances\" name=\"numOfInstances\"></textarea>\n  </mat-form-field>\n\n\n    <mat-form-field class=\"example-full-width\">\n      <mat-select formControlName=\"amiId\" placeholder=\"AMI ID\" #singleSelect>\n        <ngx-mat-select-search formControlName=\"amiFilterId\"></ngx-mat-select-search>\n        <mat-option *ngFor=\"let bank of filteredAmis | async\" [value]=\"bank.id\">\n          {{bank.desc}}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n\n      <!--mat-error *ngIf=\"animalControl.hasError('required')\">Please choose an animal</mat-error>\n      <mat-hint>{{animalControl.value?.sound}}</mat-hint-->\n\n  <!--textarea-- matInput placeholder=\"AMI ID\" formControlName=\"amiId\" name=\"amiId\"></textarea-->\n\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Security Group\" formControlName=\"securityGroup\" required>\n      <mat-option *ngFor=\"let securityGroup of securityGroups\" [value]=\"securityGroup.name\">\n        {{securityGroup.name}}\n      </mat-option>\n    </mat-select>\n    <!--textarea matInput placeholder=\"Security Group\" formControlName=\"securityGroup\" name=\"securityGroup\"></textarea-->\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <!--textarea matInput placeholder=\"SSH KeyPair\" [formControlName]=\"sshKeyPairs\" name=\"sshKeyPair\"></textarea-->\n    <mat-select placeholder=\"SSH Key Pair\" formControlName=\"sshKeyPair\" required>\n      <mat-option *ngFor=\"let sshKeyPair of sshKeyPairs\" [value]=\"sshKeyPair\">\n        {{sshKeyPair}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <input matInput placeholder=\"Bid Price\" formControlName=\"bidPrice\" name=\"bidPrice\">\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <input matInput [matDatepicker]=\"startPicker\" placeholder=\"Schedule Start Date\" formControlName=\"scheduleStartDate\">\n    <mat-datepicker-toggle matSuffix [for]=\"startPicker\"></mat-datepicker-toggle>\n    <mat-datepicker #startPicker></mat-datepicker>\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <input matInput [matDatepicker]=\"endPicker\" placeholder=\"Schedule End Date\" formControlName=\"scheduleEndDate\">\n    <mat-datepicker-toggle matSuffix [for]=\"endPicker\"></mat-datepicker-toggle>\n    <mat-datepicker #endPicker></mat-datepicker>\n  </mat-form-field>\n\n  <mat-form-field class=\"example-full-width\">\n    <mat-select placeholder=\"Days of Week\" formControlName=\"scheduleDays\" multiple>\n      <mat-option *ngFor=\"let day of keys(daysOfWeek)\" [value]=\"day\">{{daysOfWeek[day]}}</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n\n</form>\n\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"schedule()\" color=\"primary\">Schedule</button>\n  </mat-card-actions>\n\n</mat-card>\n"
 
 /***/ }),
 
@@ -1416,6 +1450,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _models_DaysOfWeek__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../models/DaysOfWeek */ "./src/app/models/DaysOfWeek.ts");
 /* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+/* harmony import */ var _models_ScheduleRequestSpec__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../models/ScheduleRequestSpec */ "./src/app/models/ScheduleRequestSpec.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1425,6 +1462,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
+
 
 
 
@@ -1447,6 +1488,12 @@ var ScheduleSpotInstancesComponent = /** @class */ (function () {
         this.amiId = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
         this.securityGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
         this.sshKeyPair = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
+        this.amiFilterId = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
+        this.scheduleRequest = new _models_ScheduleRequestSpec__WEBPACK_IMPORTED_MODULE_9__["ScheduleRequestSpec"]();
+        /** control for the MatSelect filter keyword */
+        this.filteredAmis = new rxjs__WEBPACK_IMPORTED_MODULE_10__["ReplaySubject"](1);
+        /** Subject that emits when the component has been destroyed. */
+        this._onDestroy = new rxjs__WEBPACK_IMPORTED_MODULE_10__["Subject"]();
         this.scheduleStartDate = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
         this.scheduleEndDate = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
         this.scheduleDays = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('');
@@ -1458,6 +1505,7 @@ var ScheduleSpotInstancesComponent = /** @class */ (function () {
             region: this.region,
             instanceType: this.instanceType,
             amiId: this.amiId,
+            amiFilterId: this.amiFilterId,
             numOfInstances: this.numOfInstances,
             securityGroup: this.securityGroup,
             sshKeyPair: this.sshKeyPair,
@@ -1472,7 +1520,23 @@ var ScheduleSpotInstancesComponent = /** @class */ (function () {
         this.schedularService.createSpotSchedule()
             .then(function (resp) {
             _this.log.debug('Success Response from create schedule Request');
-            _this.log.debug(resp);
+            var data = resp;
+            _this.log.debug(data);
+            _this.amiIds = data.amiIds;
+            _this.regions = data.regions;
+            _this.instanceTypes = data.instanceTypes;
+            _this.securityGroups = data.securityGroups;
+            _this.sshKeyPairs = data.keypairs;
+            // set initial selection
+            _this.amiId.setValue(_this.amiIds[10]);
+            _this.filteredAmis.next(_this.amiIds.slice());
+            // listen for search field value changes
+            // listen for search field value changes
+            _this.amiFilterId.valueChanges
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["takeUntil"])(_this._onDestroy))
+                .subscribe(function () {
+                _this.filterBanks();
+            });
             _this.spinner.hide();
         })
             .catch(function (err) {
@@ -1487,29 +1551,54 @@ var ScheduleSpotInstancesComponent = /** @class */ (function () {
         this.log.debug('bidPrice : ' + this.bidPrice.value);
         this.log.debug('instanceType : ' + this.instanceType.value);
         this.log.debug('daysOfWeek : ' + this.scheduleDays.value);
-        var schedular = new _models_SchedularModel__WEBPACK_IMPORTED_MODULE_3__["SchedularModel"]();
-        schedular.region = this.region.value;
-        schedular.bidPrice = this.bidPrice.value;
-        schedular.instanceType = this.instanceType.value;
-        schedular.amiId = this.amiId.value;
-        schedular.numOfInstances = this.numOfInstances.value;
-        schedular.securityGroup = this.securityGroup.value;
-        schedular.sshKeyPair = this.sshKeyPair.value;
-        schedular.scheduleDays = this.scheduleDays.value;
-        this.schedularService.scheduleSpotInstances(schedular)
+        var scheduler = new _models_SchedularModel__WEBPACK_IMPORTED_MODULE_3__["SchedularModel"]();
+        scheduler.region = this.region.value;
+        scheduler.bidPrice = this.bidPrice.value;
+        scheduler.instanceType = this.instanceType.value;
+        scheduler.amiId = this.amiId.value;
+        scheduler.numOfInstances = this.numOfInstances.value;
+        scheduler.securityGroup = this.securityGroup.value;
+        scheduler.sshKeyPair = this.sshKeyPair.value;
+        scheduler.scheduleStartDate = this.scheduleStartDate.value;
+        scheduler.scheduleEndDate = this.scheduleEndDate.value;
+        scheduler.scheduleDays = this.scheduleDays.value;
+        scheduler.userId = this.rootService.userId;
+        this.schedularService.scheduleSpotInstances(scheduler)
             .then(function (resp) {
             _this.log.debug('Success Response from Schedule Spot Request');
             _this.log.debug(resp);
-            var data = resp;
-            _this.log.debug(data.responseMessage);
-            _this.rootService.loginSuccessfull = true;
-            _this.log.debug('Redirecting to Dashboard');
-            _this.router.navigate(['/dashboard']);
+            if (resp === true) {
+                _this.log.debug('Redirecting to Dashboard');
+                _this.router.navigate(['/dashboard']);
+            }
+            else {
+                _this.log.debug('Redirecting to Schedule Spot Request Page');
+                _this.router.navigate(['/dashboard/scheduleSpotInstances']);
+            }
+            // const data = <BaseModel>resp;
+            // this.log.debug(data.responseMessage);
+            // this.rootService.loginSuccessfull = true;
         })
             .catch(function (err) {
             _this.log.debug('Error Response from Schedule Spot Request');
             _this.log.debug(err);
         });
+    };
+    ScheduleSpotInstancesComponent.prototype.filterBanks = function () {
+        if (!this.amiIds) {
+            return;
+        }
+        // get the search keyword
+        var search = this.amiFilterId.value;
+        if (!search) {
+            this.filteredAmis.next(this.amiIds.slice());
+            return;
+        }
+        else {
+            search = search.toLowerCase();
+        }
+        // filter the banks
+        this.filteredAmis.next(this.amiIds.filter(function (bank) { return bank.desc.toLowerCase().indexOf(search) > -1; }));
     };
     ScheduleSpotInstancesComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -2125,7 +2214,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/nareshm/AWS/Hackriti/workspace/ScheduleSpot/Spotify/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/premb/Hackriti/SPINUT_MASTER/ScheduleSpot/Spotify/src/main.ts */"./src/main.ts");
 
 
 /***/ })

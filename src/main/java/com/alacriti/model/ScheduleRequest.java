@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class ScheduleRequest extends BaseMsg {
 	private String region;
-	private BigDecimal bidPrice;
+	private String bidPrice;
 	private int numOfInstances;
 	private String instanceType;
 	private String amiId;
@@ -31,10 +31,10 @@ public class ScheduleRequest extends BaseMsg {
 	public void setSpinutRequestId(long spinutRequestId) {
 		this.spinutRequestId = spinutRequestId;
 	}
-	public BigDecimal getBidPrice() {
+	public String getBidPrice() {
 		return bidPrice;
 	}
-	public void setBidPrice(BigDecimal bidPrice) {
+	public void setBidPrice(String bidPrice) {
 		this.bidPrice = bidPrice;
 	}
 	public int getNumOfInstances() {

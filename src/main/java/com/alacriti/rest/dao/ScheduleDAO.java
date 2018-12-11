@@ -43,7 +43,7 @@ public class ScheduleDAO {
 					ScheduleRequest scheduleRequest=new ScheduleRequest();
 					scheduleRequest.setSpinutRequestId(rs.getLong(1));
 					scheduleRequest.setAmiId(rs.getString(2));
-					scheduleRequest.setBidPrice(rs.getBigDecimal(3));
+					scheduleRequest.setBidPrice(rs.getString(3));
 					scheduleRequest.setInstanceType(rs.getString(4));
 					scheduleRequest.setSecurityGroup(rs.getString(5));
 					scheduleRequest.setNumOfInstances(rs.getInt(6));

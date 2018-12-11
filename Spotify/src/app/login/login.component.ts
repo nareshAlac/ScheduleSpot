@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         if(data.isValidUser)
         {
           this.rootService.loginSuccessfull = true;
+          this.rootService.userId = data.userId;
           this.log.debug('Redirecting to Dashboard');
           this.router.navigate(['/dashboard']);
         }

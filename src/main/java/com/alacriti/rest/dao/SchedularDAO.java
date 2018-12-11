@@ -1,5 +1,6 @@
 package com.alacriti.rest.dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -17,7 +18,7 @@ public class SchedularDAO {
         int result = 0;
         int i=0;
 		StringBuilder saveSql = new StringBuilder();
-		saveSql.append("INSERT INTO spinut_request_tbl(spinut_request_id, ami_id, price, instance_type, "
+		saveSql.append("INSERT INTO spinut_request_tbl(ami_id, price, instance_type, "
 				+ "security_group, key_pair, no_of_instances, schedule_start, schedule_end, schedule_days, "
 				+ "request_status) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -30,9 +31,8 @@ public class SchedularDAO {
 			System.out.println("scheduleDays:: "+scheduleDays.toString());
 			
 			ps =  conn.prepareStatement(saveSql.toString());
-			ps.setLong(++i, request.getSpinutRequestId());
 			ps.setString(++i, request.getAmiId());
-			ps.setBigDecimal(++i, request.getBidPrice());
+			ps.setBigDecimal(++i,new BigDecimal(request.getBidPrice()));
 			ps.setString(++i, request.getInstanceType());
 			ps.setString(++i, request.getSecurityGroup());
 			ps.setString(++i, request.getSshKeyPair());

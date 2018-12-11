@@ -121,6 +121,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
     scheduler.scheduleStartDate = this.scheduleStartDate.value;
     scheduler.scheduleEndDate = this.scheduleEndDate.value;
     scheduler.scheduleDays = this.scheduleDays.value;
+    scheduler.userId = this.rootService.userId;
     this.schedularService.scheduleSpotInstances(scheduler)
       .then((resp) => {
         this.log.debug('Success Response from Schedule Spot Request');

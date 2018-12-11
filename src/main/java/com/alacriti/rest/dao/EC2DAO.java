@@ -74,18 +74,18 @@ public class EC2DAO extends BaseDAO
 		buff.append("REQUESTED_TIME)  VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP);");
 		PreparedStatement ps = connection.prepareStatement(buff.toString(),Statement.RETURN_GENERATED_KEYS);
 		int i = 0;
-		ps.setString(i++, spIn.getAmiId());
-		ps.setDouble(i++, new Double(spIn.getPrice()));
-		ps.setString(i++, spIn.getInstanceType());
-		ps.setString(i++, spIn.getSecGrpId());
-		ps.setString(i++, spIn.getKeyName());
-		ps.setInt(i++, spIn.getInstanceCapacity());
-		ps.setTimestamp(i++, new Timestamp(spIn.getStartTime().getTime()));
-		ps.setTimestamp(i++, new Timestamp(spIn.getEndTime().getTime()));
-		ps.setString(i++, spIn.getScheduleDays());
-		ps.setInt(i++, spIn.getStatus());
+		ps.setString(++i, spIn.getAmiId());
+		ps.setDouble(++i, new Double(spIn.getPrice()));
+		ps.setString(++i, spIn.getInstanceType());
+		ps.setString(++i, spIn.getSecGrpId());
+		ps.setString(++i, spIn.getKeyName());
+		ps.setInt(++i, spIn.getInstanceCapacity());
+		ps.setTimestamp(++i, new Timestamp(spIn.getStartTime().getTime()));
+		ps.setTimestamp(++i, new Timestamp(spIn.getEndTime().getTime()));
+		ps.setString(++i, spIn.getScheduleDays());
+		ps.setInt(++i, spIn.getStatus());
 		//ps.setString(i++, session.getUserId);
-		ps.setInt(i++, 1);
+		ps.setLong(++i, spIn.getUserId());
 		int val = ps.executeUpdate();
 
 		if (val != 1)
@@ -109,10 +109,10 @@ public class EC2DAO extends BaseDAO
 		buff.append("SPINUT_REQUEST_ID,INSTANCE_STATUS) values(?,?,?,?);");
 		PreparedStatement ps = connection.prepareStatement(buff.toString(), Statement.RETURN_GENERATED_KEYS);
 		int i = 0;
-		ps.setString(i++, spIn.getSpInId());
-		ps.setString(i++, spIn.getSpInAWSReqId());
-		ps.setLong(i++, spIn.getSpInUtReqId());
-		ps.setInt(i++, spIn.getStatus());
+		ps.setString(++i, spIn.getSpInId());
+		ps.setString(++i, spIn.getSpInAWSReqId());
+		ps.setLong(++i, spIn.getSpInUtReqId());
+		ps.setInt(++i, spIn.getStatus());
 		int val = ps.executeUpdate();
 
 	}

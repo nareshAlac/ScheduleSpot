@@ -33,7 +33,7 @@ public class SpInReqJob implements Job
 		{
 			if (isNeededToBid(spIn, weekDay))
 			{
-				//ec2Delegate.requestSpIn(spIn);
+				ec2Delegate.requestSpIn(spIn);
 			}
 		}
 	}

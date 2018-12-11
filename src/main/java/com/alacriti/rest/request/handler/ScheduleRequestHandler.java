@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +18,13 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
+import com.alacriti.constants.AppConstants;
+import com.alacriti.delegate.EC2Delegate;
 import com.alacriti.delegate.ScheduleRequestDelegate;
 import com.alacriti.model.ScheduleRequest;
 import com.alacriti.model.ScheduleRequestSpec;
 import com.alacriti.model.ScheduleResponse;
+import com.alacriti.model.SpIn;
 import com.alacriti.rest.delegate.SpotRequestDelegate;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,14 +45,20 @@ public class ScheduleRequestHandler {
 			InputStreamReader reader) throws Exception {
 		ScheduleRequest requestMsg=null;
 //		ScheduleResponse responseMsg = new ScheduleResponse();
-		boolean result;
+		boolean result=false;
 		System.out.println("Schedule(): Starts");
 		try {
 			
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 System.out.println("requestMsg: "+requestMsg.toString());
 			 ScheduleRequestDelegate spotDelegate=new ScheduleRequestDelegate();
-			 result=spotDelegate.saveScheduler(requestMsg);
+			 
+					EC2Delegate spInDelegate = new EC2Delegate();
+					SpIn spin=new SpIn();
+					populateSpInUtRequest(requestMsg,spin);
+					  spInDelegate.processSpInRequest(spin);
+			 //result=spotDelegate.saveScheduler(requestMsg);
+			 
 			
 			 System.out.println("Schedule(): Ends");
 			 System.out.println("Returning result: "+result);
@@ -59,6 +69,26 @@ public class ScheduleRequestHandler {
 		return false;
 	}
 	
+	private void populateSpInUtRequest(ScheduleRequest requestMsg, SpIn spin) {
+	spin.setAmiId(requestMsg.getAmiId());
+	spin.setPrice(requestMsg.getBidPrice());
+	spin.setInstanceType(requestMsg.getInstanceType());
+	spin.setSecGrpId(requestMsg.getSecurityGroup());
+	spin.setKeyName(requestMsg.getSshKeyPair());
+	spin.setInstanceCapacity(requestMsg.getNumOfInstances());
+	spin.setStartTime((Date) requestMsg.getScheduleStartDate());
+	spin.setEndTime((Date) requestMsg.getScheduleEndDate());
+	StringBuilder scheduleDays = new StringBuilder();
+	for(String day: requestMsg.getScheduleDays()){
+		scheduleDays.append(day+", ");
+	}
+	
+	spin.setScheduleDays(scheduleDays.toString());
+	spin.setStatus(AppConstants.SCHEDULAR_STATUS_OPEN);
+	spin.setUserId(requestMsg.getUserId());
+		
+	}
+
 	@GET
 	@Path("/createschedule")
 	@Produces(MediaType.APPLICATION_JSON)

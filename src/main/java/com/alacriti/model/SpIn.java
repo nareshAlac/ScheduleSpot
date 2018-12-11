@@ -2,7 +2,7 @@ package com.alacriti.model;
 
 import java.util.Date;
 
-public class SpIn {
+public class SpIn extends BaseMsg {
 
 	public SpIn(int requestId)
 	{
