@@ -64,14 +64,15 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <!--label>Schedule Start Date/Time</label-->
-    <input matInput mdc-datetime-picker="" date="true" time="true" type="text" placeholder="Schedule Start Date/Time" max-date="dateTimeEnd" ng-model="dateTimeStart" readonly="readonly" id="input_0" formControlName="scheduleStartDate">
-    <!--div class="md-errors-spacer"></div-->
+    <input matInput [matDatepicker]="startPicker" placeholder="Schedule Start Date" formControlName="scheduleStartDate">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput mdc-datetime-picker="" date="true" time="true" type="text" placeholder="Schedule End Date/Time" max-date="dateTimeEnd" ng-model="dateTimeStart" readonly="readonly" id="input_1" formControlName="scheduleEndDate">
-    <!--input time="false" date="true" mdc-datetime-picker="" type="text" id="date" placeholder="Schedule End Date" ng-model="date" min-date="minDate" max-date="maxDate" class=" md-input" readonly="readonly" formControlName="scheduleEndDate"-->
+    <input matInput [matDatepicker]="endPicker" placeholder="Schedule End Date" formControlName="scheduleEndDate">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">

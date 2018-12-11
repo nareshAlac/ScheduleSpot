@@ -37,19 +37,26 @@ public class ScheduleRequestHandler {
 	@Path("/schedule")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Object schedule(@Context HttpServletRequest request, @Context HttpServletResponse response,
+	public boolean schedule(@Context HttpServletRequest request, @Context HttpServletResponse response,
 			InputStreamReader reader) throws Exception {
 		ScheduleRequest requestMsg=null;
-		ScheduleResponse responseMsg = new ScheduleResponse();
+//		ScheduleResponse responseMsg = new ScheduleResponse();
+		boolean result;
 		System.out.println("Schedule(): Starts");
 		try {
-			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			
-			return responseMsg;
+			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
+			 System.out.println("requestMsg: "+requestMsg.toString());
+			 ScheduleRequestDelegate spotDelegate=new ScheduleRequestDelegate();
+			 result=spotDelegate.saveScheduler(requestMsg);
+			
+			 System.out.println("Schedule(): Ends");
+			 System.out.println("Returning result: "+result);
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return false;
 	}
 	
 	@GET
@@ -58,16 +65,17 @@ public class ScheduleRequestHandler {
 	public Object createschedule(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
 		//ScheduleRequest requestMsg=null;
 		System.out.println("createschedule(): Starts");
+		 ScheduleRequestSpec scheduleRequestSpec = new ScheduleRequestSpec();
 		try {
 			 //requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 
 			 ScheduleRequestDelegate scheduleRequest = new ScheduleRequestDelegate();
-			 ScheduleRequestSpec scheduleRequestSpec = scheduleRequest.createschedule();
+			  scheduleRequestSpec = scheduleRequest.createschedule();
 			return scheduleRequestSpec;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "";
+		return scheduleRequestSpec;
 	}
 	@POST
 	@Path("/getrequestlist")
@@ -77,7 +85,7 @@ public class ScheduleRequestHandler {
 			InputStreamReader reader) throws Exception {
 		ScheduleRequest requestMsg=null;
 		ArrayList<ScheduleRequest> responseMsg=new ArrayList();
-		System.out.println("Schedule(): Starts");
+		System.out.println("getRequestList(): Starts");
 		try {
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 SpotRequestDelegate loginDelegate=new SpotRequestDelegate();

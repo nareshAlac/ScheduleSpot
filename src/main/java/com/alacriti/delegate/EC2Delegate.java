@@ -209,6 +209,11 @@ public class EC2Delegate extends BaseDelegate
 		{
 			System.out.println("Error in Checking SpIns" + exp);
 		}
+		finally
+		{
+			if(connection!=null)
+				endDBTransaction(connection);
+		}
 		return spIns;
 	}
 
@@ -223,6 +228,11 @@ public class EC2Delegate extends BaseDelegate
 		catch (Exception e)
 		{
 			System.out.println("Error in Inserting SpInUtReq " + e);
+		}
+		finally
+		{
+			if(connection!=null)
+				endDBTransaction(connection);
 		}
 		return null;
 	}
@@ -239,6 +249,11 @@ public class EC2Delegate extends BaseDelegate
 		catch (Exception e)
 		{
 			System.out.println("Error in Inserting SpIn " + e);
+		}
+		finally
+		{
+			if(connection!=null)
+				endDBTransaction(connection);
 		}
 	}
 }

@@ -1,20 +1,29 @@
 package com.alacriti.model;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 
 public class ScheduleRequest extends BaseMsg {
+	private String region;
 	private BigDecimal bidPrice;
 	private int numOfInstances;
 	private String instanceType;
 	private String amiId;
 	private String securityGroup;
 	private String sshKeyPair;
-	private Date startTime;
-	private Date endTime;
-	private String days;
+	private Date scheduleStartDate;
+	private Date scheduleEndDate;
+	private String[] scheduleDays;
 	private long spinutRequestId;
 	
+	
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public long getSpinutRequestId() {
 		return spinutRequestId;
 	}
@@ -51,31 +60,40 @@ public class ScheduleRequest extends BaseMsg {
 	public void setInstanceType(String instanceType) {
 		this.instanceType = instanceType;
 	}
-	
-	public String getDays() {
-		return days;
-	}
-	public void setDays(String days) {
-		this.days = days;
-	}
 	public String getSecurityGroup() {
 		return securityGroup;
 	}
 	public void setSecurityGroup(String securityGroup) {
 		this.securityGroup = securityGroup;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getScheduleStartDate() {
+		return scheduleStartDate;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setScheduleStartDate(Date scheduleStartDate) {
+		this.scheduleStartDate = scheduleStartDate;
 	}
-	public Date getEndTime() {
-		return endTime;
+	public Date getScheduleEndDate() {
+		return scheduleEndDate;
 	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setScheduleEndDate(Date scheduleEndDate) {
+		this.scheduleEndDate = scheduleEndDate;
 	}
+	public String[] getScheduleDays() {
+		return scheduleDays;
+	}
+	public void setScheduleDays(String[] scheduleDays) {
+		this.scheduleDays = scheduleDays;
+	}
+	@Override
+	public String toString() {
+		return "ScheduleRequest [region=" + region + ", bidPrice=" + bidPrice + ", numOfInstances=" + numOfInstances
+				+ ", instanceType=" + instanceType + ", amiId=" + amiId + ", securityGroup=" + securityGroup
+				+ ", sshKeyPair=" + sshKeyPair + ", scheduleStartDate=" + scheduleStartDate + ", scheduleEndDate="
+				+ scheduleEndDate + ", scheduleDays=" + Arrays.toString(scheduleDays) + ", spinutRequestId="
+				+ spinutRequestId + "]";
+	}
+	
+	
 	
 
 }

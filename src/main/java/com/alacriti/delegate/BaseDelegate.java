@@ -14,7 +14,7 @@ public class BaseDelegate
 {
 
 	private Logger log = Logger.getLogger(BaseDelegate.class);
-    private Connection connection;
+    protected Connection connection;
 
     public void setConnection(Connection _connection)
     {

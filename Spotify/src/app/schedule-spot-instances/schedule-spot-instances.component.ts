@@ -110,24 +110,33 @@ export class ScheduleSpotInstancesComponent implements OnInit {
     this.log.debug('bidPrice : ' + this.bidPrice.value);
     this.log.debug('instanceType : ' + this.instanceType.value);
     this.log.debug('daysOfWeek : ' + this.scheduleDays.value);
-    const schedular = new SchedularModel();
-    schedular.region = this.region.value;
-    schedular.bidPrice = this.bidPrice.value;
-    schedular.instanceType = this.instanceType.value;
-    schedular.amiId = this.amiId.value;
-    schedular.numOfInstances = this.numOfInstances.value;
-    schedular.securityGroup = this.securityGroup.value;
-    schedular.sshKeyPair = this.sshKeyPair.value;
-    schedular.scheduleDays = this.scheduleDays.value;
-    this.schedularService.scheduleSpotInstances(schedular)
+    const scheduler = new SchedularModel();
+    scheduler.region = this.region.value;
+    scheduler.bidPrice = this.bidPrice.value;
+    scheduler.instanceType = this.instanceType.value;
+    scheduler.amiId = this.amiId.value;
+    scheduler.numOfInstances = this.numOfInstances.value;
+    scheduler.securityGroup = this.securityGroup.value;
+    scheduler.sshKeyPair = this.sshKeyPair.value;
+    scheduler.scheduleStartDate = this.scheduleStartDate.value;
+    scheduler.scheduleEndDate = this.scheduleEndDate.value;
+    scheduler.scheduleDays = this.scheduleDays.value;
+    this.schedularService.scheduleSpotInstances(scheduler)
       .then((resp) => {
         this.log.debug('Success Response from Schedule Spot Request');
         this.log.debug(resp);
-        const data = <BaseModel>resp;
-        this.log.debug(data.responseMessage);
-        this.rootService.loginSuccessfull = true;
-        this.log.debug('Redirecting to Dashboard');
-        this.router.navigate(['/dashboard']);
+        if (resp === true) {
+          this.log.debug('Redirecting to Dashboard');
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.log.debug('Redirecting to Schedule Spot Request Page');
+          this.router.navigate(['/dashboard/scheduleSpotInstances']);
+        }
+        // const data = <BaseModel>resp;
+        // this.log.debug(data.responseMessage);
+        // this.rootService.loginSuccessfull = true;
+
+
       })
       .catch((err) => {
         this.log.debug('Error Response from Schedule Spot Request');

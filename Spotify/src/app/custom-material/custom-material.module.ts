@@ -8,11 +8,11 @@ import {
   MatProgressSpinner, MatSelectModule,
   MatSidenavModule,
   MatSpinner,
-  MatTableModule, MatPaginatorModule, MatFormFieldModule
+  MatTableModule, MatPaginatorModule, MatFormFieldModule, MatNativeDateModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
-
+import { MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -31,7 +31,9 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [],
   exports: [
@@ -48,7 +50,9 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class CustomMaterialModule {

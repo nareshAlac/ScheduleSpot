@@ -11,7 +11,8 @@ import com.alacriti.model.ScheduleRequest;
 
 public class SchedularDAO {
 
-	public int saveSchedular(ScheduleRequest request, Connection conn){
+	public int saveScheduler(ScheduleRequest request, Connection conn){
+		System.out.println("SchedularDAO saveScheduler() start");
 		PreparedStatement ps = null;
         ResultSet rs = null;
         int result = 0;
@@ -23,6 +24,12 @@ public class SchedularDAO {
 
 		try
         {
+			StringBuilder scheduleDays = new StringBuilder();
+			for(String day: request.getScheduleDays()){
+				scheduleDays.append(day+", ");
+			}
+			System.out.println("scheduleDays:: "+scheduleDays.toString());
+			
 			ps =  conn.prepareStatement(saveSql.toString());
 			ps.setLong(++i, request.getSpinutRequestId());
 			ps.setString(++i, request.getAmiId());
@@ -31,9 +38,9 @@ public class SchedularDAO {
 			ps.setString(++i, request.getSecurityGroup());
 			ps.setString(++i, request.getSshKeyPair());
 			ps.setInt(++i, request.getNumOfInstances());
-			ps.setDate(++i, (Date) request.getStartTime());
-			ps.setDate(++i, (Date) request.getEndTime());
-			ps.setString(++i, request.getDays());
+			ps.setDate(++i, (Date) request.getScheduleStartDate());
+			ps.setDate(++i, (Date) request.getScheduleEndDate());
+			ps.setString(++i, scheduleDays.toString());
 			ps.setInt(++i, AppConstants.SCHEDULAR_STATUS_OPEN);
 			
 			result = ps.executeUpdate();
@@ -48,6 +55,8 @@ public class SchedularDAO {
 		} finally {
 			close(ps, rs);
 		}
+		
+		System.out.println("SchedularDAO saveScheduler() end");  
 		return result;
 	}
 		

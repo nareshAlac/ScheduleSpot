@@ -1,7 +1,7 @@
 import {BaseModel} from './BaseModel';
 import {AMI} from './AMI';
 
-export class SchedularModel extends BaseModel{
+export class SchedularModel extends BaseModel {
   regions: string[];
   bidPrice: string;
   numOfInstances: number;
@@ -19,5 +19,5 @@ export class SchedularModel extends BaseModel{
 
   scheduleStartDate: any;
   scheduleEndDate: any;
-  scheduleDays: any;
+  scheduleDays: string[];
 }

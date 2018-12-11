@@ -66,15 +66,14 @@ public class ScheduleRequestDelegate extends BaseDelegate
         {
         	connection=startDBTransaction();
         	SchedularDAO dao = new SchedularDAO();
-        	int val = dao.saveSchedular(request, connection);
-        	if (val == 0){
+        	int val = dao.saveScheduler(request, connection);
+        	if (val == 1){
         		System.out.println("inserted "+val +" records"); 
         		return true;
         	}
         	else{
         		System.out.println("inserted "+ val +" records. There is a problem in saving the schedular");
         	}
-        	
         }
         catch (Exception exp)
         {
