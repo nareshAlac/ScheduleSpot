@@ -126,6 +126,29 @@ public class ScheduleRequestHandler {
 		}
 		return null;
 	}
+	
+	
+	
+	@POST
+	@Path("/snsnotification")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Object snsNotification(@Context HttpServletRequest request, @Context HttpServletResponse response,
+			InputStreamReader reader) throws Exception {
+		//ScheduleRequest requestMsg=null;
+		ArrayList<ScheduleRequest> responseMsg=new ArrayList();
+		System.out.println("snsNotification(): Starts");
+		try {
+			 //requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
+			System.out.println("reader"+ reader);
+			 
+			 return responseMsg;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	 protected <T> T getMsgFromReader(InputStreamReader reader, Class<T> requestMsg)
 	    {
 	        Object msg = null;
