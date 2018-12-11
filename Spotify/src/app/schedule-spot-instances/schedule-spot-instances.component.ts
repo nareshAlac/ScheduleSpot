@@ -14,7 +14,7 @@ import {ScheduleRequestSpec} from '../models/ScheduleRequestSpec';
 import { ReplaySubject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
+import {SecurityGroup} from '../models/SecurityGroup';
 
 @Component({
   selector: 'app-schedule-spot-instances',
@@ -46,7 +46,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   sshKeyPairs: string[];
   instanceTypes: string[];
   amiIds: Array<AMI>;
-  securityGroups: string[];
+  securityGroups: Array<SecurityGroup>;
 
   keys = Object.keys;
   daysOfWeek = DaysOfWeek;
@@ -78,12 +78,13 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   this.schedularService.createSpotSchedule()
   .then((resp) => {
     this.log.debug('Success Response from create schedule Request');
-    this.log.debug(resp);
     const  data = <ScheduleRequestSpec> resp;
     this.log.debug(data);
-    this.log.debug(data.amiIds);
     this.amiIds = data.amiIds;
-    this.log.debug(this.amiIds);
+    this.regions = data.regions;
+    this.instanceTypes = data.instanceTypes;
+    this.securityGroups = data.securityGroups;
+    this.sshKeyPairs = data.keypairs;
     // set initial selection
     this.amiId.setValue(this.amiIds[10]);
     this.filteredAmis.next(this.amiIds.slice());

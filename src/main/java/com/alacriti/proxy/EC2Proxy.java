@@ -8,6 +8,7 @@ import com.alacriti.model.AMI;
 import com.alacriti.model.SecGrp;
 import com.alacriti.model.SpIn;
 import com.alacriti.utils.AWSClientFactory;
+import com.amazonaws.regions.RegionUtils;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.model.DescribeImagesRequest;
 import com.amazonaws.services.ec2.model.DescribeImagesResult;
@@ -107,5 +108,16 @@ public class EC2Proxy {
 		instanceTypes.add(InstanceType.M1Small.name());
 		return instanceTypes;
 		
+	}
+	public static List<String> getAwsRegions()
+	{
+	 List<com.amazonaws.regions.Region> regions = RegionUtils.getRegions();
+	 List<String> regionList = new ArrayList<String>();
+	 for(com.amazonaws.regions.Region region: regions)
+	 {
+		 regionList.add(region.getName());
+	 }
+	 return regionList;
+	
 	}
 }

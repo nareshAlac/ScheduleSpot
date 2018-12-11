@@ -28,20 +28,21 @@ public class ScheduleRequestDelegate extends BaseDelegate
         log.debug("isValidUser starts() : ");
         System.out.println("ScheduleRequestDelegate createschedule() start");
         ScheduleRequestSpec scheduleRequestSpec = new ScheduleRequestSpec();
-        Connection connection = null;
+        //Connection connection = null;
         try
         {
-        	connection=startDBTransaction();
+        	//connection=startDBTransaction();
 			List<AMI> amiIds = EC2Proxy.getAMIs();
         	List<String> keyPairs = EC2Proxy.getAvailableKeyPairs();
         	List<SecGrp> secGroups = EC2Proxy.getSecGrps();
         	List<String> instanceTypes = EC2Proxy.getInstanceTypes();
+        	List<String> regions = EC2Proxy.getAwsRegions();
         	
         	scheduleRequestSpec.setAmiIds(amiIds);
         	scheduleRequestSpec.setKeypairs(keyPairs);
         	scheduleRequestSpec.setSecurityGroups(secGroups);
         	scheduleRequestSpec.setInstanceTypes(instanceTypes);
-        	//ScheduleBO bo = new ScheduleBO();
+        	scheduleRequestSpec.setRegions(regions);
         	
             System.out.println("ScheduleRequestDelegate createschedule() end");        
            
@@ -51,8 +52,8 @@ public class ScheduleRequestDelegate extends BaseDelegate
             System.out.println("Error in Checking createschedule"+ exp);
             log.error("Error in Checking createschedule", exp);
         }finally{
-        	if(connection !=null)
-        		endDBTransaction(connection);
+        	//if(connection !=null)
+        	//	endDBTransaction(connection);
         }
         log.debug("createschedule end()");
         return scheduleRequestSpec;

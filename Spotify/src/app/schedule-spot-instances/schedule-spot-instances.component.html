@@ -27,16 +27,6 @@
   </mat-form-field>
 
 
-<!--  <mat-form-field class="example-full-width">
-      &lt;!&ndash;mat-select placeholder="AMI ID" [formControl]="animalControl" required&ndash;&gt;
-    <mat-select placeholder="AMI ID" formControlName="amiId" required>
-        &lt;!&ndash;mat-option>&#45;&#45;</mat-option &ndash;&gt;
-        <mat-option *ngFor="let amiId of amiIds" [value]="amiId">
-          {{amiId}}
-        </mat-option>
-    </mat-select>
-  </mat-form-field>-->
-
     <mat-form-field class="example-full-width">
       <mat-select formControlName="amiId" placeholder="AMI ID" #singleSelect>
         <ngx-mat-select-search formControlName="amiFilterId"></ngx-mat-select-search>
@@ -53,8 +43,8 @@
 
   <mat-form-field class="example-full-width">
     <mat-select placeholder="Security Group" formControlName="securityGroup" required>
-      <mat-option *ngFor="let securityGroup of securityGroups" [value]="securityGroup">
-        {{securityGroup}}
+      <mat-option *ngFor="let securityGroup of securityGroups" [value]="securityGroup.name">
+        {{securityGroup.name}}
       </mat-option>
     </mat-select>
     <!--textarea matInput placeholder="Security Group" formControlName="securityGroup" name="securityGroup"></textarea-->

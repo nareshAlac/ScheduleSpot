@@ -8,6 +8,7 @@ public class ScheduleRequestSpec {
 	private List<AMI> amiIds = new ArrayList<AMI>();
 	private List<SecGrp> securityGroups = new ArrayList<SecGrp>();
 	private List<String> keypairs = new ArrayList<String>();
+	private List<String> regions = new ArrayList<String>();
 	
 	public List<String> getInstanceTypes() {
 		return instanceTypes;
@@ -36,5 +37,11 @@ public class ScheduleRequestSpec {
 	}
 	public void setKeypairs(List<String> keypairs) {
 		this.keypairs = keypairs;
+	}
+	public List<String> getRegions() {
+		return regions;
+	}
+	public void setRegions(List<String> regions) {
+		this.regions = regions;
 	}
 }
