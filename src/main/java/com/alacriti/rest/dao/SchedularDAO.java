@@ -14,7 +14,6 @@ public class SchedularDAO {
 	public int saveScheduler(ScheduleRequest request, Connection conn){
 		System.out.println("SchedularDAO saveScheduler() start");
 		PreparedStatement ps = null;
-        ResultSet rs = null;
         int result = 0;
         int i=0;
 		StringBuilder saveSql = new StringBuilder();
@@ -53,11 +52,36 @@ public class SchedularDAO {
 			System.out.println("Exception" + e.getMessage()+ e);
 			e.printStackTrace();
 		} finally {
-			close(ps, rs);
+			close(ps, null);
 		}
 		
 		System.out.println("SchedularDAO saveScheduler() end");  
 		return result;
+	}
+	
+	public long getRequestIdSequence(Connection conn, boolean isCloseConn){
+		System.out.println("SchedularDAO getSequence() start");
+		PreparedStatement ps = null;
+        long requestId = 0;
+		StringBuilder saveSql = new StringBuilder();
+		saveSql.append("SELECT spinutrequestid.seq_NEXTVAL FROM dual");
+		try
+        {
+			ps =  conn.prepareStatement(saveSql.toString());
+			requestId = ps.executeUpdate();
+        }
+		catch(SQLException e) {
+			System.out.println("SQLException" + e.getMessage()+ e);
+			e.printStackTrace();
+		}
+		catch (Exception e) {
+			System.out.println("Exception" + e.getMessage()+ e);
+			e.printStackTrace();
+		} finally {
+			if(isCloseConn)
+				close(ps, null);
+		}
+		return requestId;
 	}
 		
 	public void close(PreparedStatement pr, ResultSet rs)

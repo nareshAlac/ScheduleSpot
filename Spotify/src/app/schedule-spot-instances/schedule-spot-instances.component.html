@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>ScheduleSpotInstance</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
+<mat-card-content>
 <form class="example-form" [formGroup]="schedularForm">
   <mat-form-field class="example-full-width">
     <mat-select placeholder="Region" formControlName="region" required>
@@ -10,7 +10,6 @@
         {{region}}
       </mat-option>
     </mat-select>
-    <!--input matInput placeholder="" formControlName="bidPrice" name="bidPrice"-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -19,7 +18,6 @@
         {{instanceType}}
       </mat-option>
     </mat-select>
-    <!--textarea matInput placeholder="Instance Type" formControlName="instanceType" name="instanceType"></textarea-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -27,19 +25,14 @@
   </mat-form-field>
 
 
-    <mat-form-field class="example-full-width">
-      <mat-select formControlName="amiId" placeholder="AMI ID" #singleSelect>
-        <ngx-mat-select-search formControlName="amiFilterId"></ngx-mat-select-search>
-        <mat-option *ngFor="let bank of filteredAmis | async" [value]="bank.id">
-          {{bank.desc}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-      <!--mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
-      <mat-hint>{{animalControl.value?.sound}}</mat-hint-->
-
-  <!--textarea-- matInput placeholder="AMI ID" formControlName="amiId" name="amiId"></textarea-->
+  <mat-form-field class="example-full-width">
+    <mat-select formControlName="amiId" placeholder="AMI ID" #singleSelect>
+      <ngx-mat-select-search formControlName="amiFilterId"></ngx-mat-select-search>
+      <mat-option *ngFor="let bank of filteredAmis | async" [value]="bank.id">
+        {{bank.desc}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-select placeholder="Security Group" formControlName="securityGroup" required>
@@ -47,11 +40,9 @@
         {{securityGroup.name}}
       </mat-option>
     </mat-select>
-    <!--textarea matInput placeholder="Security Group" formControlName="securityGroup" name="securityGroup"></textarea-->
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <!--textarea matInput placeholder="SSH KeyPair" [formControlName]="sshKeyPairs" name="sshKeyPair"></textarea-->
     <mat-select placeholder="SSH Key Pair" formControlName="sshKeyPair" required>
       <mat-option *ngFor="let sshKeyPair of sshKeyPairs" [value]="sshKeyPair">
         {{sshKeyPair}}
@@ -75,18 +66,18 @@
     <mat-datepicker #endPicker></mat-datepicker>
   </mat-form-field>
 
+
   <mat-form-field class="example-full-width">
     <mat-select placeholder="Days of Week" formControlName="scheduleDays" multiple>
-      <mat-option *ngFor="let day of keys(daysOfWeek)" [value]="day">{{daysOfWeek[day]}}</mat-option>
+      <mat-option *ngFor="let day of keys(daysOfWeek)" [value]="daysOfWeek[day]">{{day}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-
 </form>
 
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="schedule()" color="primary">Schedule</button>
-  </mat-card-actions>
+</mat-card-content>
 
+<mat-card-actions>
+  <button mat-raised-button (click)="schedule()" color="primary">Schedule</button>
+</mat-card-actions>
 </mat-card>

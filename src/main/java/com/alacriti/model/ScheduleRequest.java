@@ -1,8 +1,9 @@
 package com.alacriti.model;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.Arrays;
-import java.util.Date;
+	
 
 public class ScheduleRequest extends BaseMsg {
 	private String region;

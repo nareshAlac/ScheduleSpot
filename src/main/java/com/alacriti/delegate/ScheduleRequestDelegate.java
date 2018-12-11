@@ -62,10 +62,13 @@ public class ScheduleRequestDelegate extends BaseDelegate
     public boolean saveScheduler(ScheduleRequest request){
     	System.out.println("ScheduleRequestDelegate saveScheduler() start");
     	Connection connection = null;
+    	long requestId;
         try
         {
         	connection=startDBTransaction();
         	SchedularDAO dao = new SchedularDAO();
+        	requestId = dao.getRequestIdSequence(connection, false);
+        	request.setSpinutRequestId(requestId);
         	int val = dao.saveScheduler(request, connection);
         	if (val == 1){
         		System.out.println("inserted "+val +" records"); 
