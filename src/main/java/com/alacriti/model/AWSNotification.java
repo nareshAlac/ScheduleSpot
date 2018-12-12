@@ -7,159 +7,132 @@ public class AWSNotification
 	{
 	}
 
-	private String type;
+	private String Type;
 
-	private String messageId;
+	private String MessageId;
 
-	private String token;
+	private String Token;
 
-	private String topicArn;
+	private String TopicArn;
 
-	private String subject;
+	private String Subject;
 
-	private String message;
+	private String Message;
 
-	private String subscriptionUrl;
+	private String SubscribeURL;
 
-	private String unsubscribeURL;
+	private String UnsubscribeURL;
 
-	private String timestamp;
+	private String Timestamp;
 
-	private String signatureVersion;
+	private String SignatureVersion;
 
-	private String signature;
+	private String Signature;
 
-	private String signingCertURL;
+	private String SigningCertURL;
 
-	public String getType()
-	{
-		return type;
+	public String getType() {
+		return Type;
 	}
 
-	public void setType(String type)
-	{
-		this.type = type;
+	public String getMessageId() {
+		return MessageId;
 	}
 
-	public String getMessageId()
-	{
-		return messageId;
+	public String getToken() {
+		return Token;
 	}
 
-	public void setMessageId(String messageId)
-	{
-		this.messageId = messageId;
+	public String getTopicArn() {
+		return TopicArn;
 	}
 
-	public String getToken()
-	{
-		return token;
+	public String getSubject() {
+		return Subject;
 	}
 
-	public void setToken(String token)
-	{
-		this.token = token;
+	public String getMessage() {
+		return Message;
 	}
 
-	public String getTopicArn()
-	{
-		return topicArn;
+	public String getSubscribeURL() {
+		return SubscribeURL;
 	}
 
-	public void setTopicArn(String topicArn)
-	{
-		this.topicArn = topicArn;
+	public String getUnsubscribeURL() {
+		return UnsubscribeURL;
 	}
 
-	public String getSubject()
-	{
-		return subject;
+	public String getTimestamp() {
+		return Timestamp;
 	}
 
-	public void setSubject(String subject)
-	{
-		this.subject = subject;
+	public String getSignatureVersion() {
+		return SignatureVersion;
 	}
 
-	public String getMessage()
-	{
-		return message;
+	public String getSignature() {
+		return Signature;
 	}
 
-	public void setMessage(String message)
-	{
-		this.message = message;
+	public String getSigningCertURL() {
+		return SigningCertURL;
 	}
 
-	public String getSubscriptionUrl()
-	{
-		return subscriptionUrl;
+	public void setType(String type) {
+		Type = type;
 	}
 
-	public void setSubscriptionUrl(String subscriptionUrl)
-	{
-		this.subscriptionUrl = subscriptionUrl;
+	public void setMessageId(String messageId) {
+		MessageId = messageId;
 	}
 
-	public String getUnsubscribeURL()
-	{
-		return unsubscribeURL;
+	public void setToken(String token) {
+		Token = token;
 	}
 
-	public void setUnsubscribeURL(String unsubscribeURL)
-	{
-		this.unsubscribeURL = unsubscribeURL;
+	public void setTopicArn(String topicArn) {
+		TopicArn = topicArn;
 	}
 
-	public String getTimestamp()
-	{
-		return timestamp;
+	public void setSubject(String subject) {
+		Subject = subject;
 	}
 
-	public void setTimestamp(String timestamp)
-	{
-		this.timestamp = timestamp;
+	public void setMessage(String message) {
+		Message = message;
 	}
 
-	public String getSignatureVersion()
-	{
-		return signatureVersion;
+	public void setSubscribeURL(String subscribeURL) {
+		SubscribeURL = subscribeURL;
 	}
 
-	public void setSignatureVersion(String signatureVersion)
-	{
-		this.signatureVersion = signatureVersion;
+	public void setUnsubscribeURL(String unsubscribeURL) {
+		UnsubscribeURL = unsubscribeURL;
 	}
 
-	public String getSignature()
-	{
-		return signature;
+	public void setTimestamp(String timestamp) {
+		Timestamp = timestamp;
 	}
 
-	public void setSignature(String signature)
-	{
-
-		this.signature = signature;
+	public void setSignatureVersion(String signatureVersion) {
+		SignatureVersion = signatureVersion;
 	}
 
-	public String getSigningCertURL()
-	{
-		return signingCertURL;
+	public void setSignature(String signature) {
+		Signature = signature;
 	}
 
-	public void setSigningCertURL(String signingCertURL)
-	{
-		this.signingCertURL = signingCertURL;
+	public void setSigningCertURL(String signingCertURL) {
+		SigningCertURL = signingCertURL;
 	}
 
 	@Override
-	public String toString()
-	{
-		return "{\"type\":\"" + type + "\", messageId\":\"" + messageId + "\", token\":\"" + token + "\", topicArn\":\""
-				+ topicArn + "\", subject\":\"" + subject + "\", message\":\"" + message + "\", subscriptionUrl\":\""
-				+ subscriptionUrl + "\", unsubscribeURL\":\"" + unsubscribeURL + "\", timestamp\":\"" + timestamp
-				+ "\", signatureVersion\":\"" + signatureVersion + "\", signature\":\"" + signature
-				+ "\", signingCertURL\":\"" + signingCertURL + "\"}";
+	public String toString() {
+		return "AWSNotification [Type=" + Type + ", MessageId=" + MessageId + ", Token=" + Token + ", TopicArn="
+				+ TopicArn + ", Subject=" + Subject + ", Message=" + Message + ", SubscribeURL=" + SubscribeURL
+				+ ", UnsubscribeURL=" + UnsubscribeURL + ", Timestamp=" + Timestamp + ", SignatureVersion="
+				+ SignatureVersion + ", Signature=" + Signature + ", SigningCertURL=" + SigningCertURL + "]";
 	}
 
 }

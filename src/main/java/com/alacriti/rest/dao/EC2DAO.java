@@ -39,29 +39,36 @@ public class EC2DAO extends BaseDAO
 	private SpIn getSpIn(ResultSet rs) throws SQLException
 	{
 		SpIn spIn = new SpIn();
-		spIn.setSpInUtReqId(rs.getInt("SPINUT_REQUEST_ID"));
+		int i =1;
+		while (rs.next())
+        {
+		spIn.setSpInUtReqId(rs.getInt(i++));
 
-		spIn.setAmiId(rs.getString("AMI_ID"));
+		spIn.setAmiId(rs.getString(i++));
 
-		spIn.setPrice(rs.getString("PRICE"));
+		spIn.setPrice(rs.getBigDecimal(i++)+"");
 
-		spIn.setInstanceType(rs.getString("INSTANCE_TYPE"));
+		spIn.setInstanceType(rs.getString(i++));
 
-		spIn.setSecGrpId(rs.getString("SECURITY_GROUP"));
+		spIn.setSecGrpId(rs.getString(i++));
 
-		spIn.setKeyName(rs.getString("KEY_PAIR"));
+		spIn.setKeyName(rs.getString(i++));
 
-		spIn.setInstanceCapacity(rs.getInt("NO_OF_INSTANCES"));
+		spIn.setInstanceCapacity(rs.getInt(i++));
 
-		spIn.setStartTime(rs.getDate("SCHEDULE_START"));
+		spIn.setStartTime(rs.getDate(i++));
 
-		spIn.setEndTime(rs.getDate("SCHEDULE_END"));
+		spIn.setEndTime(rs.getDate(i++));
 
-		spIn.setScheduleDays(rs.getString("SCHEDULE_DAYS"));
+		spIn.setScheduleDays(rs.getString(i++));
 
-		spIn.setReqestedTime(rs.getDate("REQUESTED_TIME"));
+		spIn.setStatus(rs.getInt(i++));
+		
+		spIn.setUserId(rs.getInt(i++));
+		
+		spIn.setReqestedTime(rs.getDate(i++));
+        }
 
-		spIn.setStatus(rs.getInt("REQUEST_STATUS"));
 
 		return spIn;
 	}
@@ -105,11 +112,11 @@ public class EC2DAO extends BaseDAO
 	public void insertSpinInstance(Instance spIn, Connection connection) throws SQLException
 	{
 		StringBuilder buff = new StringBuilder();
-		buff.append("insert into SPINUT_INSTANCE_TBL(AWS_REQUEST_ID,");
-		buff.append("SPINUT_REQUEST_ID,INSTANCE_STATUS) values(?,?,?);");
+		buff.append("insert into SPINUT_INSTANCE_TBL(SPINUT_AWS_INSTANCE_ID, AWS_REQUEST_ID,");
+		buff.append("SPINUT_REQUEST_ID,INSTANCE_STATUS) values(?,?,?,?);");
 		PreparedStatement ps = connection.prepareStatement(buff.toString(), Statement.RETURN_GENERATED_KEYS);
 		int i = 0;
-		//ps.setString(++i, spIn.getSpInId());
+		ps.setString(++i, spIn.getSpInId());
 		ps.setString(++i, spIn.getSpInAWSReqId());
 		ps.setLong(++i, spIn.getSpInUtReqId());
 		ps.setInt(++i, spIn.getStatus());
@@ -122,11 +129,12 @@ public class EC2DAO extends BaseDAO
 	{
 		System.out.println("Tying to get SpIn Request Details!!!");
 		StringBuilder buff = new StringBuilder();
-		buff.append("SELECT SPINUT_REQUEST_ID, AMI_ID,PRICE,INSTANCE_TYPE,SECURITY_GROUP,KEY_PAIR,NO_OF_INSTANCES,");
-		buff.append("SCHEDULE_START,SCHEDULE_END,SCHEDULE_DAYS,REQUEST_STATUS,REQUESTED_USER,REQUESTED_TIME ");
+		buff.append("SELECT a.SPINUT_REQUEST_ID, a.AMI_ID,a.PRICE,a.INSTANCE_TYPE,a.SECURITY_GROUP,a.KEY_PAIR,a.NO_OF_INSTANCES,");
+		buff.append("a.SCHEDULE_START,a.SCHEDULE_END,a.SCHEDULE_DAYS,a.REQUEST_STATUS,a.REQUESTED_USER,a.REQUESTED_TIME ");
 		buff.append(
-				"FROM SPINUT_REQUEST_TBL a,SPINUT_INSTANCE_TBL b WHERE a.SPINUT_REQUEST_ID=b.SPINUT_REQUEST_ID and b.SPINUT_INSTANCE_ID="
-						+ instanceId + " ;");
+				"FROM SPINUT_REQUEST_TBL a,SPINUT_INSTANCE_TBL b WHERE a.SPINUT_REQUEST_ID=b.SPINUT_REQUEST_ID and b.SPINUT_AWS_INSTANCE_ID='"
+						+ instanceId + "'");
+		System.out.println(buff.toString());
 		PreparedStatement ps = connection.prepareStatement(buff.toString());
 		ResultSet rs = ps.executeQuery();
 		return getSpIn(rs);

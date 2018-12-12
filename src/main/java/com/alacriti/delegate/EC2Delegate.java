@@ -144,7 +144,7 @@ public class EC2Delegate extends BaseDelegate
 					System.out.println("**************INSTANCE (ACTTIVE/EXPIRED) STATUS******************id"+describeResponse.getSpotInstanceRequestId());
 					Instance ins = new Instance();
 					ins.setSpInAWSReqId(describeResponse.getSpotInstanceRequestId());
-					//ins.setSpInId(describeResponse.getInstanceId());
+					ins.setSpInId(describeResponse.getInstanceId());
 					ins.setSpInUtReqId(spIn.getSpInUtReqId());
 					if (state.equals("active"))
 						ins.setStatus(AppConstants.INSTANCE_STATUS_ACTIVE);
@@ -277,6 +277,7 @@ public class EC2Delegate extends BaseDelegate
 			EC2BO ec2BO = new EC2BO();
 			SpIn spIn = ec2BO.getSpInDetailsByInstanceId(instanceId, connection);
 			spIn.setInstanceCapacity(1);
+			if(spIn!=null)
 			requestAwsToSpIn(spIn);
 		}
 		catch (Exception e)

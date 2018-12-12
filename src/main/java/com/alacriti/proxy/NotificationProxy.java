@@ -13,6 +13,7 @@ import com.alacriti.delegate.EC2Delegate;
 public class NotificationProxy
 {
 	public final static String INTANCE_TERMINATION_NOTIFICATION = "Intance-Termination-Notification";
+	public final static String  SUBSCRIPTION_CONFIRMATION = "SubscriptionConfirmation";
 	public static void confirmSubscriptionReq(String subscriptionUrl) throws Exception
 	{
 		Client client = ClientBuilder.newClient();

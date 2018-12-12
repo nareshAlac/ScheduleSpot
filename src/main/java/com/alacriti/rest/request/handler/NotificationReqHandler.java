@@ -24,12 +24,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
-@Path("aws/ami")
-@Consumes(MediaType.APPLICATION_JSON)
+@Path("/aws")
 public class NotificationReqHandler
 {
 	private Logger log = Logger.getLogger(AMIHandler.class);
 
+	@Path("/sns")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Object handleNotification(@Context HttpServletRequest request, @Context HttpServletResponse response,
@@ -40,18 +40,22 @@ public class NotificationReqHandler
 		try
 		{
 			token = getMsgFromReader(reader, AWSNotification.class);
+			if(token!=null)
+			System.out.println("**********************************token.getType()"+ token.getType());
 			if ("Notification".equalsIgnoreCase(token.getType()))
 			{
+				System.out.println(NotificationProxy.INTANCE_TERMINATION_NOTIFICATION);
 				if (NotificationProxy.INTANCE_TERMINATION_NOTIFICATION.equals(token.getSubject()))
 				{
 					NotificationProxy.reSpIn(token.getMessage());
 				}
 			}
-			else if ("SubscriptionConfirmation".equalsIgnoreCase(token.getType()))
+			else if (NotificationProxy.SUBSCRIPTION_CONFIRMATION.equalsIgnoreCase(token.getType()))
 			{
+				System.out.println(NotificationProxy.SUBSCRIPTION_CONFIRMATION);
 				try
 				{
-					NotificationProxy.confirmSubscriptionReq(token.getSubscriptionUrl());
+					NotificationProxy.confirmSubscriptionReq(token.getSubscribeURL());
 					response.setStatus(HttpStatus.SC_OK);
 				}
 				catch (Exception e)
@@ -68,6 +72,7 @@ public class NotificationReqHandler
 		}
 		catch (Exception e)
 		{
+			
 		}
 		return null;
 	}
