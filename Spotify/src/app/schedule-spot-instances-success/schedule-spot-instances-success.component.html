@@ -1,0 +1,30 @@
+<mat-card class="schedular-card">
+  <mat-card-header>
+    <mat-card-title><span>SpotInstance Request Scheduled for below Details.</span></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem"><span>Spin Request ID: </span>{{spinRequestId}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Region: </span>{{region}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Instance Type: </span>{{instanceType}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Number Of Instances: </span>{{numOfInstances}}</mat-list-item>
+      <mat-list-item role="listitem"><span>AMI ID: </span>{{amiId}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Security Group: </span>{{securityGroup}}</mat-list-item>
+      <mat-list-item role="listitem"><span>SSH Key Pair: </span>{{sshKeyPair}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Bid Price: </span>{{bidPrice}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Schedule Start Date: </span>{{scheduleStartDate | date:'yyyy/MM/dd'}}</mat-list-item>
+      <mat-list-item role="listitem"><span>Schedule End Date: </span>{{scheduleEndDate | date:'yyyy/MM/dd'}}</mat-list-item>
+
+      <mat-list-item role="listitem"><span>Schedule Days: </span>
+        <mat-list-item *ngFor="let day of scheduleDays">{{day}}</mat-list-item>
+      </mat-list-item>
+    </mat-list>
+
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <!--<button mat-raised-button (click)="toggleTimeline(5)" color="primary">Schedule Another Spot Request</button>-->
+  </mat-card-actions>
+</mat-card>

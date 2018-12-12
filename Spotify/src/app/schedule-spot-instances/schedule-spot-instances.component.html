@@ -55,17 +55,16 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput [matDatepicker]="startPicker" placeholder="Schedule Start Date" formControlName="scheduleStartDate">
+    <input matInput [matDatepicker]="startPicker" [min]="minDate" placeholder="Schedule Start Date" formControlName="scheduleStartDate">
     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
     <mat-datepicker #startPicker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput [matDatepicker]="endPicker" placeholder="Schedule End Date" formControlName="scheduleEndDate">
+    <input matInput [matDatepicker]="endPicker" [min]="minDate" placeholder="Schedule End Date" formControlName="scheduleEndDate">
     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
     <mat-datepicker #endPicker></mat-datepicker>
   </mat-form-field>
-
 
   <mat-form-field class="example-full-width">
     <mat-select placeholder="Days of Week" formControlName="scheduleDays" multiple>

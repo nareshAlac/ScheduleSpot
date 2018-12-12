@@ -43,35 +43,40 @@ public class ScheduleRequestHandler {
 	@Path("/schedule")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public boolean schedule(@Context HttpServletRequest request, @Context HttpServletResponse response,
+	public Object schedule(@Context HttpServletRequest request, @Context HttpServletResponse response,
 			InputStreamReader reader) throws Exception {
 		ScheduleRequest requestMsg=null;
-//		ScheduleResponse responseMsg = new ScheduleResponse();
+		SpIn spin=new SpIn();
 		boolean result=false;
 		System.out.println("Schedule(): Starts");
 		try {
 			
 			 requestMsg = getMsgFromReader(reader, ScheduleRequest.class);
 			 System.out.println("requestMsg: "+requestMsg.toString());
-			 ScheduleRequestDelegate spotDelegate=new ScheduleRequestDelegate();
 			 
 			EC2Delegate spInDelegate = new EC2Delegate();
-			SpIn spin=new SpIn();
 			populateSpInUtRequest(requestMsg,spin);
 			spInDelegate.processSpInRequest(spin);
-			 //result=spotDelegate.saveScheduler(requestMsg);
-			 
 			
-			 System.out.println("Schedule(): Ends");
-			 System.out.println("Returning result: "+result);
-			return result;
+			
+			 if (spin == null || spin.getSpInUtReqId() == 0)
+			 {
+				 spin.setRequestSuccess(true);
+			 }
+			 else
+				 spin.setRequestSuccess(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
+		
+		System.out.println("Schedule(): Ends -->"+spin.toString());
+		 System.out.println("Returning result: "+spin.isRequestSuccess() +" object");
+		return spin;
 	}
 	
 	private void populateSpInUtRequest(ScheduleRequest requestMsg, SpIn spin) throws ParseException {
+	spin.setRegion(requestMsg.getRegion());
 	spin.setAmiId(requestMsg.getAmiId());
 	spin.setPrice(requestMsg.getBidPrice());
 	spin.setInstanceType(requestMsg.getInstanceType());

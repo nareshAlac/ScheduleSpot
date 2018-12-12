@@ -16,9 +16,7 @@ import {DashboardSummaryModule} from './dashboard-summary/dashboard-summary.modu
 import {ScheduleSpotInstancesModule} from './schedule-spot-instances/schedule-spot-instances.module';
 import {SignoutModule} from './signout/signout.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
-
-
+import {ScheduleSpotInstancesSuccessModule} from './schedule-spot-instances-success/schedule-spot-instances-success.module';
 
 
 @NgModule({
@@ -40,8 +38,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     DashboardSummaryModule,
     ScheduleSpotInstancesModule,
     SignoutModule,
-    NgxSpinnerModule
-
+    NgxSpinnerModule,
+    ScheduleSpotInstancesSuccessModule
   ],
   providers: [
     LoggerService

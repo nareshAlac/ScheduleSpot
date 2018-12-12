@@ -11,7 +11,8 @@ public class SpIn extends BaseMsg {
 
 	public SpIn() {
 	}
-
+	
+	private String region;
 	private int spInUtReqId;
 	private String awsRequestId;
 	private String amiId;
@@ -26,6 +27,16 @@ public class SpIn extends BaseMsg {
 	private Date reqestedTime;
 	private int status;
 	private String interruptionBehavior;
+	private boolean isRequestSuccess;
+
+	
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
 
 	// Duration in minutes
 	private Integer blockDuration;
@@ -178,6 +189,32 @@ public class SpIn extends BaseMsg {
 	public void setBlockDuration(Integer blockDuration)
 	{
 		this.blockDuration = blockDuration;
+	}
+
+	public String getAwsRequestId() {
+		return awsRequestId;
+	}
+
+	public void setAwsRequestId(String awsRequestId) {
+		this.awsRequestId = awsRequestId;
+	}
+
+	public boolean isRequestSuccess() {
+		return isRequestSuccess;
+	}
+
+	public void setRequestSuccess(boolean isRequestSuccess) {
+		this.isRequestSuccess = isRequestSuccess;
+	}
+
+	@Override
+	public String toString() {
+		return "SpIn [region=" + region + ", spInUtReqId=" + spInUtReqId + ", awsRequestId=" + awsRequestId + ", amiId="
+				+ amiId + ", price=" + price + ", instanceType=" + instanceType + ", secGrpId=" + secGrpId
+				+ ", keyName=" + keyName + ", instanceCapacity=" + instanceCapacity + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", scheduleDays=" + scheduleDays + ", reqestedTime=" + reqestedTime
+				+ ", status=" + status + ", interruptionBehavior=" + interruptionBehavior + ", isRequestSuccess="
+				+ isRequestSuccess + ", blockDuration=" + blockDuration + "]";
 	}
 
 

@@ -31,11 +31,6 @@ export class SideBarComponent implements OnInit {
         this.router.navigate(['/dashboard/manageSpotInstances']);
         this.spinner.hide();
         break;
-      case 3:
-        this.spinner.show();
-        this.router.navigate(['/dashboard/spotInstancePredictor']);
-        this.spinner.hide();
-        break;
       case 4:
         this.spinner.show();
         this.router.navigate(['/dashboard/scheduleSpotInstances']);

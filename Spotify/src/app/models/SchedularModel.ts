@@ -15,7 +15,6 @@ export class SchedularModel extends BaseModel {
   amiId: string;
   securityGroup: string;
   sshKeyPair: string;
-  list: SchedularModel[];
 
   scheduleStartDate: string;
   scheduleEndDate: string;

@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../common/LoggerService/logger.service';
 import {RootService} from '../common/RootService/root.service';
-import {BaseModel} from '../models/BaseModel';
 import {SchedularModel} from '../models/SchedularModel';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SchedularService} from './SchedularService';
 import {Router} from '@angular/router';
 import {DaysOfWeek} from '../models/DaysOfWeek';
-import {LoginModel} from '../models/LoginModel';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {AMI} from '../models/AMI';
 import {ScheduleRequestSpec} from '../models/ScheduleRequestSpec';
@@ -15,6 +13,7 @@ import { ReplaySubject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import {SecurityGroup} from '../models/SecurityGroup';
+import {Spin} from '../models/Spin';
 
 @Component({
   selector: 'app-schedule-spot-instances',
@@ -36,9 +35,10 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   /** Subject that emits when the component has been destroyed. */
   private _onDestroy = new Subject<void>();
 
+  minDate = new Date();
 
-  scheduleStartDate = new FormControl('');
-  scheduleEndDate = new FormControl('');
+  scheduleStartDate = new FormControl(new Date());
+  scheduleEndDate = new FormControl(new Date());
   scheduleDays = new FormControl('');
   numOfInstances = new FormControl('');
 
@@ -124,13 +124,15 @@ export class ScheduleSpotInstancesComponent implements OnInit {
     scheduler.userId = this.rootService.userId;
     this.schedularService.scheduleSpotInstances(scheduler)
       .then((resp) => {
-        this.log.debug('Success Response from Schedule Spot Request');
-        this.log.debug(resp);
-        if (resp === true) {
-          this.log.debug('Redirecting to Dashboard');
-          this.router.navigate(['/dashboard']);
+        console.log('Success Response from Schedule Spot Request');
+        console.log(resp);
+        const  data = <Spin> resp;
+        if (data.isRequestSuccess === true) {
+          this.schedularService.spin = data;
+          console.log('Redirecting to Schedule Spot Request Success Page');
+          this.router.navigate(['/dashboard/scheduleSpotInstancesSuccess']);
         } else {
-          this.log.debug('Redirecting to Schedule Spot Request Page');
+          console.log('Redirecting to Schedule Spot Request Page');
           this.router.navigate(['/dashboard/scheduleSpotInstances']);
         }
         // const data = <BaseModel>resp;

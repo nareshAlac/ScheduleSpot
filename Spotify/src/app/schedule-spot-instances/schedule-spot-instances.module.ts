@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import {LoginComponent} from '../login/login.component';
 import {SchedularService} from './SchedularService';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {SchedularService} from './SchedularService';
     ScheduleSpotInstancesComponent
   ],
   providers: [
-    SchedularService
-  ]
+    SchedularService,
+    {provide: MAT_DATE_LOCALE, useValue: 'locale'}
+]
 })
 export class ScheduleSpotInstancesModule { }
