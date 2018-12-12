@@ -3,6 +3,8 @@ package com.alacriti.rest.request.handler;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -53,10 +55,10 @@ public class ScheduleRequestHandler {
 			 System.out.println("requestMsg: "+requestMsg.toString());
 			 ScheduleRequestDelegate spotDelegate=new ScheduleRequestDelegate();
 			 
-					EC2Delegate spInDelegate = new EC2Delegate();
-					SpIn spin=new SpIn();
-					populateSpInUtRequest(requestMsg,spin);
-					  spInDelegate.processSpInRequest(spin);
+			EC2Delegate spInDelegate = new EC2Delegate();
+			SpIn spin=new SpIn();
+			populateSpInUtRequest(requestMsg,spin);
+			spInDelegate.processSpInRequest(spin);
 			 //result=spotDelegate.saveScheduler(requestMsg);
 			 
 			
@@ -69,15 +71,15 @@ public class ScheduleRequestHandler {
 		return false;
 	}
 	
-	private void populateSpInUtRequest(ScheduleRequest requestMsg, SpIn spin) {
+	private void populateSpInUtRequest(ScheduleRequest requestMsg, SpIn spin) throws ParseException {
 	spin.setAmiId(requestMsg.getAmiId());
 	spin.setPrice(requestMsg.getBidPrice());
 	spin.setInstanceType(requestMsg.getInstanceType());
 	spin.setSecGrpId(requestMsg.getSecurityGroup());
 	spin.setKeyName(requestMsg.getSshKeyPair());
 	spin.setInstanceCapacity(requestMsg.getNumOfInstances());
-	spin.setStartTime((Date) requestMsg.getScheduleStartDate());
-	spin.setEndTime((Date) requestMsg.getScheduleEndDate());
+	spin.setStartTime((Date) new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'").parse(requestMsg.getScheduleStartDate()));
+	spin.setEndTime((Date) new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'").parse(requestMsg.getScheduleEndDate()));
 	StringBuilder scheduleDays = new StringBuilder();
 	for(String day: requestMsg.getScheduleDays()){
 		scheduleDays.append(day+", ");

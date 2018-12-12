@@ -25,7 +25,7 @@ public class EC2Proxy {
 
 	public static SpIn requestSpot(SpIn spIn) {
 		EC2Delegate spInDelegate=new EC2Delegate();
-		return spInDelegate.requestSpIn(spIn);
+		return spInDelegate.requestAwsToSpIn(spIn);
 	}
 	
 	public static SpIn processSpInRequest(SpIn spIn)
@@ -101,12 +101,11 @@ public class EC2Proxy {
 	
 	public static List<String> getInstanceTypes()
 	{
-		InstanceType.C1Medium.name();
 		List<String> instanceTypes = new ArrayList<String>();
-		instanceTypes.add(InstanceType.C1Medium.name());
-		instanceTypes.add(InstanceType.D24xlarge.name());
-		instanceTypes.add(InstanceType.M1Small.name());
-		instanceTypes.add(InstanceType.T3Medium.name());
+		instanceTypes.add("r3.large");
+		instanceTypes.add("a1.large");
+		instanceTypes.add("m3.medium");
+		instanceTypes.add("t3.medium");
 		return instanceTypes;
 		
 	}

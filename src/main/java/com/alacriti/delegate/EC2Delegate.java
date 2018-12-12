@@ -18,7 +18,7 @@ import com.alacriti.constants.AppConstants;
 import com.alacriti.model.Instance;
 import com.alacriti.model.SpIn;
 import com.alacriti.rest.bo.EC2BO;
-import com.alacriti.scheduleservice.job.SpInCheckJob;
+import com.alacriti.scheduleservice.job.SpInCheckTwoMinsJob;
 import com.alacriti.scheduleservice.scheduler.SpInScheduler;
 import com.alacriti.utils.AWSClientFactory;
 import com.amazonaws.AmazonServiceException;
@@ -43,13 +43,14 @@ public class EC2Delegate extends BaseDelegate
 			System.out.println("Failed to request SpIn");
 			return spIn;
 		}
-		requestSpIn(spIn);
+		requestAwsToSpIn(spIn);
 		return spIn;
 	}
 
-	public SpIn requestSpIn(SpIn spIn)
+	public SpIn requestAwsToSpIn(SpIn spIn)
 	{
 
+		/*AWS request Object Preparation*/
 		// Create the AmazonEC2 client so we can call various APIs.
 		AmazonEC2 ec2 = AWSClientFactory.getEC2Client();
 
@@ -80,6 +81,7 @@ public class EC2Delegate extends BaseDelegate
 		// Call the RequestSpotInstance API.
 		RequestSpotInstancesResult requestResult = ec2.requestSpotInstances(requestRequest);
 
+		//Fetching AWS response details
 		List<SpotInstanceRequest> requestResponses = requestResult.getSpotInstanceRequests();
 
 		// Setup an arraylist to collect all of the request ids we want to
@@ -133,22 +135,24 @@ public class EC2Delegate extends BaseDelegate
 				if (state.equals("open"))
 				{
 
+					System.out.println("**************INSTANCE OPEN STATUS******************id"+describeResponse.getSpotInstanceRequestId());
 					pendingReqs.add(describeResponse.getSpotInstanceRequestId());
 
 				}
 				else
 				{
+					System.out.println("**************INSTANCE (ACTTIVE/EXPIRED) STATUS******************id"+describeResponse.getSpotInstanceRequestId());
 					Instance ins = new Instance();
 					ins.setSpInAWSReqId(describeResponse.getSpotInstanceRequestId());
-					ins.setSpInId(describeResponse.getInstanceId());
+					//ins.setSpInId(describeResponse.getInstanceId());
 					ins.setSpInUtReqId(spIn.getSpInUtReqId());
 					if (state.equals("active"))
-						ins.setStatus(AppConstants.SPIN_STATUS_ACTIVE);
+						ins.setStatus(AppConstants.INSTANCE_STATUS_ACTIVE);
 					else
-						ins.setStatus(AppConstants.SCHEDULAR_STATUS_EXPIRED);
+						ins.setStatus(AppConstants.INSTANCE_STATUS_EXPIRED);
 					ins.setType(describeResponse.getType());
 					ins.setPrice(describeResponse.getSpotPrice());
-					insertSpIn(ins);
+					insertIntoSpinInstance(ins);
 				}
 			}
 		}
@@ -160,7 +164,10 @@ public class EC2Delegate extends BaseDelegate
 		try
 		{
 			if (pendingReqs.size() > 0)
+			{
+				System.out.println("**************Scheduling 2 mins job as instances are not initalized by AWS********** ");
 				scheduleSpInCheck(pendingReqs, spIn);
+			}
 		}
 		catch (SchedulerException e)
 		{
@@ -179,11 +186,11 @@ public class EC2Delegate extends BaseDelegate
 		System.out.println(new Date().toString());
 		Date twoMinsSchedule = new Date(t + (2 * ONE_MINUTE_IN_MILLIS));
 		// Build a trigger for a specific moment in time, with no repeats
-		System.out.println("Scheduled At " + twoMinsSchedule.toString());
+		System.out.println("Scheduled 2minGroup Job At " + twoMinsSchedule.toString());
 		Scheduler scheduler = SpInScheduler.getScheduler();
 		JobDataMap newJobDataMap = new JobDataMap();
 		newJobDataMap.put("AWS_REQ_IDS", requestIds);
-		JobDetail job = JobBuilder.newJob(SpInCheckJob.class).setJobData(newJobDataMap)
+		JobDetail job = JobBuilder.newJob(SpInCheckTwoMinsJob.class).setJobData(newJobDataMap)
 				.withIdentity(spIn.getSpInUtReqId() + "", "2minGroup").build();
 		SimpleTrigger trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
 				.withIdentity(spIn.getSpInUtReqId() + "trigger", spIn.getSpInUtReqId() + "").startAt(twoMinsSchedule)
@@ -239,7 +246,7 @@ public class EC2Delegate extends BaseDelegate
 		return null;
 	}
 
-	public void insertSpIn(Instance spIn)
+	public void insertIntoSpinInstance(Instance spIn)
 	{
 		
 		Connection connection = null;
@@ -248,7 +255,7 @@ public class EC2Delegate extends BaseDelegate
 		{
 			connection = startDBTransaction();
 			EC2BO ec2BO = new EC2BO();
-			ec2BO.insertSpIn(spIn, connection);
+			ec2BO.insertSpinInstance(spIn, connection);
 		}
 		catch (Exception e)
 		{

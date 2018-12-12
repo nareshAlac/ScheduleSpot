@@ -15,11 +15,11 @@ public class AWSClientFactory {
 	
 	private static final String accessKeyId = "";
     private static final String secreateAccessKey = "";
-	private static final String region="";
+	private static final Regions region=Regions.US_EAST_1;
 	
 	public static AmazonEC2 getEC2Client(){
 		AmazonEC2 ec2 = AmazonEC2ClientBuilder.standard()
-				.withRegion(Regions.US_EAST_2)
+				.withRegion(region)
 				.withCredentials((AWSCredentialsProvider) new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKeyId, secreateAccessKey)))
 				.build();
 		

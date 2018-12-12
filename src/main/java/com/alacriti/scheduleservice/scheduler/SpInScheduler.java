@@ -13,7 +13,7 @@ import org.quartz.TriggerBuilder;
 import org.quartz.ee.servlet.QuartzInitializerListener;
 import org.quartz.impl.StdSchedulerFactory;
 
-import com.alacriti.scheduleservice.job.SpInReqJob;
+import com.alacriti.scheduleservice.job.SpInReqHourlyJob;
 
 public class SpInScheduler implements ServletContextListener
 {
@@ -30,11 +30,11 @@ public class SpInScheduler implements ServletContextListener
 	public void contextInitialized(ServletContextEvent ctx)
 	{
 		// define the job and tie it to our SpInReqJob class
-		JobDetail job = JobBuilder.newJob(SpInReqJob.class).withIdentity("job1", "group1").build();
+		JobDetail job = JobBuilder.newJob(SpInReqHourlyJob.class).withIdentity("job1", "group1").build();
 
 		// Trigger the job to run now, and then repeat every 1 hour
 		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1").startNow()
-				.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInMinutes(1).repeatForever()).build();
+				.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInMinutes(59).repeatForever()).build();
 
 		try
 		{

@@ -13,8 +13,8 @@ public class ScheduleRequest extends BaseMsg {
 	private String amiId;
 	private String securityGroup;
 	private String sshKeyPair;
-	private Date scheduleStartDate;
-	private Date scheduleEndDate;
+	private String scheduleStartDate;
+	private String scheduleEndDate;
 	private String[] scheduleDays;
 	private long spinutRequestId;
 	
@@ -67,16 +67,16 @@ public class ScheduleRequest extends BaseMsg {
 	public void setSecurityGroup(String securityGroup) {
 		this.securityGroup = securityGroup;
 	}
-	public Date getScheduleStartDate() {
+	public String getScheduleStartDate() {
 		return scheduleStartDate;
 	}
-	public void setScheduleStartDate(Date scheduleStartDate) {
+	public void setScheduleStartDate(String scheduleStartDate) {
 		this.scheduleStartDate = scheduleStartDate;
 	}
-	public Date getScheduleEndDate() {
+	public String getScheduleEndDate() {
 		return scheduleEndDate;
 	}
-	public void setScheduleEndDate(Date scheduleEndDate) {
+	public void setScheduleEndDate(String scheduleEndDate) {
 		this.scheduleEndDate = scheduleEndDate;
 	}
 	public String[] getScheduleDays() {

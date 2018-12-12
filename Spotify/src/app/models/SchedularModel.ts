@@ -17,7 +17,7 @@ export class SchedularModel extends BaseModel {
   sshKeyPair: string;
   list: SchedularModel[];
 
-  scheduleStartDate: any;
-  scheduleEndDate: any;
+  scheduleStartDate: string;
+  scheduleEndDate: string;
   scheduleDays: string[];
 }

@@ -41,13 +41,13 @@ public class EC2BO
 		return null;
 	}
 
-	public void insertSpIn(Instance spIn, Connection connection)
+	public void insertSpinInstance(Instance spIn, Connection connection)
 	{
 		EC2DAO dao = new EC2DAO();
 
 		try
 		{
-			dao.insertSpIn(spIn, connection);
+			dao.insertSpinInstance(spIn, connection);
 		}
 		catch (SQLException e)
 		{

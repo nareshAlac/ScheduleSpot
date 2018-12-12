@@ -11,7 +11,7 @@ import org.quartz.JobExecutionException;
 import com.alacriti.delegate.EC2Delegate;
 import com.alacriti.model.SpIn;
 
-public class SpInCheckJob implements Job
+public class SpInCheckTwoMinsJob implements Job
 {
 
 	@Override
@@ -19,7 +19,7 @@ public class SpInCheckJob implements Job
 	{
 		String spInUtId = context.getJobDetail().getKey().getName();
 		String awsSpInReqId = context.getJobDetail().getKey().getGroup();
-		System.out.println("Hi There !! This is a spin check for " + awsSpInReqId + ":" + spInUtId);
+		System.out.println("This is SpInCheckTwoMinsJob for " + awsSpInReqId + ":" + spInUtId);
 		System.out.println(new Date().toString());
 		JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 		ArrayList<String> requestIds = (ArrayList<String>) dataMap.get("AWS_REQ_IDS");
@@ -27,6 +27,7 @@ public class SpInCheckJob implements Job
 		SpIn spIn = new SpIn();
 		spIn.setSpInUtReqId(Integer.parseInt(spInUtId));
 		ec2Delegate.checkSpInStatus(requestIds, spIn);
+		System.out.println("**************************SpInCheckTwoMinsJob end***********");
 
 	}
 

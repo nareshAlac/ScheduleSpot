@@ -11,14 +11,15 @@ import org.quartz.JobExecutionException;
 import com.alacriti.delegate.EC2Delegate;
 import com.alacriti.model.SpIn;
 
-public class SpInReqJob implements Job
+public class SpInReqHourlyJob implements Job
 {
-	public SpInReqJob()
+	public SpInReqHourlyJob()
 	{
 	}
 
 	public void execute(JobExecutionContext jEC) throws JobExecutionException
 	{
+		System.out.println("SpInReqHourlyJob Start");
 		Date date = new Date();
 		System.out.println("Hello !  ReSpIning the request at " + date.toString());
 		///getting the current week day #
@@ -33,9 +34,11 @@ public class SpInReqJob implements Job
 		{
 			if (isNeededToBid(spIn, weekDay))
 			{
-				ec2Delegate.requestSpIn(spIn);
+				ec2Delegate.requestAwsToSpIn(spIn);
 			}
 		}
+		
+		System.out.println("SpInReqHourlyJob End");
 	}
 
 	private boolean isNeededToBid(SpIn spIn, int weekDay)

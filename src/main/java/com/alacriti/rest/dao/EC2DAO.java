@@ -102,18 +102,19 @@ public class EC2DAO extends BaseDAO
 		return spIn;
 	}
 
-	public void insertSpIn(Instance spIn, Connection connection) throws SQLException
+	public void insertSpinInstance(Instance spIn, Connection connection) throws SQLException
 	{
 		StringBuilder buff = new StringBuilder();
-		buff.append("insert into SPINUT_INSTANCE_TBL(SPINUT_INSTANCE_ID,AWS_REQUEST_ID,");
-		buff.append("SPINUT_REQUEST_ID,INSTANCE_STATUS) values(?,?,?,?);");
+		buff.append("insert into SPINUT_INSTANCE_TBL(AWS_REQUEST_ID,");
+		buff.append("SPINUT_REQUEST_ID,INSTANCE_STATUS) values(?,?,?);");
 		PreparedStatement ps = connection.prepareStatement(buff.toString(), Statement.RETURN_GENERATED_KEYS);
 		int i = 0;
-		ps.setString(++i, spIn.getSpInId());
+		//ps.setString(++i, spIn.getSpInId());
 		ps.setString(++i, spIn.getSpInAWSReqId());
 		ps.setLong(++i, spIn.getSpInUtReqId());
 		ps.setInt(++i, spIn.getStatus());
 		int val = ps.executeUpdate();
+		System.out.println("EC2DAO count of insertSpinInstance created:"+ val);
 
 	}
 

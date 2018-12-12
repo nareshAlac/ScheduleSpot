@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import com.alacriti.constants.AppConstants;
 import com.alacriti.model.ScheduleRequest;
@@ -37,8 +38,10 @@ public class SchedularDAO {
 			ps.setString(++i, request.getSecurityGroup());
 			ps.setString(++i, request.getSshKeyPair());
 			ps.setInt(++i, request.getNumOfInstances());
-			ps.setDate(++i, (Date) request.getScheduleStartDate());
-			ps.setDate(++i, (Date) request.getScheduleEndDate());
+			System.out.println(new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'").parse(request.getScheduleStartDate()));
+			System.out.println(new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'").parse(request.getScheduleEndDate()));
+			ps.setDate(++i, (Date) new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'").parse(request.getScheduleStartDate()));
+			ps.setDate(++i, (Date) new SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'").parse(request.getScheduleEndDate()));
 			ps.setString(++i, scheduleDays.toString());
 			ps.setInt(++i, AppConstants.SCHEDULAR_STATUS_OPEN);
 			

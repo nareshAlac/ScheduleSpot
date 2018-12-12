@@ -12,7 +12,7 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
-import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule} from '@angular/material';
 
 @NgModule({
   imports: [
