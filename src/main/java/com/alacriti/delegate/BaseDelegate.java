@@ -95,10 +95,10 @@ public class BaseDelegate
         try
         {
             
-            String DB_CONN_STRING = "jdbc:mysql://192.168.35.160:3306/spinut_dev";
+            String DB_CONN_STRING = "jdbc:mysql://hac-spinut.cy1bwhg0ytml.us-east-2.rds.amazonaws.com:3311/spinut_ta1";
             String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
-            String USER_NAME = "spinut_dev";
-            String PASSWORD = "spinut_dev";
+            String USER_NAME = "spinut_ta1";
+            String PASSWORD = "spinut_ta1";
             Class.forName(DRIVER_CLASS_NAME);
             conn = DriverManager.getConnection(DB_CONN_STRING, USER_NAME, PASSWORD);
             conn.setAutoCommit(false);
