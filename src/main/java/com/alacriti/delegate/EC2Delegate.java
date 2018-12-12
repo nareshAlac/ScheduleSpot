@@ -267,4 +267,25 @@ public class EC2Delegate extends BaseDelegate
 				endDBTransaction(connection);
 		}
 	}
+
+	public void reSpInInstance(String instanceId)
+	{
+		Connection connection = null;
+		try
+		{
+			connection = startDBTransaction();
+			EC2BO ec2BO = new EC2BO();
+			SpIn spIn = ec2BO.getSpInDetailsByInstanceId(instanceId, connection);
+			spIn.setInstanceCapacity(1);
+			requestAwsToSpIn(spIn);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error in Inserting SpInUtReq " + e);
+		}finally
+		{
+			if (connection != null)
+				endDBTransaction(connection);
+		}
+	}
 }

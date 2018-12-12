@@ -118,4 +118,18 @@ public class EC2DAO extends BaseDAO
 
 	}
 
+	public SpIn getSpInDetailsByInstanceId(String instanceId, Connection connection) throws SQLException
+	{
+		System.out.println("Tying to get SpIn Request Details!!!");
+		StringBuilder buff = new StringBuilder();
+		buff.append("SELECT SPINUT_REQUEST_ID, AMI_ID,PRICE,INSTANCE_TYPE,SECURITY_GROUP,KEY_PAIR,NO_OF_INSTANCES,");
+		buff.append("SCHEDULE_START,SCHEDULE_END,SCHEDULE_DAYS,REQUEST_STATUS,REQUESTED_USER,REQUESTED_TIME ");
+		buff.append(
+				"FROM SPINUT_REQUEST_TBL a,SPINUT_INSTANCE_TBL b WHERE a.SPINUT_REQUEST_ID=b.SPINUT_REQUEST_ID and b.SPINUT_INSTANCE_ID="
+						+ instanceId + " ;");
+		PreparedStatement ps = connection.prepareStatement(buff.toString());
+		ResultSet rs = ps.executeQuery();
+		return getSpIn(rs);
+	}
+
 }

@@ -55,4 +55,19 @@ public class EC2BO
 		}
 	}
 
+	public SpIn getSpInDetailsByInstanceId(String instanceId, Connection connection)
+	{
+		EC2DAO dao = new EC2DAO();
+
+		try
+		{
+			return dao.getSpInDetailsByInstanceId(instanceId, connection);
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
