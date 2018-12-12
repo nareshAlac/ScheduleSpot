@@ -132,7 +132,7 @@ public class ScheduleRequestHandler {
 	@POST
 	@Path("/snsnotification")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Object snsNotification(@Context HttpServletRequest request, @Context HttpServletResponse response,
 			InputStreamReader reader) throws Exception {
 		//ScheduleRequest requestMsg=null;

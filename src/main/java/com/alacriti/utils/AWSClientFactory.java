@@ -14,7 +14,7 @@ import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
 public class AWSClientFactory {
 	
 	private static final String accessKeyId = "";
-	private static final String secreateAccessKey = "";
+    private static final String secreateAccessKey = "";
 	private static final String region="";
 	
 	public static AmazonEC2 getEC2Client(){

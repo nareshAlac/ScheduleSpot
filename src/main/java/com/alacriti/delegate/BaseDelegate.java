@@ -14,17 +14,6 @@ public class BaseDelegate
 {
 
 	private Logger log = Logger.getLogger(BaseDelegate.class);
-    protected Connection connection;
-
-    public void setConnection(Connection _connection)
-    {
-        this.connection = _connection;
-    }
-
-    public Connection getConnection()
-    {
-        return connection;
-    }
 
     protected void endDBTransaction(Connection connection)
     {

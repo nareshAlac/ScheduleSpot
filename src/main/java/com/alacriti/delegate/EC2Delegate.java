@@ -198,9 +198,10 @@ public class EC2Delegate extends BaseDelegate
 	public List<SpIn> getSpInReqs()
 	{
 		List<SpIn> spIns = new ArrayList<SpIn>();
+		Connection connection = null;
 		try
 		{
-			Connection connection = startDBTransaction();
+			connection = startDBTransaction();
 			EC2BO ec2BO = new EC2BO();
 			spIns = ec2BO.getSpInReqs(connection);
 			System.out.println("Got " + spIns.size() + " Reqs");
@@ -219,9 +220,10 @@ public class EC2Delegate extends BaseDelegate
 
 	public SpIn insertSpInUtReq(SpIn spIn)
 	{
+		Connection connection = null;
 		try
 		{
-			Connection connection = startDBTransaction();
+			 connection = startDBTransaction();
 			EC2BO ec2BO = new EC2BO();
 			return ec2BO.insertSpInUtReq(spIn, connection);
 		}
@@ -239,10 +241,12 @@ public class EC2Delegate extends BaseDelegate
 
 	public void insertSpIn(Instance spIn)
 	{
+		
+		Connection connection = null;
 
 		try
 		{
-			Connection connection = startDBTransaction();
+			connection = startDBTransaction();
 			EC2BO ec2BO = new EC2BO();
 			ec2BO.insertSpIn(spIn, connection);
 		}
