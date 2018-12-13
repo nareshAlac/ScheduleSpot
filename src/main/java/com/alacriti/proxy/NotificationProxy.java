@@ -21,6 +21,8 @@ public class NotificationProxy
 		Response response = target.request(MediaType.APPLICATION_JSON).buildGet().invoke();
 		if (response.getStatus() != HttpStatus.SC_OK)
 			throw new Exception("SNS Subscription Confirmation Failed" + response.getStatus());
+		else
+			System.out.println("SNS Subscription Confirmation Successful");
 	}
 
 	public static void reSpIn(String instanceId)

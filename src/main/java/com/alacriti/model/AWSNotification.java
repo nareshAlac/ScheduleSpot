@@ -1,34 +1,51 @@
 package com.alacriti.model;
 
-public class AWSNotification
-{
+import java.io.Serializable;
 
-	public AWSNotification()
-	{
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class AWSNotification implements Serializable {
+
+	public AWSNotification() {
 	}
 
+	@JsonProperty("Type")
 	private String Type;
 
+	@JsonProperty("MessageId")
 	private String MessageId;
 
+	@JsonProperty("Token")
 	private String Token;
 
+	@JsonProperty("TopicArn")
 	private String TopicArn;
 
+	@JsonProperty("Subject")
 	private String Subject;
 
+	@JsonProperty("Message")
 	private String Message;
 
+	@JsonProperty("SubscribeURL")
 	private String SubscribeURL;
 
+	@JsonProperty("UnsubscribeURL")
 	private String UnsubscribeURL;
 
+	@JsonProperty("Timestamp")
 	private String Timestamp;
 
+	@JsonProperty("SignatureVersion")
 	private String SignatureVersion;
 
+	@JsonProperty("Signature")
 	private String Signature;
-
+	
+	@JsonProperty("SigningCertURL")
 	private String SigningCertURL;
 
 	public String getType() {

@@ -29,14 +29,14 @@ public class SpInReqHourlyJob implements Job
 		System.out.println("Today's week : no " + weekDay);
 		///Getting the valid SpInReqs
 		EC2Delegate ec2Delegate = new EC2Delegate();
-		List<SpIn> spInReqs = ec2Delegate.getSpInReqs();
-		for(SpIn spIn : spInReqs)
-		{
-			if (isNeededToBid(spIn, weekDay))
-			{
-				ec2Delegate.requestAwsToSpIn(spIn);
-			}
-		}
+//		List<SpIn> spInReqs = ec2Delegate.getSpInReqs();
+//		for(SpIn spIn : spInReqs)
+//		{
+//			if (isNeededToBid(spIn, weekDay))
+//			{
+//				ec2Delegate.requestAwsToSpIn(spIn);
+//			}
+//		}
 		
 		System.out.println("SpInReqHourlyJob End");
 	}
