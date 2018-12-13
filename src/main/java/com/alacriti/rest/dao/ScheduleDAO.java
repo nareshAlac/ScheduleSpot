@@ -68,7 +68,7 @@ public class ScheduleDAO {
 
 	public PreparedStatement verifyUserLogin(Connection connection) throws SQLException {
 		StringBuilder buff = new StringBuilder();
-		buff.append("SELECT spinut_request_id,ami_id,price,instance_type,security_group,no_of_instances FROM spinut_request_tbl ORDER BY spinut_request_id DESC;");
+		buff.append("SELECT SPINUT_REQUEST_ID,AMI_ID,PRICE,INSTANCE_TYPE,SECURITY_GROUP,NO_OF_INSTANCES FROM SPINUT_REQUEST_TBL ORDER BY SPINUT_REQUEST_ID DESC;");
 		System.out.println(buff);
 		System.out.println("Prepraring statement");
 		PreparedStatement ps = connection.prepareStatement(buff.toString());

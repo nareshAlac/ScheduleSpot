@@ -19,9 +19,9 @@ public class SchedularDAO {
         int result = 0;
         int i=0;
 		StringBuilder saveSql = new StringBuilder();
-		saveSql.append("INSERT INTO spinut_request_tbl(ami_id, price, instance_type, "
-				+ "security_group, key_pair, no_of_instances, schedule_start, schedule_end, schedule_days, "
-				+ "request_status) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		saveSql.append("INSERT INTO SPINUT_REQUEST_TBL(AMI_ID, PRICE, INSTANCE_TYPE, "
+				+ "SECURITY_GROUP, KEY_PAIR, NO_OF_INSTANCES, SCHEDULE_START, SCHEDULE_END, SCHEDULE_DAYS, "
+				+ "REQUEST_STATUS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 		try
         {
