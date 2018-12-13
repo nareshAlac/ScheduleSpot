@@ -4,7 +4,6 @@ import {LoggerService} from '../common/LoggerService/logger.service';
 import {Router} from '@angular/router';
 import {RootService} from '../common/RootService/root.service';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {SchedularModel} from '../models/SchedularModel';
 import {Spin} from '../models/Spin';
 import {DaysOfWeek} from '../models/DaysOfWeek';
 
@@ -14,7 +13,7 @@ import {DaysOfWeek} from '../models/DaysOfWeek';
   styleUrls: ['./schedule-spot-instances-success.component.css']
 })
 export class ScheduleSpotInstancesSuccessComponent implements OnInit {
-  spinRequestId: number;
+  spInUtReqId: number;
   region: string;
   instanceType: string;
   numOfInstances: number;
@@ -42,7 +41,7 @@ export class ScheduleSpotInstancesSuccessComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.spinRequestId = this.resp.spinRequestId;
+    this.spInUtReqId = this.resp.spInUtReqId;
     this.region = this.resp.region;
     this.instanceType = this.resp.instanceType;
     this.numOfInstances = this.resp.instanceCapacity;

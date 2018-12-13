@@ -1,5 +1,4 @@
 export class Spin {
-  spinRequestId: number;
   region: string;
   spInUtReqId: number;
   awsRequestId: string;

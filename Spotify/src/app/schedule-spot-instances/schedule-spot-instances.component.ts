@@ -106,6 +106,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
 
 
   schedule() {
+    this.spinner.show();
     this.log.debug('schedule button clicked');
     this.log.debug('bidPrice : ' + this.bidPrice.value);
     this.log.debug('instanceType : ' + this.instanceType.value);
@@ -135,11 +136,7 @@ export class ScheduleSpotInstancesComponent implements OnInit {
           console.log('Redirecting to Schedule Spot Request Page');
           this.router.navigate(['/dashboard/scheduleSpotInstances']);
         }
-        // const data = <BaseModel>resp;
-        // this.log.debug(data.responseMessage);
-        // this.rootService.loginSuccessfull = true;
-
-
+        this.spinner.hide();
       })
       .catch((err) => {
         this.log.debug('Error Response from Schedule Spot Request');
