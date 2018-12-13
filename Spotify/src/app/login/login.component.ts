@@ -51,8 +51,7 @@ export class LoginComponent implements OnInit {
           /** spinner ends after 5 seconds */
           this.spinner.hide();
         }, 2000);
-        if(data.isValidUser)
-        {
+        if (data.isValidUser) {
           this.rootService.loginSuccessfull = true;
           this.rootService.userId = data.userId;
           this.log.debug('Redirecting to Dashboard');
