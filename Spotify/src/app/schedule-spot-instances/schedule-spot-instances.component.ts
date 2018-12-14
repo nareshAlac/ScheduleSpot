@@ -29,6 +29,8 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   securityGroup = new FormControl('');
   sshKeyPair = new FormControl('');
   amiFilterId = new FormControl('');
+  startTime = new FormControl('');
+  endTime = new FormControl('');
   scheduleRequest = new ScheduleRequestSpec();
   /** control for the MatSelect filter keyword */
   public filteredAmis: ReplaySubject<AMI[]> = new ReplaySubject<AMI[]>(1);
@@ -42,6 +44,11 @@ export class ScheduleSpotInstancesComponent implements OnInit {
   scheduleDays = new FormControl('');
   numOfInstances = new FormControl('');
 
+  d = new Date();
+  e = new Date();
+  startTimeNGB = new FormControl({hour: this.d.getHours(), minute: this.d.getMinutes()});
+  // timeObj = JSON.stringify(this.time.value);
+  endTimeNGB = new FormControl({hour: (this.e.getHours() + 1), minute: (this.e.getMinutes())});
   regions: string[];
   sshKeyPairs: string[];
   instanceTypes: string[];
@@ -50,6 +57,9 @@ export class ScheduleSpotInstancesComponent implements OnInit {
 
   keys = Object.keys;
   daysOfWeek = DaysOfWeek;
+
+
+  // this.time = {hour: this.d.getHours(), minute: this.d.getMinutes()};
 
 
   constructor(private schedularService: SchedularService,
@@ -69,6 +79,11 @@ export class ScheduleSpotInstancesComponent implements OnInit {
       scheduleStartDate: this.scheduleStartDate,
       scheduleEndDate: this.scheduleEndDate,
       scheduleDays: this.scheduleDays,
+      startTime: this.startTime,
+      endTime: this.endTime,
+      startTimeNGB: this.startTimeNGB,
+      endTimeNGB: this.endTimeNGB,
+      // timeObj: this.timeObj
     });
 
   }
@@ -123,6 +138,8 @@ export class ScheduleSpotInstancesComponent implements OnInit {
     scheduler.scheduleEndDate = this.scheduleEndDate.value;
     scheduler.scheduleDays = this.scheduleDays.value;
     scheduler.userId = this.rootService.userId;
+    scheduler.startTimeSchedule = this.startTimeNGB.value;
+    scheduler.endTimeSchedule = this.endTimeNGB.value;
     this.schedularService.scheduleSpotInstances(scheduler)
       .then((resp) => {
         console.log('Success Response from Schedule Spot Request');

@@ -1,3 +1,5 @@
+import {Time} from './Time';
+
 export class Spin {
   region: string;
   spInUtReqId: number;
@@ -12,4 +14,6 @@ export class Spin {
   endTime: any;
   scheduleDays: string;
   isRequestSuccess: boolean;
+  startTimeSchedule: Time;
+  endTimeSchedule: Time;
 }

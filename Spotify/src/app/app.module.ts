@@ -17,6 +17,7 @@ import {ScheduleSpotInstancesModule} from './schedule-spot-instances/schedule-sp
 import {SignoutModule} from './signout/signout.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {ScheduleSpotInstancesSuccessModule} from './schedule-spot-instances-success/schedule-spot-instances-success.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({

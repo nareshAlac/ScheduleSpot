@@ -1,7 +1,5 @@
 package com.alacriti.model;
 
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.Arrays;
 	
 
@@ -17,8 +15,22 @@ public class ScheduleRequest extends BaseMsg {
 	private String scheduleEndDate;
 	private String[] scheduleDays;
 	private long spinutRequestId;
+	private Time startTimeSchedule;
+	private Time endTimeSchedule;
 	
 	
+	public Time getStartTimeSchedule() {
+		return startTimeSchedule;
+	}
+	public void setStartTimeSchedule(Time startTimeSchedule) {
+		this.startTimeSchedule = startTimeSchedule;
+	}
+	public Time getEndTimeSchedule() {
+		return endTimeSchedule;
+	}
+	public void setEndTimeSchedule(Time endTimeSchedule) {
+		this.endTimeSchedule = endTimeSchedule;
+	}
 	public String getRegion() {
 		return region;
 	}
@@ -91,9 +103,10 @@ public class ScheduleRequest extends BaseMsg {
 				+ ", instanceType=" + instanceType + ", amiId=" + amiId + ", securityGroup=" + securityGroup
 				+ ", sshKeyPair=" + sshKeyPair + ", scheduleStartDate=" + scheduleStartDate + ", scheduleEndDate="
 				+ scheduleEndDate + ", scheduleDays=" + Arrays.toString(scheduleDays) + ", spinutRequestId="
-				+ spinutRequestId + "]";
+				+ spinutRequestId + ", startTimeSchedule=" + startTimeSchedule + ", endTimeSchedule=" + endTimeSchedule
+				+ "]";
 	}
-	
+	 
 	
 	
 

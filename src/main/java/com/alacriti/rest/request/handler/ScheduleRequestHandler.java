@@ -93,6 +93,8 @@ public class ScheduleRequestHandler {
 	spin.setScheduleDays(scheduleDays.toString());
 	spin.setStatus(AppConstants.SCHEDULAR_STATUS_OPEN);
 	spin.setUserId(requestMsg.getUserId());
+	spin.setStartTimeSchedule(requestMsg.getStartTimeSchedule());
+	spin.setEndTimeSchedule(requestMsg.getEndTimeSchedule());
 		
 	}
 

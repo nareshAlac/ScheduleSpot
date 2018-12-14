@@ -7,3 +7,7 @@
 .example-full-width {
   width: 100%;
 }
+
+.mat-form-field.mat-focused .mat-form-field-underline .mat-form-field-ripple {
+   color: #0d5fad !important;
+ }

@@ -1,5 +1,6 @@
 import {BaseModel} from './BaseModel';
 import {AMI} from './AMI';
+import {Time} from './Time';
 
 export class SchedularModel extends BaseModel {
   regions: string[];
@@ -19,4 +20,10 @@ export class SchedularModel extends BaseModel {
   scheduleStartDate: string;
   scheduleEndDate: string;
   scheduleDays: string[];
+
+  startTime: string;
+  endTime: string;
+
+  startTimeSchedule: Time;
+  endTimeSchedule: Time;
 }

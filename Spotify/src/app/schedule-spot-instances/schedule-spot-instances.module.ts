@@ -5,9 +5,10 @@ import {CustomMaterialModule} from '../custom-material/custom-material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import {LoginComponent} from '../login/login.component';
 import {SchedularService} from './SchedularService';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
     CustomMaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule
+    NgbModule
   ],
   declarations: [ScheduleSpotInstancesComponent],
   exports: [

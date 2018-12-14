@@ -1,6 +1,6 @@
-<mat-card class="schedular-card">
+<mat-card class="schedular-card" style="padding: 10px;">
   <mat-card-header>
-    <mat-card-title>ScheduleSpotInstance</mat-card-title>
+    <mat-card-title><h2>Schedule Spot Instance</h2></mat-card-title>
   </mat-card-header>
 <mat-card-content>
 <form class="example-form" [formGroup]="schedularForm">
@@ -51,7 +51,8 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Bid Price $" formControlName="bidPrice" name="bidPrice">
+    <input matInput placeholder="Bid Price" formControlName="bidPrice" name="bidPrice">
+    <mat-icon matPrefix>$</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -71,12 +72,43 @@
       <mat-option *ngFor="let day of keys(daysOfWeek)" [value]="daysOfWeek[day]">{{day}}</mat-option>
     </mat-select>
   </mat-form-field>
+  <div>
+  <div class="example-full-width" style="color: #796b6b">Start Time</div>
+  <div style="color: #796b6b" class="example-full-width">End Time</div>
+  </div>
+<div class="example-full-width">
+    <ngb-timepicker formControlName="startTimeNGB"></ngb-timepicker>
+    <!--<pre>Selected time: {{startTimeNGB?.value | json}}</pre>-->
+</div>
+
+<div class="example-full-width">
+    <ngb-timepicker formControlName="endTimeNGB"></ngb-timepicker>
+  <!--<pre>Selected time: {{endTimeNGB?.value | json}}</pre>-->
+</div>
+<!--<mat-form-field class="example-full-width">-->
+    <!--<input matInput [ngxTimepicker]="startTimePicker" formControlName="startTime" placeholder="Start Time">-->
+    <!--<ngx-material-timepicker #startTimePicker></ngx-material-timepicker>-->
+  <!--</mat-form-field>-->
+
+  <!--<mat-form-field class="example-full-width">-->
+    <!--<input matInput [ngxTimepicker]="endTimePicker" formControlName="endTime" placeholder="End Time">-->
+    <!--<ngx-material-timepicker #endTimePicker></ngx-material-timepicker>-->
+  <!--</mat-form-field>-->
+
+  <!--<mat-form-field class="example-full-width">-->
+    <!--<div class="input-group" moment-picker="ctrl.timepicker" format="HH:mm:ss">-->
+    <!--<span class="input-group-addon">-->
+        <!--<i class="octicon octicon-clock"></i>-->
+    <!--</span>-->
+      <!--<input matInput class="form-control" placeholder="Select End time" ng-model="ctrl.timepicker" ng-model-options="{ updateOn: 'blur' }" formControlName="endTime">-->
+    <!--</div>-->
+  <!--</mat-form-field>-->
 
 </form>
 
 </mat-card-content>
 
 <mat-card-actions>
-  <button mat-raised-button (click)="schedule()" color="primary">Schedule</button>
+  <button mat-raised-button (click)="schedule()" color="#0d5fad">Schedule</button>
 </mat-card-actions>
 </mat-card>

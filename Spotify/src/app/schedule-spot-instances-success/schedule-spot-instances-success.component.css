@@ -5,3 +5,11 @@
 .ParameterHeader {
 
 }
+
+.width50{
+  width: 50%;
+}
+.col-width-50{
+  width: 50%;
+  float: left;
+}

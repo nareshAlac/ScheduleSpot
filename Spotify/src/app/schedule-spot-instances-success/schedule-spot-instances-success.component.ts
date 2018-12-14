@@ -6,6 +6,7 @@ import {RootService} from '../common/RootService/root.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Spin} from '../models/Spin';
 import {DaysOfWeek} from '../models/DaysOfWeek';
+import {Time} from '../models/Time';
 
 @Component({
   selector: 'app-schedule-spot-instances-success',
@@ -24,6 +25,8 @@ export class ScheduleSpotInstancesSuccessComponent implements OnInit {
   scheduleStartDate: string;
   scheduleEndDate: string;
   scheduleDays: string[] = [];
+  startTime: Time;
+  endTime: Time;
   resp: Spin;
 
   keys = Object.keys;
@@ -52,7 +55,8 @@ export class ScheduleSpotInstancesSuccessComponent implements OnInit {
     this.scheduleStartDate =  this.resp.startTime;
     this.scheduleEndDate = this.resp.endTime;
     this.scheduleDays = this.resp.scheduleDays.split(', ' , this.resp.scheduleDays.length);
-
+    this.startTime = this.resp.startTimeSchedule;
+    this.endTime = this.resp.endTimeSchedule;
     this.i = 0;
     for (const day of this.scheduleDays) {
       console.log('this.values(this.daysOfWeek)[day]' + this.keys(this.daysOfWeek)[day]);

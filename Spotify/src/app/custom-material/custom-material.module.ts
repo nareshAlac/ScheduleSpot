@@ -13,6 +13,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import { MatDatepickerModule} from '@angular/material';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { MatDatepickerModule} from '@angular/material';
     MatFormFieldModule,
     NgxMatSelectSearchModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule.forRoot()
   ],
   declarations: [],
   exports: [
@@ -52,7 +54,8 @@ import { MatDatepickerModule} from '@angular/material';
     MatFormFieldModule,
     NgxMatSelectSearchModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class CustomMaterialModule {

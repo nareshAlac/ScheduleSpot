@@ -28,6 +28,8 @@ public class SpIn extends BaseMsg {
 	private int status;
 	private String interruptionBehavior;
 	private boolean isRequestSuccess;
+	private Time startTimeSchedule;
+	private Time endTimeSchedule;
 
 	
 	public String getRegion() {
@@ -207,15 +209,21 @@ public class SpIn extends BaseMsg {
 		this.isRequestSuccess = isRequestSuccess;
 	}
 
-	@Override
-	public String toString() {
-		return "SpIn [region=" + region + ", spInUtReqId=" + spInUtReqId + ", awsRequestId=" + awsRequestId + ", amiId="
-				+ amiId + ", price=" + price + ", instanceType=" + instanceType + ", secGrpId=" + secGrpId
-				+ ", keyName=" + keyName + ", instanceCapacity=" + instanceCapacity + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", scheduleDays=" + scheduleDays + ", reqestedTime=" + reqestedTime
-				+ ", status=" + status + ", interruptionBehavior=" + interruptionBehavior + ", isRequestSuccess="
-				+ isRequestSuccess + ", blockDuration=" + blockDuration + "]";
+	public Time getStartTimeSchedule() {
+		return startTimeSchedule;
 	}
 
+	public void setStartTimeSchedule(Time startTimeSchedule) {
+		this.startTimeSchedule = startTimeSchedule;
+	}
+
+	public Time getEndTimeSchedule() {
+		return endTimeSchedule;
+	}
+
+	public void setEndTimeSchedule(Time endTimeSchedule) {
+		this.endTimeSchedule = endTimeSchedule;
+	}
+ 
 
 }
